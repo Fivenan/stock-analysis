@@ -1,0 +1,35 @@
+[
+  {
+    "strategy": "buy_hold",
+    "rows": 520,
+    "fills": 6,
+    "fifo_matches": 0,
+    "total_return": 0.14343099353218247,
+    "cagr": 0.06926431285876888,
+    "warnings": 7,
+    "rejected_orders": 3.0,
+    "experiment_id": "00d8cf3b21e1b0aa6b397ac1a86c7273f0d0e1febfece507a2f3cccb4014ce49"
+  },
+  {
+    "strategy": "trend",
+    "rows": 520,
+    "fills": 104,
+    "fifo_matches": 74,
+    "total_return": 0.03740858915105316,
+    "cagr": 0.01851977372797329,
+    "warnings": 40,
+    "rejected_orders": 39.0,
+    "experiment_id": "0c76ef0a0351321ea21d6a15a6d81ca1e8b070ab07b05e645a86ecefbaa2a5c1"
+  },
+  {
+    "strategy": "momentum",
+    "rows": 520,
+    "fills": 35,
+    "fifo_matches": 19,
+    "total_return": 0.053442048673193465,
+    "cagr": 0.026354975366523842,
+    "warnings": 39,
+    "rejected_orders": 38.0,
+    "experiment_id": "8d023fbaa55ffd13b066386c721a71e820127df5344a8917270c5d9f8ebf1766"
+  }
+]

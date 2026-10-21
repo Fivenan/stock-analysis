@@ -1,0 +1,168 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>BACKTEST METHODOLOGY · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>BACKTEST METHODOLOGY</h1><pre># Backtest methodology and financial API
+
+Implementation and native-Windows verification: 2026-10-20. This is an educational research engine using explicit historical or **SYNTHETIC SAMPLE** datasets. It does not connect to a broker, infer current prices, optimize for target returns, or establish investment suitability. The demonstration calendar and arithmetic prices are intentionally artificial.
+
+## Event and information model
+
+Each listing owns explicit sessions, raw bars, currency and availability. The engine forms a UTC union of scheduled openings, action dates, payment dates and one end-of-day cutoff on each supported session date. It retains a separate initial-capital row immediately before the requested UTC start. It never invents weekend bars or forward-fills OHLC/volume. Dates outside the configured range cannot produce trades. A requested session crossing the UTC run boundaries is rejected explicitly.
+
+Equal-time processing is entitlement, split, payment, opening fills, then completed-bar information and decisions/valuation. An action and its identifier are applied once per simulation. Late-known actions reject validation. A simultaneous split/dividend requires declared pre-split or post-split entitlement. Unsupported fractional split units and cash-in-lieu reject rather than round away property.
+
+Strategies receive `known_at(data, decision)` physically filtered records: only completed available bars, effective available actions and FX observed and published by that time. The three provided strategies are stateless. The engine schedules buy-and-hold once and the other two on the first available daily cutoff in each month. Insufficient warm-up leaves cash until a later scheduled decision. Custom strategies without a `rebalance` property run daily.
+
+The decision freezes quantity at known marks, FX and costs. The next scheduled open must be **strictly later** than the decision. The execution layer reads that open only; it does not read future high, low, close or volume for sizing. Prior completed volume is adjusted for intervening splits into current units. Missing expected opening data cancels the order rather than deferring it. A gap that breaks cash or risk limits cancels the frozen order rather than resizing it. A split between decision and execution cancels the pending order explicitly; quantity is not silently reinterpreted.
+
+All venues execute in actual UTC order. Sells precede buys only within the same timestamp. Automatic sizing conservatively reserves only current cash and does not spend pending sale proceeds, including same-time projected sales. Consequently a monthly rebalance can hold cash until the next decision. This underinvestment is intentional and reported as a modeling limitation. The reducer can spend a completed sale&#x27;s cash on a subsequent validated buy; a later venue&#x27;s sale can never retroactively fund an earlier opening.
+
+## Accounting, actions and valuation
+
+EUR is the only cash balance. Quantities and the cash/FIFO ledger use `Decimal`; allowed precision is six decimal places, or explicit whole-share mode. Float conversion occurs for statistical reporting, after ledger reduction. No shorting or leverage is allowed. FIFO basis includes acquisition costs. Disposal matches allocate both basis and sale charges proportionally and preserve original acquisition timestamps. Metrics consume emitted `RealizedMatch` records, never reconstruct lots from price-adjusted fills.
+
+For raw open \(P\), spread \(s\) and slippage \(l\), effective buy price is \(P(1+s/20000+l/10000)\); a sale uses the opposite signs. Commission is fixed EUR plus EUR consideration times commission basis points/10000. FX charge applies only to non-EUR consideration. A quote is **EUR per one unit of local currency**: multiply local consideration by the quote. No inverse-rate guessing occurs. Each cost enters cash once; report spread/slippage attribution does not subtract it again.
+
+The newest FX observation known at the relevant timestamp must satisfy its configured elapsed-hour age. EUR uses an identity quote of one. Positive rates alone do not prove a source has supplied the correct direction; the imported FX source must honor the data contract.
+
+Dividends create a total local-currency receivable at ex time, retained after selling shares. Equity includes the receivable until payment, so the raw ex-date price fall is not incorrectly counted as a loss without its entitlement. Payment uses FX known **at the exact payment time**, even when processing later. Dividend conversion fees are zero in this MVP. A split changes units and per-unit basis, preserving total basis.
+
+Equity is EUR cash plus holdings at known raw marks and current known FX plus dividend receivables. Age-limited stale closes are valuation-only and flagged; split/dividend adjustments bridge an action that occurs before the next raw close is available. They are never executable prices. Exceeded age limits and unresolved delisting proceeds halt valuation. A missing expected bar produces a warning; the presence of a fresh cache does not turn an old observation into a current price.
+
+The default illustrative settings are EUR 10,000 capital; EUR 1 fixed fee; 1 bp commission, 10 bp spread, 2 bp slippage and 5 bp foreign FX fee; 30% position cap, EUR 10,000 order cap, 1% prior-volume participation, 50 bp spread cap, and 96-hour price/FX ages. These are configurable educational inputs, not a broker tariff or personal recommendation. A one-asset run with the default 30% cap deliberately retains substantial cash.
+
+## Statistical definitions
+
+The equity frame columns are `timestamp` (aware UTC), `equity_eur`, `cash_eur`, `exposure`, `external_flow_eur`, `stale`. The initial row precedes transaction costs. Each supported union date contributes one daily row, not one row per venue or fill. Cash earns zero. Contributions are deferred: metrics explicitly reject nonzero external flows rather than label deposits as investment gains.
+
+| Measure | Convention |
+|---|---|
+| Total return | Final equity / initial equity - 1 |
+| CAGR and annualized return | Actual elapsed calendar time / 365.25; not arithmetic mean ×252 |
+| Volatility | Sample daily standard deviation, `ddof=1`, ×√252 |
+| Sharpe | Mean daily excess / sample excess standard deviation ×√252 |
+| Risk-free daily rate | `(1 + annual_rate) ** (1/252) - 1` |
+| Sortino | Mean excess / `sqrt(mean(min(excess,0)^2))` ×√252; all observations in downside mean |
+| Maximum drawdown | Minimum of equity / cumulative peak - 1 |
+| Duration | Maximum calendar time from peak through recovery or endpoint; unrecovered flag separate |
+| Calmar | CAGR / absolute maximum drawdown |
+| Exposure | Mean daily invested EUR / total EUR equity, excluding initial row |
+| Turnover | Absolute traded EUR consideration / (2 × mean equity), including initial equity |
+| Fill count | All executed fills |
+| Win rate / profit factor | Completed FIFO matches only; gains / absolute losses for profit factor |
+| Holding time | Arithmetic mean calendar holding days per completed FIFO match |
+| Monthly / yearly returns | Compounded daily simple returns within the period |
+| Worst periods | Minimum monthly/yearly compounded returns; period keys also exported |
+
+Undefined metrics return `None` and a warning explaining insufficient observations or a zero denominator. No losing FIFO matches means undefined profit factor. An all-flat path has zero drawdown and undefined Sharpe/Sortino/Calmar. The 252 convention remains an approximation for a multi-venue union calendar. Extremely short-horizon CAGR can be unstable; it is never a forecast. Sample statistical reports use Pandas/NumPy, not a custom matrix/numerical engine.
+
+The benchmark wrapper runs equal-weight initial buy-and-hold under exactly the same calendar, capital, limits, costs and next-open lag. Compare the two actual results. Benchmark-relative return can be computed as the difference in their `total_return` values; it is not claimed to be factor-adjusted alpha.
+
+## Durable internal paper account
+
+One repository root holds one EUR account. Construction persists initial capital; a different capital on restart rejects. `submit` begins an immediate SQLite transaction, checks canonical identity **before** present state/time validation, and returns the original fill for an identical replay. Identity includes order payload, dataset content hash, costs and limits. A changed payload under the same `PAPER-` ID rejects. New orders cannot move simulation time backward.
+
+Actions, orders, fills, lots, cash, receivables and cursor commit atomically. Concurrent duplicate submissions produce one fill. A failure rolls back the entire transaction. Source action identities must remain consistent across datasets. `advance` processes historical action/payment events without requiring an artificial trade. A restart retains entitlements and the event cursor. No API key can add live execution.
+
+`validate` is a no-write preview using a **complete selected historical dataset**, because it must locate the next scheduled open. At the lower level `validate_execution` explicitly receives an as-of `known: MarketData` context for currency and whole-portfolio concentration checks. The UI must not describe previewed historical execution as a live quote.
+
+Journal entries append immutable revisions with a new entry ID; replaying an unchanged entry is idempotent. This preserves a reviewable history rather than silently overwriting lessons. Repository APIs expose transaction records; UI code does not need SQL.
+
+## Public API and UI example
+
+```python
+from datetime import date
+from decimal import Decimal
+from pathlib import Path
+from uuid import uuid4
+
+from gmrl.analytics.export import result_manifest, result_json, equity_csv, fills_csv
+from gmrl.backtesting.defaults import default_config
+from gmrl.backtesting.engine import compare_with_benchmark
+from gmrl.domain import CanonicalOrder, OrderRequest
+from gmrl.execution.paper import InternalPaperBroker
+from gmrl.providers.sample import load_demo
+from gmrl.storage.repository import Repository
+from gmrl.strategies.factory import make_strategy
+
+data = load_demo()
+config = default_config(date(2024, 1, 1), date(2025, 12, 31))
+strategy = make_strategy(&quot;momentum&quot;, {&quot;lookback&quot;: 60, &quot;top_n&quot;: 3})
+result, benchmark = compare_with_benchmark(data, strategy, config)
+repository = Repository(Path(&quot;data/local&quot;))
+dataset_id = repository.save_dataset(data)
+saved_id = repository.save_experiment(
+    result_manifest(result, data, config, {&quot;strategy&quot;: &quot;momentum&quot;, &quot;lookback&quot;: 60, &quot;top_n&quot;: 3})
+)
+json_download = result_json(result, data, config)
+equity_download = equity_csv(result)
+fills_download = fills_csv(result)
+# Retain this ID in UI session state until the user explicitly creates a NEW order.
+client_id = &quot;PAPER-&quot; + uuid4().hex
+decision = result.equity.iloc[1][&quot;timestamp&quot;].to_pydatetime()
+request = OrderRequest(client_id, &quot;DEMO-DE&quot;, &quot;buy&quot;, Decimal(&quot;1&quot;), decision)
+canonical = CanonicalOrder(request, dataset_id, config.costs, config.limits)
+broker = InternalPaperBroker(repository, config.initial_cash_eur)
+preview = broker.validate(canonical, data)
+if preview.accepted:
+    simulated_fill = broker.submit(canonical, data)
+history = broker.history()  # snapshot, orders, fills, actions, journal
+```
+
+`run_backtest(data, strategy, config) -&gt; BacktestResult` is the single-run API.
+`gmrl.execution.planning.plan_orders(targets, state, known, config)` freezes automatic quantities;
+the same module exports `validate_execution(order, state, opening, costs, limits, *, known)`.
+`simulate_allocation(data, allocations: dict[str, Decimal], config, *, rebalance=&quot;monthly&quot;)`
+uses that same engine. `risk_snapshot(state, data, at, limits, *, price_shock, foreign_fx_shock)`
+returns concentration and group exposures plus deterministic instantaneous scenario P&amp;L. It is not validated VaR or a probabilistic prediction.
+Currency groups include EUR cash, positions and all dividend receivables, including entitlements
+retained after selling shares. Country/sector groups include positions and listing-attributable
+receivables; unavailable listing attribution is labeled `UNATTRIBUTED`. Cash is shown separately
+as `cash_eur` for these two dimensions. Every group weight uses **total account equity** as its
+denominator, exposed as `group_weight_denominator_eur`; country/sector weights therefore sum to
+the noncash share of equity. Receivables remain subject to FX shock only, without a duplicate
+share-price shock or duplicate value in scenario P&amp;L.
+`estimate_tax(realized_gain_eur, allowance_remaining_eur, effective_rate)` requires explicit inputs;
+it is an isolated scenario estimate, never withholding or a full German tax calculation.
+
+`result_manifest` is directly accepted by `Repository.save_experiment`; the returned repository ID is
+the correct key for `load_experiment`. This storage hash and the engine experiment hash serve different
+purposes and need not equal each other. JSON downloads turn Decimal amounts into lossless strings.
+
+## Actual verification and reproducibility
+
+Native Python 3.12 and the approved pinned environment executed the financial tests. The stdlib subset
+tests accounting, actions, costs, FX, risk limits, restart, replay, concurrency, crash rollback and
+journal persistence. Pandas tests exercise next-open execution, future-value isolation, date bounds,
+holiday marks, missing/stale data, neutral split/dividend equity, initial costs and metric definitions.
+No mock package substitutes were used.
+The final scoped run passed **37 tests**; Ruff passed for the financial source/tests and mypy passed
+for all **23 financial source files** with shared imports followed silently. The initial dependency-free
+stdlib run passed 17 cases; five further stdlib cases were subsequently included in the approved-runtime
+37-test run.
+
+```powershell
+# [read-only] Run financial regression tests
+.venv/Scripts/python.exe -m pytest tests/unit/test_financial_stdlib.py tests/unit/test_financial_engine.py -q
+# [modifying] Recompute report output files under tests/fixtures/financial_reports
+.venv/Scripts/python.exe tests/financial_demo.py
+```
+
+The generated `tests/fixtures/financial_reports` JSON/CSV files contain genuine computed **synthetic**
+results for all three strategies over 2024–2025, nine sample listings, the documented 60-session
+lookback/top-three defaults and default costs/limits. Each contains 520 rows. The demonstration
+produced 6/104/35 fills and 0/74/19 completed FIFO matches for buy-and-hold/trend/momentum respectively.
+Rejected-order counts were 3/39/38 respectively, exported as `rejected_order_count`.
+The low nominal local prices in some artificial currencies cause participation-cap rejections;
+those warnings and uninvested cash remain visible. The example includes the source fixture&#x27;s split
+and dividend. These outputs do not measure historical market performance or validate profitability.
+
+## Boundaries and further validation
+
+The deterministic golden cases establish selected invariants, not general financial correctness.
+Independent review and full application acceptance tests are separate gates. Real exchange calendars,
+delisting consideration, genuine corporate-action feeds and licensed historical data are not supplied
+by the demo. Survivorship bias, revised datasets, bad source quotes, parameter selection and cost
+misspecification remain research risks. Report attribution excludes taxes, interest and borrow costs.
+
+Rolling/expanding windows, chronological holdouts, walk-forward evaluation, Monte Carlo, multiple-testing
+adjustments, advanced risk models, stop orders, fund taxation and contribution/TWR scenarios remain
+explicitly deferred. No numerical example here establishes suitability or grounds for real trading.
+</pre></body></html>

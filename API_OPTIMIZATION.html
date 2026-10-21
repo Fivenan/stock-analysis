@@ -1,0 +1,72 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>API OPTIMIZATION · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>API OPTIMIZATION</h1><pre># API routing, budgets and data engineering
+
+Access/research date **2026-10-18**. This document separates **verified external facts** from **recommended design**, **illustrative budgets** and **features whose implementation must be checked elsewhere**. It does not claim that every mechanism below is implemented.
+
+## Supported starting point
+
+**VERIFIED:** <a href='https://data.ecb.europa.eu/help/api/data'>ECB official API data documentation</a> and <a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'>World Bank official query documentation</a>, accessed 2026-10-18, support public data retrieval. Tiny keyless ECB daily USD/EUR reference FX CSV and World Bank German GDP JSON requests returned HTTP200; exact URLs and observed result sizes are in <a href='SOURCES.html'>SOURCES.md</a>. Only response/syntax availability was checked, not every financial value, full historical range or redistribution rights.
+
+Prefer ECB reference FX for a working EUR-accounting example, World Bank for macro context and clearly labeled local synthetic fixtures for reproducible strategy/accounting tests. Neither public macro API supplies a verified global equities price universe. Do not combine annual GDP observations with fabricated daily price bars and call that historical market data.
+
+## Common adapter and identity contracts — recommended design
+
+Adapters should expose capability metadata separately from operations: instruments/series supported, data kind, intervals, earliest/latest history if known, adjustment mode, delay, key/entitlement requirements, quota units and rights tags. Operations may include `fetch_bars`, `fetch_fx`, `fetch_macro`, `fetch_actions` and `healthcheck`; unsupported operations must fail clearly. An annual macro response must not satisfy the daily-bar interface merely because both contain numbers and dates.
+
+Use central instrument identity plus listing/provider mappings: internal ID, ISIN where applicable, MIC, local ticker, legal asset type, quote currency, unit/multiplier, provider symbol and evidence/validity dates. Never derive a TR listing from a Yahoo-style suffix. Mark illustrative mappings unverified and block real-price joins until checked. Separate ordinary shares, ADRs, ETFs, ETCs/ETNs, futures contracts, currencies and macro series.
+
+Every returned record needs source/provider/endpoint, retrieval timestamp (UTC), observation/session date and timezone, units/currency, adjustment mode, data status (actual/delayed/synthetic/missing/estimated), release/availability time where known and validation outcome. For macro data distinguish observation period, publication date, retrieval date and vintage. Missing availability time blocks claims of point-in-time backtest validity.
+
+## Cache, incremental ingestion and quality — recommended design
+
+1. Canonical request key: provider + endpoint + normalized instrument/series + interval + requested range + adjustment mode + relevant version. Never cache credentials in keys/logs.
+2. Store immutable raw response hashes/metadata if rights allow; normalized columnar Parquet for bars and SQLite/DuckDB metadata/query layer as environment permits. Cache format choice is not proof of historical accuracy. Do not claim Parquet if only CSV exists.
+3. Increment from last validated observation with a small overlap for corrections; retain revision history or snapshots. Do not assume newest observations are immutable. Backfill corporate actions and delistings separately.
+4. Configure TTL by data product: illustrative EOD cache 24h after expected publication, FX reference cache until next publication, annual macro days rather than seconds, reference mappings weekly with explicit expiry. These are design defaults, not provider guarantees.
+5. Validate schema, finite/positive required prices, ordering, duplicate dates, OHLC relations, units/multipliers, expected sessions, missing values, extreme jumps and corporate-action consistency. Never forward-fill a non-trading day into an executable fill without explicit model policy.
+6. Pick one total-return policy: raw prices plus explicit distributions/actions, or a documented adjusted series with consistent accounting. Do not add cash dividends on top of an already dividend-adjusted total-return series. Verify provider adjustment semantics rather than assuming `adj_close` always means the same thing.
+7. Record quality flags and cross-check overlaps between legally usable sources. Do not silently splice providers with different venue, close time or adjustment policy. Flag discontinuities and retain provenance.
+
+## Quotas and retries — recommended design
+
+Maintain separate counters for HTTP calls, provider credits/weights, symbols/subscriptions, byte budgets and any per-minute/day quotas. Reservation is atomic before dispatch; reconcile charge semantics from actual provider documentation. Persist counters across app refresh/restart when required. Unknown quota/credit/reset must not become zero-cost/unlimited.
+
+Use a token bucket or equivalent for each applicable window and an independent daily allowance. Honor Retry-After and documented reset timezone; otherwise configure a conservative boundary and expose uncertainty. Exponential backoff with jitter and maximum attempts for transient network/429/5xx errors; no retry loop on invalid keys, forbidden licenses, bad symbols or exhausted daily allowance. Count retry attempts in the request log; don&#x27;t assume failed calls cost nothing. Add connection/read timeouts, circuit breaker and user-visible stale-cache fallback. No key rotation/account multiplication to evade quotas.
+
+Batch only where the endpoint and license permit. One request can contain many symbols and still consume per-symbol weighted credits. Conditional requests and cached metadata can reduce transfer; a 304 does not automatically imply no quota charge. Disable connectors when current terms or returned entitlement errors contradict stored assumptions.
+
+## Worked budgets — illustrative, not advertised entitlements
+
+Verified published facts: <a href='https://www.alphavantage.co/support/'>Alpha Vantage support</a> says general free service **25 requests/day**; <a href='https://twelvedata.com/pricing'>Twelve Data pricing</a> shows Basic **8 API credits/minute and 800/day**, with time-series examples costing one credit per symbol and other endpoints costing more. Accessed 2026-10-18. No authenticated entitlement test occurred. Endpoint availability, daily reset boundary and exact retry charging remain unresolved.
+
+Assume N already-approved symbols, one incremental time-series update per symbol/day, cost one credit each, no pagination/retries, and 10% rounded-up reserve. These are arithmetic assumptions, not a market-coverage guarantee. Discovery, actions, fundamentals and FX are extra.
+
+| Symbols N | Unbatched HTTP calls/day | Weighted credits/day | Credits including ceil(10% reserve) | At 8/min: minimum charged minute slots, excluding reserve | Planning implication |
+|---|---:|---:|---:|---:|---|
+| 10 | 10 | 10 | 11 | 2 | Could fit a small eligible tier; Alpha Vantage&#x27;s 25/day leaves little space for expanded workloads. |
+| 50 | 50 | 50 | 55 | 7 | Exceeds 25 requests/day if one request per symbol; don&#x27;t imply a global free feed. |
+| 100 | 100 | 100 | 110 | 13 | Potential weighted budget fits 800/day if endpoints/symbols entitled, not proven here. |
+| 500 | 500 | 500 | 550 | 63 | Leaves 250 credits under 800 after this reserve; neither free global coverage nor execution freshness follows. |
+
+The minute-slot count is `ceil(N/8)`; it is not an elapsed-time guarantee because bucket reset phase, latency and retries differ. If an explicitly allowed batch size B=10 is used, HTTP calls could be `ceil(N/10)` = 1/5/10/50 while credits remain 10/50/100/500. B=10 here is a teaching assumption, **not a verified Twelve Data batch limit**. A 100-credit-per-symbol endpoint would instead require 1,000/5,000/10,000/50,000 credits; cheap time-series arithmetic cannot be reused for fundamentals.
+
+ECB multi-currency series keys are documented by <a href='https://data.ecb.europa.eu/help/api/data-examples'>official examples</a>, accessed 2026-10-18. Use one bounded multi-series request where appropriate, but no verified daily quota or unlimited entitlement is asserted. World Bank can use indicator/country/date queries with pagination; do not budget “one request forever” for arbitrarily large queries.
+
+## Routing policy
+
+| Data need | First choice within verified scope | Fallback / stopping condition |
+|---|---|---|
+| EUR reference FX | ECB documented series with explicit quote direction | Matched Bundesbank measure after validation; stale cached value labeled; reject missing FX for an actual return calculation. |
+| Country macro context | World Bank v2 documented indicator | National agency/Eurostat/IMF after mapping and terms review; do not substitute unlike definitions. |
+| Global equity daily bars | User-authorized licensed import; later explicitly entitled provider adapter | Offline synthetic fixtures for software tests, with permanent synthetic label. No invented live history. |
+| Current paper execution marks | Validated fresh eligible data, if separately configured | Reject simulated fill with stale/missing price; offline demo uses its own simulation clock. |
+| Corporate actions | Same approved source and adjustment policy as bars | Stop affected accounting/backtest if material actions unknown. |
+| Point-in-time macro study | Verified publication/vintage archive | Label exploratory current-vintage analysis; do not assert historical tradability. |
+
+No fallback may increase permissions, remove licensing restrictions, change real execution routes, relabel synthetic data or hide missing history.
+
+## Verification acceptance criteria
+
+Unit/mocked contract tests should check quota units, rate-window exhaustion, retries, cache hits, stale failures, schema rejection, FX direction, corporate-action policy and secret redaction. Small optional network smoke tests must be separate from deterministic/offline tests. Real historical output needs validated actual source data and source dates; deterministic fixture success only establishes software behavior.
+
+Actual checks performed during this research: official document retrieval; two keyless HTTP response checks recorded in SOURCES.md; local existence/content verification of this staged dossier. No broker connectivity, registration, authenticated free tier, historical backtest, sustained throughput, quota exhaustion, licensing clearance, runtime adapter integration or tax-engine test was performed by this research worker.
+</pre></body></html>

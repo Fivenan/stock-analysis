@@ -1,0 +1,1 @@
+document.querySelector('input').addEventListener('input',e=>{for(const x of document.querySelectorAll('article'))x.hidden=!x.textContent.toLowerCase().includes(e.target.value.toLowerCase())});

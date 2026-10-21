@@ -1,0 +1,100 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>STRATEGIES · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>STRATEGIES</h1><pre># Strategy library
+
+Three strategies are executable. All remaining entries are research specifications, not enabled
+controls or demonstrated profitable systems. Configurations are illustrative; no personal capital,
+risk tolerance, horizon or security recommendation is inferred.
+
+## Executable strategies
+
+| Name / factory key | Hypothesis | Rules | Data and schedule | Main rejection conditions |
+|---|---|---|---|---|
+| Equal-weight buy-and-hold / `buy_hold` | Broad ownership supplies a simple reference for active rules | Allocate equally among listings with completed data once; retain positions and residual cash | Registered raw closes, explicit calendars, FX, actions; first available decision, next scheduled opens | Missing valuation/FX, limits breached, unresolved action/delisting |
+| Moving-average trend / `trend` | Persistent price trends might distinguish risk-on periods from cash periods | Latest split-normalized local close strictly above trailing SMA; equal weight active listings, otherwise cash | Complete lookback (default 60 completed sessions); first available monthly cutoff | Incomplete warm-up stays cash; calendar outage rejects; unknown/late action rejects |
+| Cross-sectional momentum / `momentum` | Relatively strong positive local total-return trends might persist | Trailing local gross total return strictly positive; select top N (default 3), stable instrument ID tie-break; equal weights | Lookback+1 completed observations (default 61); monthly cutoff; action-safe return index | Incomplete warm-up stays cash; unknown dividend/split chronology or calendar outage rejects |
+
+All use the same EUR ledger, costs, freshness, concentration, order-size and prior-volume limits.
+Risk caps can reduce allocations below their nominal equal weights. No shorting, leverage, stop-loss,
+intraday stop, or automated tax withholding is modeled. Residual EUR cash earns zero. Selling a position
+does not erase a dividend entitlement already earned. A new monthly signal cannot change a previous fill.
+
+### Point-in-time signals
+
+Trend divides earlier raw closes by the product of splits that have become effective and known by
+the decision, putting its trailing SMA and latest close in the same share units. A neutral two-for-one
+split therefore cannot create a trend signal. Dividend price gaps remain price effects in this
+price-trend rule.
+
+Momentum uses a local gross-return index. Between two completed closes, begin with one prior unit,
+apply known split ratios and cash entitlements in event order, then divide the ending value plus
+dividend cash by the prior close. The index assumes gross dividend reinvestment at the next completed
+close for **ranking only**. Actual portfolio accounting instead retains receivables until exact
+payment, uses EUR FX and subtracts actual modeled costs. Ranking performance is not account performance.
+Same-time post-split dividends use the declared split-adjusted entitlement.
+
+Only actions already effective and available may normalize a signal. An unknown late action is not
+silently used to repair earlier decisions. A missing expected session is not dropped to make a
+lookback appear complete. The engine owns scheduling; strategy instances carry no run history, so
+the same configuration can be rerun or compared reproducibly.
+
+### Parameters, turnover and failure regimes
+
+For experiments, lookbacks such as 20, 60, 120 and 252 completed observations and top N from 1 to the
+selected universe size define a **research grid**, not recommended settings. The implementation accepts
+integer lookbacks of at least 2 and top N of at least 1. No grid was optimized for the supplied sample.
+Smaller lookbacks can increase churn; larger lookbacks can lag regime changes. Monthly signals can miss
+abrupt reversals between decisions.
+
+Buy-and-hold can experience sustained losses and concentration drift and has no protective exit.
+Trend can repeatedly buy high and sell low in sideways markets. Momentum can reverse sharply, cluster
+by sector/country, or select low-liquidity listings. Local-currency rankings can diverge from EUR
+results when FX moves. Equal nominal weights are not equal risk allocations.
+
+Transaction charges, spread/slippage, next-open gaps and participation caps can reverse gross
+advantages. Sizes reserve current cash only, so rotation proceeds may remain cash until the next
+monthly decision. Maximum position weight caps the **post-trade** bought position, not future drift
+from price movement. Declining to buy because of an execution cap is an observable outcome, not a
+reason to change limits until the chart improves.
+
+Evaluate every configuration against `buy_hold` under the same dates, costs, limits, capital,
+available universe and lag. Reject a research claim when it depends on future data, action mistakes,
+stale marks, an artificial calendar, ignored fees, or a hand-picked favorable period.
+
+## Research specifications — not executable
+
+| Approach | Rationale / hypothesis | Required data and proposed rule | Sizing, risk, turnover and failures | Evidence needed before activation |
+|---|---|---|---|---|
+| Periodic rebalancing | Restore a declared allocation after relative moves | Explicit allocation, monthly or annual rebalance; the allocation wrapper supports once/monthly only | Same caps/costs; sells can leave cash pending the next decision; contributions deferred | Compare frequency and costs without optimizing the evaluation period |
+| Time-series momentum | Own assets with positive own trailing return | Action-safe return per asset; predefined horizon and monthly rule | Equal/risk-based allocation subject to caps; whipsaw and correlated reversals | Separate from cross-sectional ranking; walk-forward test and consistent benchmark |
+| Mean reversion | Transitory deviations may reverse | Stable definition of deviation, entries/exits and corporate-action handling | Tight liquidity/spread controls; potentially high turnover; trends can overwhelm thesis | Realistic gap/stop handling, out-of-sample evidence and cost stress |
+| Sector relative strength | Sector leadership might persist | Point-in-time sector membership and comparable total-return series | Sector concentration constraints; classification changes and narrow leadership | Historical membership, survivorship controls and broad benchmark |
+| Volatility targeting | Reduce exposure when measured volatility rises | Past realized volatility only; explicit leverage-free target and lag | Cap at cash-funded exposure; high turnover in stress, volatility lag | Stable estimator, gap stress and turnover sensitivity |
+| Risk parity / inverse volatility | Avoid nominal equal weights dominating risk | Aligned calendars, covariance or trailing vol, stable positive inputs | No leverage; unstable covariance and concentration in low-vol assets | Singular-input treatment, rebalance stability and genuine multi-asset data |
+| Commodity-related trend | Commodity cycles may persist | Distinguish futures total returns, roll yield, ETCs and mining equities | Contract/product-specific currency and concentration limits; roll and equity basis risk | Eligible instruments, licensed series, roll/carry and action semantics |
+| Currency trend/carry | Trends or interest differentials may persist | FX spot plus point-in-time rates and executable financing assumptions | Foreign cash and leverage not supported by current EUR-cash ledger | Correct carry/roll accounting, accessible products and separate engine scope |
+| Multi-asset macro | Economic regimes may affect asset groups | Vintage-safe macro releases, publication lags, predetermined regime rules | Diversification can disappear in stress; low sample size and many choices | ALFRED-like vintages, chronological evaluation and multiple-testing controls |
+| Factor equity screening | Valuation/profitability/etc. may relate to returns | Point-in-time filings, membership, delistings, accounting dates | Sector/country/size neutralization decisions; crowded-factor and revision risk | Publication-aware data and explicit investable universe |
+| Event-driven framework | Defined public events may alter future returns | Timestamped event source, eligibility, entry/exit and lag | Event overlap, spreads and selection effects; stops not modeled | Auditable event timestamps, matched baseline and leakage tests |
+
+An allocation simulation is implemented as a wrapper around the same engine; that does not make
+external contribution schedules, risk-parity optimization or currency carry implemented.
+
+## Regional hypotheses
+
+Possible research comparisons include US growth versus European value; Japanese exporters and yen;
+semiconductor chains across US/Taiwan/Korea; Indonesian commodity exporters; Chinese consumer demand;
+European industrials and energy prices; and copper versus industrial activity. These are questions,
+not signals. They require verified access, point-in-time constituents, currency attribution and source
+licensing. The nine generic demo listings cannot answer those questions.
+
+## Actual tests and limitations
+
+The 2026-10-20 financial tests verified neutral split signals, dividend-inclusive momentum, physically
+filtered histories, next-open execution and invariance of an earlier fill to later HLCV mutations.
+`tests/financial_demo.py` produced all three downloadable synthetic reports with costs, actions and
+rejections intact. `docs/BACKTEST_METHODOLOGY.md` defines the exact statistical and execution rules.
+
+No real-data profitability test, holdout, walk-forward, parameter robustness claim or Monte Carlo
+result is supplied. Before interpreting a real-data strategy, fix the hypothesis and parameters,
+reserve chronological holdouts, record every attempted configuration, stress costs and missing data,
+and review independent failures. Passing software tests is not evidence of future investment returns.
+</pre></body></html>

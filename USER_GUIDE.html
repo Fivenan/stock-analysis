@@ -1,0 +1,72 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>USER GUIDE · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>USER GUIDE</h1><pre># User guide
+
+## Start and orientation
+
+Follow the native PowerShell setup in the repository README. The entry point is `app/main.py`, port 8501 bound to loopback. All screens display SIMULATION ONLY and SYNTHETIC SAMPLE. The source is deterministic arithmetic generator v1, CC0; provenance retrieval timestamp is 2026-01-01 UTC and observations cover 2024–2025. This is not data freshness for present trading. The simplified weekday calendar excludes January 1 and December 25; it does not reproduce exchange holidays.
+
+## A first experiment
+
+1. Open Global Dashboard. Change the watchlist and read country, currency and source fields. None of the DEMO IDs is a real ticker or an availability assertion.
+2. Market Explorer filters the registered country, sector, currency, class and venue. Empty filters mean all currently remaining rows.
+3. Asset Research selects a listing and a date interval. Raw prices are execution inputs. The separate local gross return index uses the engine&#x27;s point-in-time split/dividend helper, so the US split is not reported as a 50% investment loss. FX and costs are excluded from that educational index; EUR account returns are in backtests.
+4. Strategy Builder or Backtesting Lab selects one of three active strategies. Set universe, dates, lookback, top N, initial EUR capital, costs and limits. Buy-hold ignores lookback/top N. Trend needs the lookback number of observations; momentum needs one additional observation. Earlier data provides warm-up; only the configured run dates are traded.
+5. Run backtest and benchmark. The benchmark uses the same universe, dates, capital, costs and execution rules. Read warnings before metrics. No fills can be a valid consequence of limits, not a software crash. Low nominal local prices in several synthetic currencies lead to volume-cap rejections; these are deliberately visible.
+6. Download JSON for configuration, provenance, metrics, warnings, equity and fills. CSV exports separate equity and fills. Save experiment writes a durable manifest. Select repository IDs under Compare saved experiments; each shows parameters, metrics and equity. The repository ID differs from the engine experiment hash.
+
+Initial capital/cost/limit defaults are illustrative. Do not interpret EUR10,000 or a 30% position cap as advice. The engine permits long-only unleveraged cash equity/ETF-like units; no shorting, derivatives, leverage or stops are implemented. Aggregate weights cannot exceed one. Remaining weight is EUR cash with zero interest.
+
+## Portfolio and risk
+
+Portfolio Simulator takes listing weights as decimal fractions, e.g. 0.10 means 10%, and once/monthly rebalancing. It uses the same engine and defaults as backtesting, including costs and rejection rules. Weights must sum to at most one. Contributions and TWR are deferred: do not treat this as a savings-plan projection.
+
+Risk Dashboard values the durable paper account at its simulation cursor and includes cash, positions and dividend receivables. Currency buckets include all three. Country/sector buckets include securities and attributable receivables, with cash separate; total equity is the denominator. Price shocks affect positions; foreign FX shocks affect foreign positions and receivables. These are instantaneous arithmetic scenarios, not probabilities, VaR or forecasts. Latest in-session backtest metrics supply experiment drawdown. No risk budget is personalized until the user defines one.
+
+The tax control is an isolated estimate `max(0, gain − remaining allowance) × supplied effective rate`. Enter your own scenario inputs; there is no legal default. It neither withholds cash nor imports broker tax records. Fund exemptions, loss baskets, foreign withholding, church-tax rules and advance lump sums are excluded. Consult the sourced tax guide for scope and current official documents.
+
+## Durable internal paper practice
+
+Paper Trading asks you to initialize a new private account explicitly with configurable initial capital (illustrative default EUR10,000), then retains that capital on restart. Risk and Journal pages ask you to initialize first rather than silently creating an account. It displays the saved capital and cursor. To study a separate account, stop the app and launch with a separate `GMRL_RUNTIME`; never erase a prior account to hide losses. It cannot connect to a broker.
+
+Select a historical decision date (UTC end of day), listing, buy/sell and positive quantity. A manual order is attempted at the next scheduled historical opening, with current configured default costs/limits. One unit DEMO-DE on January 2, 2024 is a convenient small sample. Press Submit simulated order. Repeating the same button with the same PAPER ID and unchanged payload returns the same fill: reruns do not buy twice. For a genuinely new order, press New order ID first. Reusing an ID with a changed quantity, dataset or settings rejects. New operations cannot precede the saved simulation cursor; identical replay still succeeds. An end-of-sample decision has no next opening and rejects.
+
+Advance actions processes known dividend/split events and payments to the selected historical cutoff without inventing a trade. It may reject backward or unavailable cutoffs. Orders are whole manual quantities or reject; insufficient cash including fees, excess concentration, excessive volume, stale FX, sell quantity and split-between-decision/open are actionable errors. Account snapshot, canonical orders, fills and action records remain visible.
+
+Trade Journal appends hypothesis, entry/exit plan, lesson and optional PAPER link. Revisions are new entries referencing the previous entry ID in the text. Prior rows stay intact. Export journal JSON privately; it is never included in the static build. After restarting the app, revisit Paper Trading and Trade Journal to confirm the same durable state.
+
+## Data and learning
+
+API Management reports the actual offline sample adapter, persisted usage/debits and cache-record count. Unknown quota means unknown. The offline test fetches two sample sessions without network or credentials. Catalog providers are research entries, not enabled live feeds. No external connectivity probe is exposed in the application. A separate optional bounded World Bank GDP metadata helper exists in the package; it is not an active market-data adapter and normal offline use never calls it. Global Macro Dashboard shows only clearly synthetic FX; no invented current inflation, yield curve or commodity statistics are displayed.
+
+Learning Center searches guide content, then displays the selected Markdown safely. Static companion Learning library searches all allowlisted guide text in the browser. Static reports are fixed computed fixtures; the website cannot submit orders, edit journal data or execute new simulations. The complete citation URLs remain in escaped guide text and the source register.
+
+## Troubleshooting and recovery
+
+No observations: choose dates in 2024–2025 and a nonempty universe. Reversed bounds: correct start/end. No fills: inspect warm-up, concentration/volume limits, costs and order-cancellation warnings rather than weakening checks for attractive returns. A paper time error: select a later decision and a new ID or replay the exact old payload. Account-capital conflicts: retain the original capital; use a separate private runtime for a separate scenario. Close other app processes before backing up `.runtime` with native file copy. Restore the complete directory together, not individual SQLite files during writes. Keep backups and exports private. There is no network dependency in ordinary sample use.
+
+## Deployment and future updates
+
+The source target is <a href='https://github.com/Fivenan/stock-analysis'>Fivenan/stock-analysis</a>. The repository is private. Its `main` branch contains the Python application, documentation and preserved original `wiki/`. The separate `gh-pages` branch must contain only the reviewed generated contents of `build/site/`, with `index.html` and `.nojekyll` at the branch root, not inside a nested `build/site` directory. Do not publish the checkout, runtime accounts, journals, imports, exports, credentials or private configuration.
+
+GitHub Pages serves the static companion only. Keep Streamlit running locally using the Windows setup in the README; Pages cannot execute Python, run new simulations, submit orders or save journal entries. The builder includes only allowlisted guides, assets and computed synthetic reports. Review its generated files and SHA-256 `manifest.json` before publication; the manifest records artifact integrity, not approval or deployment success.
+
+<a href='https://github.com/Fivenan/stock-analysis/settings/pages'>Pages settings</a>: select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**, after that branch exists. Pages for a private repository requires an eligible GitHub plan; eligibility is unverified. Retain the repository&#x27;s private visibility. If the plan does not permit Pages, keep the static output local until an eligible hosting arrangement is explicitly chosen.
+
+The intended address is <a href='https://Fivenan.github.io/stock-analysis/'>https://Fivenan.github.io/stock-analysis/</a>. This is a target, not a verified live deployment. The remote branch commits and GitHub Pages deployment history are the authority for current publication state; local acceptance or a successful build does not establish that the site is live.
+
+For a future update:
+
+1. Review the source changes and rerun appropriate local tests using the existing Windows environment.
+2. Run the builder twice and compare the manifests and output bytes. Inspect every generated file, relative link and manifest entry, then complete the release audit for public-safe content.
+
+```powershell
+# [modifying] Rebuild the allowlisted static companion
+.\.venv\Scripts\python.exe scripts/build_static.py
+# [modifying] Run static acceptance tests; tests also regenerate build/site
+.\.venv\Scripts\python.exe -m pytest tests/integration/test_static.py tests/integration/test_acceptance.py -k static
+```
+
+3. Commit and publish the reviewed source to `main`; publish only the audited static directory contents to `gh-pages` using ordinary non-force Git updates. Use the existing secure GitHub login; never paste a token into a command, guide or commit. Resolve remote divergence by reviewing and integrating it before publishing.
+4. Confirm the remote commits, Pages settings and successful deployment history, then check the target URL and its assets under `/stock-analysis/`. Record the observed result before claiming publication.
+
+The 52-wheel hash lock and verified setup are Windows CPython 3.12 only. Cross-platform installation and operation remain unverified.
+</pre></body></html>

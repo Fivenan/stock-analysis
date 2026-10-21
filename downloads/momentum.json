@@ -1,0 +1,4905 @@
+{
+  "experiment_id": "8d023fbaa55ffd13b066386c721a71e820127df5344a8917270c5d9f8ebf1766",
+  "parameters": {
+    "strategy": "momentum",
+    "lookback": 60,
+    "top_n": 3
+  },
+  "config": {
+    "initial_cash_eur": "10000",
+    "start": "2024-01-01",
+    "end": "2025-12-31",
+    "costs": {
+      "fixed_fee_eur": "1",
+      "commission_bps": "1",
+      "spread_bps": "10",
+      "slippage_bps": "2",
+      "fx_fee_bps": "5"
+    },
+    "limits": {
+      "max_weight": "0.30",
+      "max_order_eur": "10000",
+      "max_volume_fraction": "0.01",
+      "max_spread_bps": "50",
+      "max_price_age_hours": 96,
+      "max_fx_age_hours": 96
+    },
+    "whole_shares": false
+  },
+  "provenance": [
+    {
+      "provenance_id": "SYNTHETIC-v1",
+      "provider": "sample",
+      "source": "deterministic arithmetic generator v1",
+      "retrieved_at": "2026-01-01T00:00:00+00:00",
+      "license_note": "Synthetic educational fixture; CC0",
+      "synthetic": true,
+      "content_sha256": "5ffe74b17ea6efe68518d781ed2a3163e7a921155de4d4407a34cedb20e46ca5"
+    }
+  ],
+  "warnings": [
+    "PAPER-BT-517e813a0c6e6b23122f3153 cancelled at 2024-04-02T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-a826e75f022b13ce55bf131b cancelled at 2024-04-02T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-d85a7c53c0ffffe69dd8625d cancelled at 2024-04-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-af6b0ddce62c9bc531e77b42 cancelled at 2024-05-02T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-9202d6b590c441c507a9181f cancelled at 2024-05-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-4f1bb1bed0231f9f0f17b545 cancelled at 2024-06-04T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-92d486b3e0639ec9abd424f2 cancelled at 2024-07-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-7ccfac4aa20fca1013a6c628 cancelled at 2024-07-02T08:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-5d9e7604af7b3b039a359085 cancelled at 2024-08-02T07:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-cd299cdcb61529473834942a cancelled at 2024-08-02T13:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-3549bf60c0280377bc24e81b cancelled at 2024-09-03T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-75b37bd75dc85a26e6f23b60 cancelled at 2024-09-03T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-b0aab5ca70cc9f6e4cce7037 cancelled at 2024-10-02T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-91a0d1f528d6f412fdba3f3b cancelled at 2024-10-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-c366dba3e60c904b96284f8f cancelled at 2024-10-02T13:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-b7ada6cf5014424909c5a053 cancelled at 2024-11-04T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-632ac410bf8b3a87c4a23104 cancelled at 2024-11-04T08:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-2c38d18e7536e254e2b0fc27 cancelled at 2024-11-04T14:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-de22ccf18466f82ee0ed5885 cancelled at 2024-12-03T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-af9e6f3a6451316a7b231c2a cancelled at 2025-01-03T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-117610c6612c1be0bb534f55 cancelled at 2025-02-04T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-48422f6b57e34da057520655 cancelled at 2025-02-04T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-c9f68f368cc0f24dafed28ba cancelled at 2025-03-04T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-56a7750c728ca1ea2b9ade83 cancelled at 2025-04-02T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-43313afd62f8b23e9febfb43 cancelled at 2025-04-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-2be5f4b20b579c68f6e2ac76 cancelled at 2025-05-02T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-d9ba79c5f2cc8eb79231d295 cancelled at 2025-05-02T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-749c0c7a260267c904df7e36 cancelled at 2025-06-03T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-5c98379f4f97640bbb65d4ef cancelled at 2025-06-03T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-980438327f27e1b81336cb0f cancelled at 2025-07-02T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-653b7eef8136a061b15d560c cancelled at 2025-07-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-539172c5a7513fbc97a3929d cancelled at 2025-08-04T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-b1bb0fc32f6548120e1c9085 cancelled at 2025-09-02T07:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-2a19016d66fa91a1d72fc5cb cancelled at 2025-10-02T00:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-e27ff55e546aa8be9ca1048d cancelled at 2025-10-02T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-69e0e8523338c2079aa6c995 cancelled at 2025-11-04T02:00:00+00:00: Quantity exceeds prior-volume participation",
+    "PAPER-BT-f5c8375fb43001b9d2637e73 cancelled at 2025-12-02T01:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "PAPER-BT-6a6fe310a5f645aeb4bbfa52 cancelled at 2025-12-02T08:00:00+00:00: Post-trade concentration exceeds configured limit",
+    "252-observation annualization; calendar CAGR; synthetic data is not market evidence"
+  ],
+  "metrics": {
+    "total_return": 0.053442048673193465,
+    "cagr": 0.026354975366523842,
+    "annualized_return": 0.026354975366523842,
+    "arithmetic_annual_return": 0.0271150302356818,
+    "annualized_volatility": 0.060499444429552435,
+    "sharpe": 0.4481864336333773,
+    "sortino": 0.5414863221086581,
+    "calmar": 1.1454941702312147,
+    "max_drawdown": -0.023007515927561784,
+    "drawdown_duration_days": 202.0,
+    "unrecovered_drawdown": 1.0,
+    "exposure": 0.24600806666473393,
+    "turnover": 3.9727962883329417,
+    "trade_count": 35.0,
+    "closed_fifo_match_count": 19.0,
+    "win_rate": 0.47368421052631576,
+    "profit_factor": 4.897313645075926,
+    "average_holding_days": 49.578947368421055,
+    "fees_eur": 43.11455550067055,
+    "fx_costs_eur": 34.52601691527134,
+    "worst_month": -0.003687492586590846,
+    "month_2024-01": 0.0,
+    "month_2024-02": 0.0,
+    "month_2024-03": 0.0,
+    "month_2024-04": 0.0,
+    "month_2024-05": 0.006586389249104707,
+    "month_2024-06": 0.0072427766642093605,
+    "month_2024-07": -0.003687492586590846,
+    "month_2024-08": 0.0014735929104439105,
+    "month_2024-09": -0.0023103218504362255,
+    "month_2024-10": -0.0026900083230527727,
+    "month_2024-11": 0.0011148030272445375,
+    "month_2024-12": -0.0009917452927842296,
+    "month_2025-01": 0.009248210956103176,
+    "month_2025-02": 0.010440297059567616,
+    "month_2025-03": 0.0037447194867255007,
+    "month_2025-04": -0.003626255095953157,
+    "month_2025-05": 0.005721591578720098,
+    "month_2025-06": -0.0006511665355204421,
+    "month_2025-07": 0.00879061510093293,
+    "month_2025-08": 0.0038536047745068025,
+    "month_2025-09": 0.00011446864918518429,
+    "month_2025-10": 0.002979580687457961,
+    "month_2025-11": 8.521111081205568e-05,
+    "month_2025-12": 0.00487591915422203,
+    "worst_year": 0.006697311970291775,
+    "year_2024": 0.006697311970291775,
+    "year_2025": 0.04643375535732397,
+    "spread_costs_eur": 40.57301160549912,
+    "slippage_costs_eur": 16.229204642199647,
+    "rejected_order_count": 38.0,
+    "total_costs_eur": 134.44278866364067
+  },
+  "conventions": {
+    "currency": "EUR",
+    "prices": "raw execution; point-in-time action-safe signals",
+    "returns": "daily simple, initial fees included, external contributions unsupported",
+    "cagr": "actual calendar time / 365.25",
+    "volatility": "sample ddof=1, sqrt(252)",
+    "sharpe": "mean daily excess / sample excess std * sqrt(252)",
+    "sortino": "mean excess / sqrt(mean(min(excess,0)^2)) * sqrt(252)",
+    "turnover": "absolute EUR consideration / (2 * mean equity)",
+    "realized": "closed FIFO matches including allocated trade costs",
+    "dividend_fx_fees": "zero",
+    "tax": "not deducted"
+  },
+  "fills": [
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-ffce27b44f0b1e6395026f2a",
+      "order_id": "PAPER-BT-ffce27b44f0b1e6395026f2a",
+      "instrument_id": "DEMO-GB",
+      "side": "buy",
+      "quantity": "27.954062",
+      "filled_at": "2024-05-02T08:00:00+00:00",
+      "price_local": "89.4275555",
+      "fx_eur_per_unit": "1.16181",
+      "fee_eur": "1.290436633271834090821",
+      "fx_cost_eur": "1.452183166359170454105"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-d1b5830957dc87bb68f4b362",
+      "order_id": "PAPER-BT-d1b5830957dc87bb68f4b362",
+      "instrument_id": "DEMO-HK",
+      "side": "buy",
+      "quantity": "176.003720",
+      "filled_at": "2024-06-04T01:00:00+00:00",
+      "price_local": "144.2709190",
+      "fx_eur_per_unit": "0.117410",
+      "fee_eur": "1.29813003660798312188",
+      "fx_cost_eur": "1.4906501830399156094"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-668efcdfef79b769219f89dd",
+      "order_id": "PAPER-BT-668efcdfef79b769219f89dd",
+      "instrument_id": "DEMO-TW",
+      "side": "buy",
+      "quantity": "323.674162",
+      "filled_at": "2024-06-04T01:00:00+00:00",
+      "price_local": "111.2478190",
+      "fx_eur_per_unit": "0.028855",
+      "fee_eur": "1.103901212662000052369",
+      "fx_cost_eur": "0.519506063310000261845"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-01fd2949c123b3c4f93d6d15",
+      "order_id": "PAPER-BT-01fd2949c123b3c4f93d6d15",
+      "instrument_id": "DEMO-GB",
+      "side": "sell",
+      "quantity": "27.954062",
+      "filled_at": "2024-06-04T08:00:00+00:00",
+      "price_local": "92.7450330",
+      "fx_eur_per_unit": "1.16415",
+      "fee_eur": "1.30181757587729906509",
+      "fx_cost_eur": "1.50908787938649532545"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-80acde9a63bcf8b50328183f",
+      "order_id": "PAPER-BT-80acde9a63bcf8b50328183f",
+      "instrument_id": "DEMO-HK",
+      "side": "sell",
+      "quantity": "176.003720",
+      "filled_at": "2024-07-02T01:00:00+00:00",
+      "price_local": "145.1283390",
+      "fx_eur_per_unit": "0.117292",
+      "fee_eur": "1.299600451558836131536",
+      "fx_cost_eur": "1.49800225779418065768"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-8912b25924a0c833c657667b",
+      "order_id": "PAPER-BT-8912b25924a0c833c657667b",
+      "instrument_id": "DEMO-TW",
+      "side": "sell",
+      "quantity": "323.674162",
+      "filled_at": "2024-07-02T01:00:00+00:00",
+      "price_local": "109.9929510",
+      "fx_eur_per_unit": "0.028826",
+      "fee_eur": "1.1026259684518225019212",
+      "fx_cost_eur": "0.513129842259112509606"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-0aff97e6dde2776ab1afdde2",
+      "order_id": "PAPER-BT-0aff97e6dde2776ab1afdde2",
+      "instrument_id": "DEMO-HK",
+      "side": "buy",
+      "quantity": "173.070662",
+      "filled_at": "2024-08-02T01:00:00+00:00",
+      "price_local": "146.7376445",
+      "fx_eur_per_unit": "0.117528",
+      "fee_eur": "1.2984738887163110130952",
+      "fx_cost_eur": "1.492369443581555065476"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-4ed513f965ca8b7f559f4951",
+      "order_id": "PAPER-BT-4ed513f965ca8b7f559f4951",
+      "instrument_id": "DEMO-HK",
+      "side": "sell",
+      "quantity": "173.070662",
+      "filled_at": "2024-09-03T01:00:00+00:00",
+      "price_local": "146.5823205",
+      "fx_eur_per_unit": "0.117646",
+      "fee_eur": "1.2984573049945641543466",
+      "fx_cost_eur": "1.492286524972820771733"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-24d5a354a877bc73e7198ce6",
+      "order_id": "PAPER-BT-24d5a354a877bc73e7198ce6",
+      "instrument_id": "DEMO-US",
+      "side": "buy",
+      "quantity": "14.308529",
+      "filled_at": "2024-09-03T13:00:00+00:00",
+      "price_local": "77.8594635",
+      "fx_eur_per_unit": "0.91724",
+      "fee_eur": "1.102185524998075301146",
+      "fx_cost_eur": "0.51092762499037650573"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-d85b0395c6b3cbefd537a7d1",
+      "order_id": "PAPER-BT-d85b0395c6b3cbefd537a7d1",
+      "instrument_id": "DEMO-TW",
+      "side": "buy",
+      "quantity": "896.128241",
+      "filled_at": "2024-12-03T01:00:00+00:00",
+      "price_local": "113.3993240",
+      "fx_eur_per_unit": "0.028971",
+      "fee_eur": "1.2944042775888908872564",
+      "fx_cost_eur": "1.472021387944454436282"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-7050aadc98cff974f9efb451",
+      "order_id": "PAPER-BT-7050aadc98cff974f9efb451",
+      "instrument_id": "DEMO-DE",
+      "side": "buy",
+      "quantity": "34.121767",
+      "filled_at": "2024-12-03T08:00:00+00:00",
+      "price_local": "89.2624400",
+      "fx_eur_per_unit": "1",
+      "fee_eur": "1.304579217953148",
+      "fx_cost_eur": "0"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-b3989b35593fdaa2f676c373",
+      "order_id": "PAPER-BT-b3989b35593fdaa2f676c373",
+      "instrument_id": "DEMO-US",
+      "side": "sell",
+      "quantity": "14.308529",
+      "filled_at": "2024-12-03T14:00:00+00:00",
+      "price_local": "77.3857920",
+      "fx_eur_per_unit": "0.91908",
+      "fee_eur": "1.101767600639727218944",
+      "fx_cost_eur": "0.50883800319863609472"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-130f8adc3d0a90f5ba627876",
+      "order_id": "PAPER-BT-130f8adc3d0a90f5ba627876",
+      "instrument_id": "DEMO-DE",
+      "side": "sell",
+      "quantity": "34.121767",
+      "filled_at": "2025-01-03T08:00:00+00:00",
+      "price_local": "88.7928015",
+      "fx_eur_per_unit": "1",
+      "fee_eur": "1.30297672840602505",
+      "fx_cost_eur": "0"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-16da21d05984d93870ee5e48",
+      "order_id": "PAPER-BT-16da21d05984d93870ee5e48",
+      "instrument_id": "DEMO-GB",
+      "side": "buy",
+      "quantity": "26.304235",
+      "filled_at": "2025-01-03T09:00:00+00:00",
+      "price_local": "95.7619865",
+      "fx_eur_per_unit": "1.16883",
+      "fee_eur": "1.2944219415864061666825",
+      "fx_cost_eur": "1.4721097079320308334125"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-20d8bbd0dda3555ffe21f470",
+      "order_id": "PAPER-BT-20d8bbd0dda3555ffe21f470",
+      "instrument_id": "DEMO-GB",
+      "side": "sell",
+      "quantity": "26.304235",
+      "filled_at": "2025-02-04T09:00:00+00:00",
+      "price_local": "98.4360465",
+      "fx_eur_per_unit": "1.17",
+      "fee_eur": "1.3029463332540105175",
+      "fx_cost_eur": "1.5147316662700525875"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-9164a635dc996308468590ae",
+      "order_id": "PAPER-BT-9164a635dc996308468590ae",
+      "instrument_id": "DEMO-TW",
+      "side": "sell",
+      "quantity": "896.128241",
+      "filled_at": "2025-03-04T01:00:00+00:00",
+      "price_local": "116.2835445",
+      "fx_eur_per_unit": "0.028971",
+      "fee_eur": "1.30189221334333656339895",
+      "fx_cost_eur": "1.50946106671668281699475"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-9f405457a569499305791488",
+      "order_id": "PAPER-BT-9f405457a569499305791488",
+      "instrument_id": "DEMO-DE",
+      "side": "buy",
+      "quantity": "33.488444",
+      "filled_at": "2025-03-04T08:00:00+00:00",
+      "price_local": "88.2267155",
+      "fx_eur_per_unit": "1",
+      "fee_eur": "1.2954575421325682",
+      "fx_cost_eur": "0"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-0122cbef4c842d9561e20ab1",
+      "order_id": "PAPER-BT-0122cbef4c842d9561e20ab1",
+      "instrument_id": "DEMO-GB",
+      "side": "buy",
+      "quantity": "26.355051",
+      "filled_at": "2025-03-04T09:00:00+00:00",
+      "price_local": "100.1150315",
+      "fx_eur_per_unit": "1.16883",
+      "fee_eur": "1.3084000922417027150395",
+      "fx_cost_eur": "1.5420004612085135751975"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-55c45f9884ce4dd81426e273",
+      "order_id": "PAPER-BT-55c45f9884ce4dd81426e273",
+      "instrument_id": "DEMO-DE",
+      "side": "sell",
+      "quantity": "33.488444",
+      "filled_at": "2025-04-02T07:00:00+00:00",
+      "price_local": "91.4759220",
+      "fx_eur_per_unit": "1",
+      "fee_eur": "1.3063386291245368",
+      "fx_cost_eur": "0"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-08e0b569d49474f5b2ea363d",
+      "order_id": "PAPER-BT-08e0b569d49474f5b2ea363d",
+      "instrument_id": "DEMO-GB",
+      "side": "sell",
+      "quantity": "26.355051",
+      "filled_at": "2025-04-02T08:00:00+00:00",
+      "price_local": "98.4310500",
+      "fx_eur_per_unit": "1.16883",
+      "fee_eur": "1.30321265892472552465",
+      "fx_cost_eur": "1.51606329462362762325"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-0ff349f4b801806e25e2c818",
+      "order_id": "PAPER-BT-0ff349f4b801806e25e2c818",
+      "instrument_id": "DEMO-TW",
+      "side": "buy",
+      "quantity": "888.484466",
+      "filled_at": "2025-05-02T01:00:00+00:00",
+      "price_local": "116.8717530",
+      "fx_eur_per_unit": "0.029",
+      "fee_eur": "1.3011323374585978042",
+      "fx_cost_eur": "1.505661687292989021"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-479a253baea674e7a539e17b",
+      "order_id": "PAPER-BT-479a253baea674e7a539e17b",
+      "instrument_id": "DEMO-TW",
+      "side": "buy",
+      "quantity": "1.759539",
+      "filled_at": "2025-06-03T01:00:00+00:00",
+      "price_local": "117.5222080",
+      "fx_eur_per_unit": "0.029029",
+      "fee_eur": "1.0006002759104263169248",
+      "fx_cost_eur": "0.003001379552131584624"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-7f66bb6340cb250efc5b6aa2",
+      "order_id": "PAPER-BT-7f66bb6340cb250efc5b6aa2",
+      "instrument_id": "DEMO-HK",
+      "side": "buy",
+      "quantity": "168.200869",
+      "filled_at": "2025-07-02T01:00:00+00:00",
+      "price_local": "154.0427545",
+      "fx_eur_per_unit": "0.118118",
+      "fee_eur": "1.3060452164836398270939",
+      "fx_cost_eur": "1.5302260824181991354695"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-a4be413d380c69afe2cab96a",
+      "order_id": "PAPER-BT-a4be413d380c69afe2cab96a",
+      "instrument_id": "DEMO-TW",
+      "side": "sell",
+      "quantity": "1.883778",
+      "filled_at": "2025-08-04T01:00:00+00:00",
+      "price_local": "118.6568820",
+      "fx_eur_per_unit": "0.029087",
+      "fee_eur": "1.0006501620012421521052",
+      "fx_cost_eur": "0.003250810006210760526"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-3b011f467437c6400d6bda91",
+      "order_id": "PAPER-BT-3b011f467437c6400d6bda91",
+      "instrument_id": "DEMO-HK",
+      "side": "buy",
+      "quantity": "0.123533",
+      "filled_at": "2025-08-04T01:00:00+00:00",
+      "price_local": "155.4487380",
+      "fx_eur_per_unit": "0.118354",
+      "fee_eur": "1.0002272757655588551316",
+      "fx_cost_eur": "0.001136378827794275658"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-874bdb8b052c30d307a2aeca",
+      "order_id": "PAPER-BT-874bdb8b052c30d307a2aeca",
+      "instrument_id": "DEMO-HK",
+      "side": "sell",
+      "quantity": "168.324402",
+      "filled_at": "2025-09-02T01:00:00+00:00",
+      "price_local": "157.6445715",
+      "fx_eur_per_unit": "0.118354",
+      "fee_eur": "1.3140574072293586119022",
+      "fx_cost_eur": "1.570287036146793059511"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-8e3a61ba41c727f198d6cdf3",
+      "order_id": "PAPER-BT-8e3a61ba41c727f198d6cdf3",
+      "instrument_id": "DEMO-TW",
+      "side": "sell",
+      "quantity": "888.360227",
+      "filled_at": "2025-09-02T01:00:00+00:00",
+      "price_local": "122.1494355",
+      "fx_eur_per_unit": "0.029087",
+      "fee_eur": "1.31563089121339909581895",
+      "fx_cost_eur": "1.57815445606699547909475"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-4f1f3387d0de422e44a392a3",
+      "order_id": "PAPER-BT-4f1f3387d0de422e44a392a3",
+      "instrument_id": "DEMO-GB",
+      "side": "buy",
+      "quantity": "8.622217",
+      "filled_at": "2025-09-02T08:00:00+00:00",
+      "price_local": "104.5481325",
+      "fx_eur_per_unit": "1.17351",
+      "fee_eur": "1.1057844964636523156275",
+      "fx_cost_eur": "0.5289224823182615781375"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-b26c4746094b98fee0ae3836",
+      "order_id": "PAPER-BT-b26c4746094b98fee0ae3836",
+      "instrument_id": "DEMO-GB",
+      "side": "sell",
+      "quantity": "8.622217",
+      "filled_at": "2025-10-02T08:00:00+00:00",
+      "price_local": "103.4925045",
+      "fx_eur_per_unit": "1.17468",
+      "fee_eur": "1.104820788006902469502",
+      "fx_cost_eur": "0.52410394003451234751"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-5fa22374bf61262dd3bc0702",
+      "order_id": "PAPER-BT-5fa22374bf61262dd3bc0702",
+      "instrument_id": "DEMO-US",
+      "side": "buy",
+      "quantity": "77.287059",
+      "filled_at": "2025-10-02T13:00:00+00:00",
+      "price_local": "42.15198575",
+      "fx_eur_per_unit": "0.92368",
+      "fee_eur": "1.300916748393264537604",
+      "fx_cost_eur": "1.50458374196632268802"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-f7096d122b26444eb7015166",
+      "order_id": "PAPER-BT-f7096d122b26444eb7015166",
+      "instrument_id": "DEMO-TW",
+      "side": "buy",
+      "quantity": "316.957037",
+      "filled_at": "2025-11-04T01:00:00+00:00",
+      "price_local": "124.4970870",
+      "fx_eur_per_unit": "0.029174",
+      "fee_eur": "1.1151212686147938663106",
+      "fx_cost_eur": "0.575606343073969331553"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-e4dc61e46ded8316e28eb3c7",
+      "order_id": "PAPER-BT-e4dc61e46ded8316e28eb3c7",
+      "instrument_id": "DEMO-GB",
+      "side": "buy",
+      "quantity": "25.189707",
+      "filled_at": "2025-11-04T09:00:00+00:00",
+      "price_local": "103.3623030",
+      "fx_eur_per_unit": "1.17702",
+      "fee_eur": "1.306456710529026342142",
+      "fx_cost_eur": "1.53228355264513171071"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-cdd133d61a85091181b2d721",
+      "order_id": "PAPER-BT-cdd133d61a85091181b2d721",
+      "instrument_id": "DEMO-US",
+      "side": "sell",
+      "quantity": "77.287059",
+      "filled_at": "2025-11-04T14:00:00+00:00",
+      "price_local": "42.9149385",
+      "fx_eur_per_unit": "0.92552",
+      "fee_eur": "1.306973640012314819068",
+      "fx_cost_eur": "1.53486820006157409534"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-7fc7a283e8b1ba0c52b6488b",
+      "order_id": "PAPER-BT-7fc7a283e8b1ba0c52b6488b",
+      "instrument_id": "DEMO-TW",
+      "side": "sell",
+      "quantity": "316.957037",
+      "filled_at": "2025-12-02T01:00:00+00:00",
+      "price_local": "123.2236830",
+      "fx_eur_per_unit": "0.029145",
+      "fee_eur": "1.1138304999055837413295",
+      "fx_cost_eur": "0.5691524995279187066475"
+    },
+    {
+      "fill_id": "PAPER-FILL-PAPER-BT-f5edbef99dc883047a4d68de",
+      "order_id": "PAPER-BT-f5edbef99dc883047a4d68de",
+      "instrument_id": "DEMO-GB",
+      "side": "sell",
+      "quantity": "25.189707",
+      "filled_at": "2025-12-02T09:00:00+00:00",
+      "price_local": "104.7566190",
+      "fx_eur_per_unit": "1.17585",
+      "fee_eur": "1.310281950348982631305",
+      "fx_cost_eur": "1.551409751744913156525"
+    }
+  ],
+  "realized_matches": [
+    {
+      "instrument_id": "DEMO-GB",
+      "acquired_at": "2024-05-02T08:00:00+00:00",
+      "disposed_at": "2024-06-04T08:00:00+00:00",
+      "quantity": "27.954062",
+      "allocated_basis_eur": "2907.108952517971912754926000",
+      "net_proceeds_eur": "3015.364853317726856509460000",
+      "pnl_eur": "108.255900799754943754534000"
+    },
+    {
+      "instrument_id": "DEMO-HK",
+      "acquired_at": "2024-06-04T01:00:00+00:00",
+      "disposed_at": "2024-07-02T01:00:00+00:00",
+      "quantity": "176.003720",
+      "allocated_basis_eur": "2984.089146299479117531280000",
+      "net_proceeds_eur": "2993.206912879008298570784000",
+      "pnl_eur": "9.117766579529181039504000"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2024-06-04T01:00:00+00:00",
+      "disposed_at": "2024-07-02T01:00:00+00:00",
+      "quantity": "323.674162",
+      "allocated_basis_eur": "1040.635533895972524004214000",
+      "net_proceeds_eur": "1024.643928707514084200472800",
+      "pnl_eur": "-15.991605188458439803741200"
+    },
+    {
+      "instrument_id": "DEMO-HK",
+      "acquired_at": "2024-08-02T01:00:00+00:00",
+      "disposed_at": "2024-09-03T01:00:00+00:00",
+      "quantity": "173.070662",
+      "allocated_basis_eur": "2987.529730495407997030571200",
+      "net_proceeds_eur": "2981.782306115674158539920400",
+      "pnl_eur": "-5.747424379733838490650800"
+    },
+    {
+      "instrument_id": "DEMO-US",
+      "acquired_at": "2024-09-03T13:00:00+00:00",
+      "disposed_at": "2024-12-03T14:00:00+00:00",
+      "quantity": "14.308529",
+      "allocated_basis_eur": "1023.468363130741463266876000",
+      "net_proceeds_eur": "1016.065400793433826126336000",
+      "pnl_eur": "-7.402962337307637140540000"
+    },
+    {
+      "instrument_id": "DEMO-DE",
+      "acquired_at": "2024-12-03T08:00:00+00:00",
+      "disposed_at": "2025-01-03T08:00:00+00:00",
+      "quantity": "34.121767",
+      "allocated_basis_eur": "3047.096758749433148",
+      "net_proceeds_eur": "3028.464307331844474949999999",
+      "pnl_eur": "-18.632451417588673050000001"
+    },
+    {
+      "instrument_id": "DEMO-GB",
+      "acquired_at": "2025-01-03T09:00:00+00:00",
+      "disposed_at": "2025-02-04T09:00:00+00:00",
+      "quantity": "26.304235",
+      "allocated_basis_eur": "2946.985947513580103825095000",
+      "net_proceeds_eur": "3026.645654540581111895000000",
+      "pnl_eur": "79.659707027001008069905000"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2024-12-03T01:00:00+00:00",
+      "disposed_at": "2025-03-04T01:00:00+00:00",
+      "quantity": "896.128241",
+      "allocated_basis_eur": "2946.809201554442217887538400",
+      "net_proceeds_eur": "3016.110780153305614609106300",
+      "pnl_eur": "69.301578598863396721567900"
+    },
+    {
+      "instrument_id": "DEMO-DE",
+      "acquired_at": "2025-03-04T08:00:00+00:00",
+      "disposed_at": "2025-04-02T07:00:00+00:00",
+      "quantity": "33.488444",
+      "allocated_basis_eur": "2955.8708788678145682",
+      "net_proceeds_eur": "3062.0799526162434632",
+      "pnl_eur": "106.2090737484288950"
+    },
+    {
+      "instrument_id": "DEMO-GB",
+      "acquired_at": "2025-03-04T09:00:00+00:00",
+      "disposed_at": "2025-04-02T08:00:00+00:00",
+      "quantity": "26.355051",
+      "allocated_basis_eur": "3086.851322970477366685237000",
+      "net_proceeds_eur": "3029.307313293706893352100000",
+      "pnl_eur": "-57.544009676770473333137000"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2025-05-02T01:00:00+00:00",
+      "disposed_at": "2025-08-04T01:00:00+00:00",
+      "quantity": "1.883778",
+      "allocated_basis_eur": "6.390603683064485945361567645",
+      "net_proceeds_eur": "5.497719040414068139368800002",
+      "pnl_eur": "-0.892884642650417805992767643"
+    },
+    {
+      "instrument_id": "DEMO-HK",
+      "acquired_at": "2025-07-02T01:00:00+00:00",
+      "disposed_at": "2025-09-02T01:00:00+00:00",
+      "quantity": "168.200869",
+      "allocated_basis_eur": "3063.288436135300109901563400",
+      "net_proceeds_eur": "3135.386982552766284836290863",
+      "pnl_eur": "72.098546417466174934727463"
+    },
+    {
+      "instrument_id": "DEMO-HK",
+      "acquired_at": "2025-08-04T01:00:00+00:00",
+      "disposed_at": "2025-09-02T01:00:00+00:00",
+      "quantity": "0.123533",
+      "allocated_basis_eur": "3.2741213101819044467896",
+      "net_proceeds_eur": "2.302745297443682514295936956",
+      "pnl_eur": "-0.971376012738221932493663044"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2025-05-02T01:00:00+00:00",
+      "disposed_at": "2025-09-02T01:00:00+00:00",
+      "quantity": "886.600688",
+      "allocated_basis_eur": "3007.739564927665142879838432",
+      "net_proceeds_eur": "3147.169285595115701817163838",
+      "pnl_eur": "139.429720667450558937325406"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2025-06-03T01:00:00+00:00",
+      "disposed_at": "2025-09-02T01:00:00+00:00",
+      "quantity": "1.759539",
+      "allocated_basis_eur": "7.006360759725727149548799998",
+      "net_proceeds_eur": "6.245841191594861797422461107",
+      "pnl_eur": "-0.760519568130865352126338891"
+    },
+    {
+      "instrument_id": "DEMO-GB",
+      "acquired_at": "2025-09-02T08:00:00+00:00",
+      "disposed_at": "2025-10-02T08:00:00+00:00",
+      "quantity": "8.622217",
+      "allocated_basis_eur": "1059.479671615305070168765000",
+      "net_proceeds_eur": "1046.578955340983280202988000",
+      "pnl_eur": "-12.900716274321789965777000"
+    },
+    {
+      "instrument_id": "DEMO-US",
+      "acquired_at": "2025-10-02T13:00:00+00:00",
+      "disposed_at": "2025-11-04T14:00:00+00:00",
+      "quantity": "77.287059",
+      "allocated_basis_eur": "3011.972984423004963265624001",
+      "net_proceeds_eur": "3066.894558283074301765592000",
+      "pnl_eur": "54.921573860069338499967999"
+    },
+    {
+      "instrument_id": "DEMO-TW",
+      "acquired_at": "2025-11-04T01:00:00+00:00",
+      "disposed_at": "2025-12-02T01:00:00+00:00",
+      "quantity": "316.957037",
+      "allocated_basis_eur": "1152.903413759627426303863600",
+      "net_proceeds_eur": "1136.622016056403910847023000",
+      "pnl_eur": "-16.281397703223515456840600"
+    },
+    {
+      "instrument_id": "DEMO-GB",
+      "acquired_at": "2025-11-04T09:00:00+00:00",
+      "disposed_at": "2025-12-02T09:00:00+00:00",
+      "quantity": "25.189707",
+      "allocated_basis_eur": "3067.405845553437579472852000",
+      "net_proceeds_eur": "3099.957811787732417262170000",
+      "pnl_eur": "32.551966234294837789318000"
+    }
+  ],
+  "equity": [
+    {
+      "timestamp": "2023-12-31T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-02T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-03T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-04T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-05T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-08T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-09T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-10T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-11T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-12T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-15T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-16T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-17T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-18T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-19T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-22T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-23T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-24T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-25T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-26T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-29T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-30T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-01-31T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-01T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-02T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-05T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-06T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-07T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-08T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-09T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-12T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-13T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-14T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-15T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-16T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-19T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-20T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-21T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-22T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-23T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-26T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-27T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-28T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-02-29T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-01T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-04T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-05T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-06T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-07T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-08T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-11T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-12T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-13T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-14T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-15T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-18T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-19T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-20T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-21T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-22T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-25T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-26T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-27T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-28T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-03-29T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-01T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-02T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-03T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-04T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-05T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-08T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-09T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-10T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-11T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-12T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-15T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-16T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-17T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-18T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-19T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-22T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-23T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-24T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-25T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-26T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-29T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-04-30T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-01T23:59:59.999999+00:00",
+      "equity_eur": 10000.0,
+      "cash_eur": 10000.0,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-02T23:59:59.999999+00:00",
+      "equity_eur": 9995.225745911468,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29037210086191756,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-03T23:59:59.999999+00:00",
+      "equity_eur": 10019.76770016117,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2921102305228157,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-06T23:59:59.999999+00:00",
+      "equity_eur": 10044.353153726752,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2938429245839135,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-07T23:59:59.999999+00:00",
+      "equity_eur": 10068.982106608211,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29557020040516235,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-08T23:59:59.999999+00:00",
+      "equity_eur": 10086.806850711248,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29681502258746145,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-09T23:59:59.999999+00:00",
+      "equity_eur": 10111.515933911429,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29853336593237306,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-10T23:59:59.999999+00:00",
+      "equity_eur": 10014.722924238138,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2917536410003461,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-13T23:59:59.999999+00:00",
+      "equity_eur": 10039.397338810628,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2934943395394762,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-14T23:59:59.999999+00:00",
+      "equity_eur": 10064.115252698995,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29522954880908625,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-15T23:59:59.999999+00:00",
+      "equity_eur": 10088.87666590324,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2969592867109341,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-16T23:59:59.999999+00:00",
+      "equity_eur": 10113.681578423366,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2986835711128106,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-17T23:59:59.999999+00:00",
+      "equity_eur": 10131.634203973834,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29992626019797963,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-20T23:59:59.999999+00:00",
+      "equity_eur": 10156.519246812682,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.30164154912541336,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-21T23:59:59.999999+00:00",
+      "equity_eur": 10059.050525961915,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2948746972514329,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-22T23:59:59.999999+00:00",
+      "equity_eur": 10083.900900173068,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29661238069482676,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-23T23:59:59.999999+00:00",
+      "equity_eur": 10108.794773700101,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29834453995094495,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-24T23:59:59.999999+00:00",
+      "equity_eur": 10133.732146543012,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.3000711934248555,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-27T23:59:59.999999+00:00",
+      "equity_eur": 10158.713018701803,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.3017923594825164,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-28T23:59:59.999999+00:00",
+      "equity_eur": 10112.736204193698,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2986180095807656,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-29T23:59:59.999999+00:00",
+      "equity_eur": 10016.768209740727,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.29189825510940726,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-30T23:59:59.999999+00:00",
+      "equity_eur": 10041.294301457949,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2936278098678799,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-05-31T23:59:59.999999+00:00",
+      "equity_eur": 10065.863892491046,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2953519813859994,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-03T23:59:59.999999+00:00",
+      "equity_eur": 10090.476982840024,
+      "cash_eur": 7092.891047482028,
+      "exposure": 0.2970707866888477,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-04T23:59:59.999999+00:00",
+      "equity_eur": 10102.831716016946,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.3978390028055676,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-05T23:59:59.999999+00:00",
+      "equity_eur": 10109.202997156037,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.3982185121501915,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-06T23:59:59.999999+00:00",
+      "equity_eur": 10144.078625096692,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.400287453849825,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-07T23:59:59.999999+00:00",
+      "equity_eur": 10108.231913161559,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.39816069982692426,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-10T23:59:59.999999+00:00",
+      "equity_eur": 10149.486536611515,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40060699635793223,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-11T23:59:59.999999+00:00",
+      "equity_eur": 10190.815678294153,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40303785166462464,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-12T23:59:59.999999+00:00",
+      "equity_eur": 10119.930600120188,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.39885642886404243,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-13T23:59:59.999999+00:00",
+      "equity_eur": 10161.296601706663,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.4013036466642918,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-14T23:59:59.999999+00:00",
+      "equity_eur": 10202.73712152582,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40373537530735576,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-17T23:59:59.999999+00:00",
+      "equity_eur": 10160.326654255245,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40124649259613515,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-18T23:59:59.999999+00:00",
+      "equity_eur": 10166.740060959466,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40162419968174323,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-19T23:59:59.999999+00:00",
+      "equity_eur": 10208.285626367317,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.4040594627475009,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-20T23:59:59.999999+00:00",
+      "equity_eur": 10172.10630692613,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40193986996950076,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-21T23:59:59.999999+00:00",
+      "equity_eur": 10213.723650206415,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40437675533923834,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-24T23:59:59.999999+00:00",
+      "equity_eur": 10142.229361137872,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.4001781064117266,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-25T23:59:59.999999+00:00",
+      "equity_eur": 10183.883564321994,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.4026315027876772,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-26T23:59:59.999999+00:00",
+      "equity_eur": 10133.30577123477,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.399649891363832,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-27T23:59:59.999999+00:00",
+      "equity_eur": 10097.756971298444,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.39753637982217765,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-06-28T23:59:59.999999+00:00",
+      "equity_eur": 10138.768696596686,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.39997336928631366,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-01T23:59:59.999999+00:00",
+      "equity_eur": 10145.181397311228,
+      "cash_eur": 6083.531220604304,
+      "exposure": 0.40035264207137605,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-02T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-03T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-04T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-05T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-08T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-09T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-10T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-11T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-12T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-15T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-16T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-17T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-18T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-19T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-22T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-23T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-24T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-25T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-26T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-29T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-30T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-07-31T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-01T23:59:59.999999+00:00",
+      "equity_eur": 10101.382062190825,
+      "cash_eur": 10101.382062190825,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-02T23:59:59.999999+00:00",
+      "equity_eur": 10098.334021525237,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29554198578381424,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-05T23:59:59.999999+00:00",
+      "equity_eur": 10125.254747629748,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2974149777949319,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-06T23:59:59.999999+00:00",
+      "equity_eur": 10080.684424255247,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2943085972834643,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-07T23:59:59.999999+00:00",
+      "equity_eur": 10111.913855255472,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29648804039226156,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-08T23:59:59.999999+00:00",
+      "equity_eur": 10143.199856132278,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2986579745449269,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-09T23:59:59.999999+00:00",
+      "equity_eur": 10098.495357996353,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2955532404079968,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-12T23:59:59.999999+00:00",
+      "equity_eur": 10129.81852752853,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2977315129226651,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-13T23:59:59.999999+00:00",
+      "equity_eur": 10161.19826693729,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2999002534137521,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-14T23:59:59.999999+00:00",
+      "equity_eur": 10112.053748271566,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29649777297600155,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-15T23:59:59.999999+00:00",
+      "equity_eur": 10143.46636764469,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.298676401748917,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-16T23:59:59.999999+00:00",
+      "equity_eur": 10174.935556894397,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.30084546561327674,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-19T23:59:59.999999+00:00",
+      "equity_eur": 10129.958420544626,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2977412111319456,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-20T23:59:59.999999+00:00",
+      "equity_eur": 10161.464778449703,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29991861539663267,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-21T23:59:59.999999+00:00",
+      "equity_eur": 10193.027706231363,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.3020864323417403,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-22T23:59:59.999999+00:00",
+      "equity_eur": 10147.916395120168,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29898394362844194,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-23T23:59:59.999999+00:00",
+      "equity_eur": 10111.592203430144,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29646566153229625,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-26T23:59:59.999999+00:00",
+      "equity_eur": 10142.650597348647,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29861999450567456,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-27T23:59:59.999999+00:00",
+      "equity_eur": 10098.402232134546,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29554674411184245,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-28T23:59:59.999999+00:00",
+      "equity_eur": 10129.497794708419,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2977092768200566,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-29T23:59:59.999999+00:00",
+      "equity_eur": 10085.134655954103,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2946199952327348,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-08-30T23:59:59.999999+00:00",
+      "equity_eur": 10116.26738718335,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.29679079650383655,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-02T23:59:59.999999+00:00",
+      "equity_eur": 10147.456688289176,
+      "cash_eur": 7113.852331695418,
+      "exposure": 0.2989521857328778,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-03T23:59:59.999999+00:00",
+      "equity_eur": 10092.125534382341,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10106486054173076,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-04T23:59:59.999999+00:00",
+      "equity_eur": 10049.860437666099,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09728435226039824,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-05T23:59:59.999999+00:00",
+      "equity_eur": 10056.429131340186,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.0978739912353627,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-06T23:59:59.999999+00:00",
+      "equity_eur": 10063.00901428395,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09846386286618118,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-09T23:59:59.999999+00:00",
+      "equity_eur": 10069.600086497392,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09905396473038977,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-10T23:59:59.999999+00:00",
+      "equity_eur": 10076.202347980514,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09964429441032349,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-11T23:59:59.999999+00:00",
+      "equity_eur": 10082.815798733312,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10023484949312751,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-12T23:59:59.999999+00:00",
+      "equity_eur": 10086.664973321778,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10057820908344582,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-13T23:59:59.999999+00:00",
+      "equity_eur": 10093.298038206129,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1011692867544872,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-16T23:59:59.999999+00:00",
+      "equity_eur": 10099.94229236016,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10176058317256362,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-17T23:59:59.999999+00:00",
+      "equity_eur": 10106.597735783867,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10235209594233308,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-18T23:59:59.999999+00:00",
+      "equity_eur": 10063.903102750455,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09854395635020222,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-19T23:59:59.999999+00:00",
+      "equity_eur": 10070.53195520387,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09913733305891771,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-20T23:59:59.999999+00:00",
+      "equity_eur": 10077.171996926962,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09973092873209755,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-23T23:59:59.999999+00:00",
+      "equity_eur": 10060.072818281977,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09820073487006202,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-24T23:59:59.999999+00:00",
+      "equity_eur": 10066.614986805003,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09878680305426839,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-25T23:59:59.999999+00:00",
+      "equity_eur": 10073.168344597707,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09937311039323585,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-26T23:59:59.999999+00:00",
+      "equity_eur": 10079.732891660089,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09995965446796648,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-27T23:59:59.999999+00:00",
+      "equity_eur": 10086.30862799215,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10054643286417875,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-09-30T23:59:59.999999+00:00",
+      "equity_eur": 10092.895553593888,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10113344317231894,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-01T23:59:59.999999+00:00",
+      "equity_eur": 10099.493668465304,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10172068298757245,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-02T23:59:59.999999+00:00",
+      "equity_eur": 10103.346858027007,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10206326654294706,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-03T23:59:59.999999+00:00",
+      "equity_eur": 10061.093016399676,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09829217761006345,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-04T23:59:59.999999+00:00",
+      "equity_eur": 10067.672965162674,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09888150855983217,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-07T23:59:59.999999+00:00",
+      "equity_eur": 10074.26410319535,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09947106987170955,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-08T23:59:59.999999+00:00",
+      "equity_eur": 10080.866430497705,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10006085913069213,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-09T23:59:59.999999+00:00",
+      "equity_eur": 10087.479947069736,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10065087392657664,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-10T23:59:59.999999+00:00",
+      "equity_eur": 10094.104652911446,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10124111185397092,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-11T23:59:59.999999+00:00",
+      "equity_eur": 10097.965082588824,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1015847053855615,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-14T23:59:59.999999+00:00",
+      "equity_eur": 10104.609402562086,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10217546139091271,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-15T23:59:59.999999+00:00",
+      "equity_eur": 10111.264911805027,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10276643389211537,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-16T23:59:59.999999+00:00",
+      "equity_eur": 10117.931610317646,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1033576205012978,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-17T23:59:59.999999+00:00",
+      "equity_eur": 10075.248232373147,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09955903165440208,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-18T23:59:59.999999+00:00",
+      "equity_eur": 10081.888339915473,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10015207778462541,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-21T23:59:59.999999+00:00",
+      "equity_eur": 10088.539636727477,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10074534061867625,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-22T23:59:59.999999+00:00",
+      "equity_eur": 10071.215356304263,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09919846277525372,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-23T23:59:59.999999+00:00",
+      "equity_eur": 10077.7687799162,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09978424065849739,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-24T23:59:59.999999+00:00",
+      "equity_eur": 10084.333392797816,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10037025539440719,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-25T23:59:59.999999+00:00",
+      "equity_eur": 10090.90919494911,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10095650457133036,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-28T23:59:59.999999+00:00",
+      "equity_eur": 10097.496186370081,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10154298578233224,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-29T23:59:59.999999+00:00",
+      "equity_eur": 10104.094367060732,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10212969662520754,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-30T23:59:59.999999+00:00",
+      "equity_eur": 10110.70373702106,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1027166347024916,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-10-31T23:59:59.999999+00:00",
+      "equity_eur": 10065.745580551022,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.0987089627807065,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-01T23:59:59.999999+00:00",
+      "equity_eur": 10072.325595133254,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09929775512183206,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-04T23:59:59.999999+00:00",
+      "equity_eur": 10078.916798985163,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09988677795278371,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-05T23:59:59.999999+00:00",
+      "equity_eur": 10085.51919210675,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10047602886120949,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-06T23:59:59.999999+00:00",
+      "equity_eur": 10092.132774498015,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10106550543954755,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-07T23:59:59.999999+00:00",
+      "equity_eur": 10098.757546158959,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10165520528503733,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-08T23:59:59.999999+00:00",
+      "equity_eur": 10105.39350708958,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10224512599973026,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-11T23:59:59.999999+00:00",
+      "equity_eur": 10109.26519185587,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10258895156999306,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-12T23:59:59.999999+00:00",
+      "equity_eur": 10115.920766918043,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10317938586975384,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-13T23:59:59.999999+00:00",
+      "equity_eur": 10122.587531249896,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10377003442318901,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-14T23:59:59.999999+00:00",
+      "equity_eur": 10129.265484851427,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1043608948498778,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-15T23:59:59.999999+00:00",
+      "equity_eur": 10086.593361995838,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10057182349966004,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-18T23:59:59.999999+00:00",
+      "equity_eur": 10093.244724627075,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1011645390362267,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-19T23:59:59.999999+00:00",
+      "equity_eur": 10099.90727652799,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10175746902509614,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-20T23:59:59.999999+00:00",
+      "equity_eur": 10082.35789432655,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1001939853984596,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-21T23:59:59.999999+00:00",
+      "equity_eur": 10088.922573027397,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10077947283145297,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-22T23:59:59.999999+00:00",
+      "equity_eur": 10095.498440997924,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10136519482404274,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-25T23:59:59.999999+00:00",
+      "equity_eur": 10102.08549823813,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.1019511489719033,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-26T23:59:59.999999+00:00",
+      "equity_eur": 10108.683744748014,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10253733287542877,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-27T23:59:59.999999+00:00",
+      "equity_eur": 10115.293180527575,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10312374413974411,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-28T23:59:59.999999+00:00",
+      "equity_eur": 10121.913805576814,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10371038037471626,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-11-29T23:59:59.999999+00:00",
+      "equity_eur": 10076.966904195688,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.09971260589304651,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-02T23:59:59.999999+00:00",
+      "equity_eur": 10083.558173866832,
+      "cash_eur": 9072.16627468035,
+      "exposure": 0.10030109230764055,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-03T23:59:59.999999+00:00",
+      "equity_eur": 10078.168214139456,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5937430663812837,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-04T23:59:59.999999+00:00",
+      "equity_eur": 9996.294638283764,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5904156626706981,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-05T23:59:59.999999+00:00",
+      "equity_eur": 10041.401073439443,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5922555343397418,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-06T23:59:59.999999+00:00",
+      "equity_eur": 10086.554546366491,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5940808433297157,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-09T23:59:59.999999+00:00",
+      "equity_eur": 10034.790719481913,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.591986935290934,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-10T23:59:59.999999+00:00",
+      "equity_eur": 10067.296771895422,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5933043588622601,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-11T23:59:59.999999+00:00",
+      "equity_eur": 10112.489226400956,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.595121871232185,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-12T23:59:59.999999+00:00",
+      "equity_eur": 10157.728718677858,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5969250775873417,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-13T23:59:59.999999+00:00",
+      "equity_eur": 9978.731240644576,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5896947601421285,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-16T23:59:59.999999+00:00",
+      "equity_eur": 10023.968134149582,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5915464155136936,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-17T23:59:59.999999+00:00",
+      "equity_eur": 10069.252065425955,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5933833328864323,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-18T23:59:59.999999+00:00",
+      "equity_eur": 10114.583034473699,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5952056845828294,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-19T23:59:59.999999+00:00",
+      "equity_eur": 10083.81366893841,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5939705106033613,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-20T23:59:59.999999+00:00",
+      "equity_eur": 10032.935113701193,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5919114726877274,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-23T23:59:59.999999+00:00",
+      "equity_eur": 10077.811167728034,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5937286731189126,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-24T23:59:59.999999+00:00",
+      "equity_eur": 10122.734259526245,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5955316409381345,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-26T23:59:59.999999+00:00",
+      "equity_eur": 10040.771415855826,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5922299646514831,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-27T23:59:59.999999+00:00",
+      "equity_eur": 9989.597640130894,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5901410784832911,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-30T23:59:59.999999+00:00",
+      "equity_eur": 10034.565170928578,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5919777643149207,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2024-12-31T23:59:59.999999+00:00",
+      "equity_eur": 10066.973119702903,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5932912836375249,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-02T23:59:59.999999+00:00",
+      "equity_eur": 10112.029268622338,
+      "cash_eur": 4094.325715169909,
+      "exposure": 0.5951034548649284,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-03T23:59:59.999999+00:00",
+      "equity_eur": 10148.982409917866,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5885494814822556,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-06T23:59:59.999999+00:00",
+      "equity_eur": 10102.272148498003,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5866470420113332,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-07T23:59:59.999999+00:00",
+      "equity_eur": 10152.227497194035,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5886809987126155,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-08T23:59:59.999999+00:00",
+      "equity_eur": 10202.27081568152,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5906985659928078,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-09T23:59:59.999999+00:00",
+      "equity_eur": 10252.40210396046,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5926999319139972,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-10T23:59:59.999999+00:00",
+      "equity_eur": 10193.592297119916,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.59035009903545,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-13T23:59:59.999999+00:00",
+      "equity_eur": 10128.731945119525,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5877268647631393,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-14T23:59:59.999999+00:00",
+      "equity_eur": 10178.904061534246,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5897589711284927,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-15T23:59:59.999999+00:00",
+      "equity_eur": 10229.164147740417,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5917746538547246,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-16T23:59:59.999999+00:00",
+      "equity_eur": 10279.512203738044,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.59377410209507,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-17T23:59:59.999999+00:00",
+      "equity_eur": 10232.403846056293,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5919039027571625,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-20T23:59:59.999999+00:00",
+      "equity_eur": 10282.831167322187,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5939052186076474,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-21T23:59:59.999999+00:00",
+      "equity_eur": 10080.302129838768,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5857461392325386,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-22T23:59:59.999999+00:00",
+      "equity_eur": 10129.855300953366,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5877725840175456,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-23T23:59:59.999999+00:00",
+      "equity_eur": 10083.59552173745,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5858814382244615,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-24T23:59:59.999999+00:00",
+      "equity_eur": 10133.227958120317,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5879097862747802,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-27T23:59:59.999999+00:00",
+      "equity_eur": 10182.948364294636,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5899219041873804,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-28T23:59:59.999999+00:00",
+      "equity_eur": 10232.756740260409,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5919179766525061,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-29T23:59:59.999999+00:00",
+      "equity_eur": 10072.336862432767,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5854185446713115,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-30T23:59:59.999999+00:00",
+      "equity_eur": 10110.225406701786,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5869722081349295,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-01-31T23:59:59.999999+00:00",
+      "equity_eur": 10160.07461080334,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5889986801329209,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-03T23:59:59.999999+00:00",
+      "equity_eur": 10210.011784696348,
+      "cash_eur": 4175.804074988173,
+      "exposure": 0.5910088878401462,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-04T23:59:59.999999+00:00",
+      "equity_eur": 10255.09714057164,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2976712330657381,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-05T23:59:59.999999+00:00",
+      "equity_eur": 10184.921203599693,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2928320616772993,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-06T23:59:59.999999+00:00",
+      "equity_eur": 10211.466619038198,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29467039376101467,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-07T23:59:59.999999+00:00",
+      "equity_eur": 10238.059072248072,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29650242504927826,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-10T23:59:59.999999+00:00",
+      "equity_eur": 10259.219312557674,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2979534299736938,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-11T23:59:59.999999+00:00",
+      "equity_eur": 10188.742697677026,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2930972993192898,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-12T23:59:59.999999+00:00",
+      "equity_eur": 10215.374132465384,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2949401915061811,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-13T23:59:59.999999+00:00",
+      "equity_eur": 10242.05260502511,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2967767295009811,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-14T23:59:59.999999+00:00",
+      "equity_eur": 10268.778115356208,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29860693759094703,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-17T23:59:59.999999+00:00",
+      "equity_eur": 10295.550663458676,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.3004308399848939,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-18T23:59:59.999999+00:00",
+      "equity_eur": 10224.729191547043,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29558528205488893,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-19T23:59:59.999999+00:00",
+      "equity_eur": 10182.762923537657,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.292682174414554,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-20T23:59:59.999999+00:00",
+      "equity_eur": 10209.080556619223,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29450554439411003,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-21T23:59:59.999999+00:00",
+      "equity_eur": 10235.445227472157,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29632277155885484,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-24T23:59:59.999999+00:00",
+      "equity_eur": 10165.859341659856,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29150606087839537,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-25T23:59:59.999999+00:00",
+      "equity_eur": 10192.221413740894,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29333857290241017,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-26T23:59:59.999999+00:00",
+      "equity_eur": 10218.6305235933,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29516487430489163,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-27T23:59:59.999999+00:00",
+      "equity_eur": 10245.086671217077,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2969849879588055,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-02-28T23:59:59.999999+00:00",
+      "equity_eur": 10266.148807887497,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.29842730080094865,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-03T23:59:59.999999+00:00",
+      "equity_eur": 10196.212607623223,
+      "cash_eur": 7202.449729528755,
+      "exposure": 0.2936151876488114,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-04T23:59:59.999999+00:00",
+      "equity_eur": 10208.261814430673,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5909354223320673,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-05T23:59:59.999999+00:00",
+      "equity_eur": 10135.394843366968,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5879945110794955,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-06T23:59:59.999999+00:00",
+      "equity_eur": 10177.161899646551,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5896853809519536,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-07T23:59:59.999999+00:00",
+      "equity_eur": 10218.969967020998,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5913640688523233,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-10T23:59:59.999999+00:00",
+      "equity_eur": 10260.819045490303,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5930307035597634,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-11T23:59:59.999999+00:00",
+      "equity_eur": 10289.175224039647,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5941522797583102,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-12T23:59:59.999999+00:00",
+      "equity_eur": 10331.099849262644,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5957992499567403,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-13T23:59:59.999999+00:00",
+      "equity_eur": 10133.092503584268,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5879008993190683,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-14T23:59:59.999999+00:00",
+      "equity_eur": 10174.984443273015,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5895975732322088,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-17T23:59:59.999999+00:00",
+      "equity_eur": 10216.917394056623,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5912819741233366,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-18T23:59:59.999999+00:00",
+      "equity_eur": 10258.891355935093,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5929542322886661,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-19T23:59:59.999999+00:00",
+      "equity_eur": 10300.906328908424,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5946144761917976,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-20T23:59:59.999999+00:00",
+      "equity_eur": 10264.541295216164,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5931782835936432,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-21T23:59:59.999999+00:00",
+      "equity_eur": 10306.201198447145,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5948227453125066,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-24T23:59:59.999999+00:00",
+      "equity_eur": 10234.112050592365,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5919686742532719,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-25T23:59:59.999999+00:00",
+      "equity_eur": 10151.162256609095,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5886344634945605,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-26T23:59:59.999999+00:00",
+      "equity_eur": 10192.830485400687,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5903161232961863,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-27T23:59:59.999999+00:00",
+      "equity_eur": 10234.539725287139,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5919857248170863,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-28T23:59:59.999999+00:00",
+      "equity_eur": 10276.289976268452,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5936433948937565,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-03-31T23:59:59.999999+00:00",
+      "equity_eur": 10304.592655382019,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5947594972943685,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-01T23:59:59.999999+00:00",
+      "equity_eur": 10231.940144592569,
+      "cash_eur": 4175.838307843768,
+      "exposure": 0.5918820625577411,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-02T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-03T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-04T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-07T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-08T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-09T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-10T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-11T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-14T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-15T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-16T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-17T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-18T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-21T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-22T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-23T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-24T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-25T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-28T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-29T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-04-30T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-01T23:59:59.999999+00:00",
+      "equity_eur": 10267.225573753718,
+      "cash_eur": 10267.225573753718,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-02T23:59:59.999999+00:00",
+      "equity_eur": 10262.312327883048,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2932299102380578,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-05T23:59:59.999999+00:00",
+      "equity_eur": 10288.66313789077,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2950400544817612,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-06T23:59:59.999999+00:00",
+      "equity_eur": 10315.060584448109,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2968441294393955,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-07T23:59:59.999999+00:00",
+      "equity_eur": 10341.504667555071,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29864215718061854,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-08T23:59:59.999999+00:00",
+      "equity_eur": 10266.329770323271,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.293506485043038,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-09T23:59:59.999999+00:00",
+      "equity_eur": 10292.765865954883,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2953210536796659,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-12T23:59:59.999999+00:00",
+      "equity_eur": 10319.248598136115,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2971295016138037,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-13T23:59:59.999999+00:00",
+      "equity_eur": 10345.777966866968,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29893185139179457,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-14T23:59:59.999999+00:00",
+      "equity_eur": 10372.35397214744,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.30072812549402955,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-15T23:59:59.999999+00:00",
+      "equity_eur": 10302.264262447725,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29597074775291005,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-16T23:59:59.999999+00:00",
+      "equity_eur": 10328.837691123244,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2977820329797219,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-19T23:59:59.999999+00:00",
+      "equity_eur": 10285.66023365016,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29483424103257383,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-20T23:59:59.999999+00:00",
+      "equity_eur": 10311.83184078351,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29662396389583806,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-21T23:59:59.999999+00:00",
+      "equity_eur": 10242.967177907938,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29189508477714476,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-22T23:59:59.999999+00:00",
+      "equity_eur": 10269.136208436337,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2936995616842242,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-23T23:59:59.999999+00:00",
+      "equity_eur": 10295.351875514356,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2954980565168275,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-26T23:59:59.999999+00:00",
+      "equity_eur": 10321.614179141996,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.2972905904775917,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-27T23:59:59.999999+00:00",
+      "equity_eur": 10347.923119319255,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29907718471529016,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-28T23:59:59.999999+00:00",
+      "equity_eur": 10273.321903179885,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29398733209187683,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-29T23:59:59.999999+00:00",
+      "equity_eur": 10299.622855881797,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29579019478359153,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-05-30T23:59:59.999999+00:00",
+      "equity_eur": 10325.970445133327,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29758704581985296,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-02T23:59:59.999999+00:00",
+      "equity_eur": 10352.36467093448,
+      "cash_eur": 7253.095405142989,
+      "exposure": 0.29937790681708354,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-03T23:59:59.999999+00:00",
+      "equity_eur": 10281.853711071166,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29525460602683834,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-04T23:59:59.999999+00:00",
+      "equity_eur": 10308.297625824967,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2970624920423402,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-05T23:59:59.999999+00:00",
+      "equity_eur": 10334.78826948659,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29886429644840384,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-06T23:59:59.999999+00:00",
+      "equity_eur": 10355.882369721623,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.3002924535364295,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-09T23:59:59.999999+00:00",
+      "equity_eur": 10285.941328737204,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2955346707900327,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-10T23:59:59.999999+00:00",
+      "equity_eur": 10312.470698013045,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29734694462895267,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-11T23:59:59.999999+00:00",
+      "equity_eur": 10339.046796196708,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29915308565497656,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-12T23:59:59.999999+00:00",
+      "equity_eur": 10365.669623288193,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.30095311661258,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-13T23:59:59.999999+00:00",
+      "equity_eur": 10392.3391792875,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.3027470601782211,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-16T23:59:59.999999+00:00",
+      "equity_eur": 10322.055545702637,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29799941375048944,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-17T23:59:59.999999+00:00",
+      "equity_eur": 10278.908757195306,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29505269328215883,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-18T23:59:59.999999+00:00",
+      "equity_eur": 10305.126385276695,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2968461740812795,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-19T23:59:59.999999+00:00",
+      "equity_eur": 10331.390742265909,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2986337246214703,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-20T23:59:59.999999+00:00",
+      "equity_eur": 10262.334581566358,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29391416867278947,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-23T23:59:59.999999+00:00",
+      "equity_eur": 10288.596356847956,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29571646189031797,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-24T23:59:59.999999+00:00",
+      "equity_eur": 10314.904861037376,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29751276022389606,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-25T23:59:59.999999+00:00",
+      "equity_eur": 10341.260094134619,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2993030850763421,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-26T23:59:59.999999+00:00",
+      "equity_eur": 10362.256734907205,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.30072288018367144,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-27T23:59:59.999999+00:00",
+      "equity_eur": 10292.85256002122,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2960076905669458,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-06-30T23:59:59.999999+00:00",
+      "equity_eur": 10319.24651873268,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.2978083204786967,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-01T23:59:59.999999+00:00",
+      "equity_eur": 10345.687206351962,
+      "cash_eur": 7246.089044383263,
+      "exposure": 0.29960292633491115,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-02T23:59:59.999999+00:00",
+      "equity_eur": 10367.793560144677,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.596558266328984,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-03T23:59:59.999999+00:00",
+      "equity_eur": 10328.696000952275,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.59503110481107,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-04T23:59:59.999999+00:00",
+      "equity_eur": 10385.835711586398,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5972591205557347,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-07T23:59:59.999999+00:00",
+      "equity_eur": 10359.320380055951,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5962282799650829,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-08T23:59:59.999999+00:00",
+      "equity_eur": 10416.580081720822,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5984478038441804,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-09T23:59:59.999999+00:00",
+      "equity_eur": 10473.941490429554,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.6006469377292254,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-10T23:59:59.999999+00:00",
+      "equity_eur": 10360.3425186295,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5962681155833758,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-11T23:59:59.999999+00:00",
+      "equity_eur": 10417.737468449246,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5984924153717801,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-14T23:59:59.999999+00:00",
+      "equity_eur": 10475.234125312854,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.6006962175537018,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-15T23:59:59.999999+00:00",
+      "equity_eur": 10458.260701229525,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.6000481602302942,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-16T23:59:59.999999+00:00",
+      "equity_eur": 10279.766315931583,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5931035317636104,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-17T23:59:59.999999+00:00",
+      "equity_eur": 10336.320707385974,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5953298347971073,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-18T23:59:59.999999+00:00",
+      "equity_eur": 10319.734020055637,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5946794171129799,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-21T23:59:59.999999+00:00",
+      "equity_eur": 10376.4179921443,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.596893589732541,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-22T23:59:59.999999+00:00",
+      "equity_eur": 10264.349932421479,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5924923998317747,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-23T23:59:59.999999+00:00",
+      "equity_eur": 10321.067445621153,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5947317823194179,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-24T23:59:59.999999+00:00",
+      "equity_eur": 10377.88666586469,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5969506371652546,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-25T23:59:59.999999+00:00",
+      "equity_eur": 10351.634805342523,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5959284995168878,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-28T23:59:59.999999+00:00",
+      "equity_eur": 10408.574016616807,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5981389379976244,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-29T23:59:59.999999+00:00",
+      "equity_eur": 10369.671451198816,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5966313274308803,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-30T23:59:59.999999+00:00",
+      "equity_eur": 10352.884583581328,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5959772781702329,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-07-31T23:59:59.999999+00:00",
+      "equity_eur": 10409.959043010489,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.5981924048916982,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-01T23:59:59.999999+00:00",
+      "equity_eur": 10467.135209483513,
+      "cash_eur": 4182.800608247963,
+      "exposure": 0.6003872573979716,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-04T23:59:59.999999+00:00",
+      "equity_eur": 10352.015463034151,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5957285592431317,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-05T23:59:59.999999+00:00",
+      "equity_eur": 10399.572059681681,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5975772674143772,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-06T23:59:59.999999+00:00",
+      "equity_eur": 10456.840240912947,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5997811853714601,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-07T23:59:59.999999+00:00",
+      "equity_eur": 10439.879065107634,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.599130968866731,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-08T23:59:59.999999+00:00",
+      "equity_eur": 10497.276655744103,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.6013228627552506,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-11T23:59:59.999999+00:00",
+      "equity_eur": 10458.172903223855,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5998321843877612,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-12T23:59:59.999999+00:00",
+      "equity_eur": 10441.125286026303,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5991788153735548,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-13T23:59:59.999999+00:00",
+      "equity_eur": 10498.65809830904,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.6013753217992447,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-14T23:59:59.999999+00:00",
+      "equity_eur": 10341.317490214018,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5953103451336369,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-15T23:59:59.999999+00:00",
+      "equity_eur": 10302.929046437628,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5938024820790917,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-18T23:59:59.999999+00:00",
+      "equity_eur": 10359.520189479465,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5960214247926013,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-19T23:59:59.999999+00:00",
+      "equity_eur": 10342.842515318247,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5953700155658396,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-20T23:59:59.999999+00:00",
+      "equity_eur": 10399.563067765286,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5975769194621081,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-21T23:59:59.999999+00:00",
+      "equity_eur": 10456.385268754679,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5997637712830164,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-22T23:59:59.999999+00:00",
+      "equity_eur": 10344.264033418907,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5954256201835373,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-25T23:59:59.999999+00:00",
+      "equity_eur": 10391.567358625616,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.597267278212427,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-26T23:59:59.999999+00:00",
+      "equity_eur": 10448.515200068812,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5994623038926494,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-27T23:59:59.999999+00:00",
+      "equity_eur": 10431.750898231945,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5988186214562019,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-28T23:59:59.999999+00:00",
+      "equity_eur": 10392.991847791585,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5973224777552891,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-08-29T23:59:59.999999+00:00",
+      "equity_eur": 10450.07491088105,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5995220855670064,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-01T23:59:59.999999+00:00",
+      "equity_eur": 10433.224167651944,
+      "cash_eur": 4185.024205978195,
+      "exposure": 0.5988752720416187,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-02T23:59:59.999999+00:00",
+      "equity_eur": 10474.665023350984,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10100710924812947,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-03T23:59:59.999999+00:00",
+      "equity_eur": 10442.65082518104,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09825105266444076,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-04T23:59:59.999999+00:00",
+      "equity_eur": 10450.41479747863,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09892099294740297,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-05T23:59:59.999999+00:00",
+      "equity_eur": 10458.192186808095,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09959109368080656,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-08T23:59:59.999999+00:00",
+      "equity_eur": 10465.982993169433,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10026135192981535,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-09T23:59:59.999999+00:00",
+      "equity_eur": 10473.787216562645,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10093176476710718,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-10T23:59:59.999999+00:00",
+      "equity_eur": 10481.604856987731,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10160232927288339,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-11T23:59:59.999999+00:00",
+      "equity_eur": 10489.435914444692,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.1022730425348782,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-12T23:59:59.999999+00:00",
+      "equity_eur": 10435.584689860789,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09764046108992579,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-15T23:59:59.999999+00:00",
+      "equity_eur": 10443.262056730833,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09830383094421694,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-16T23:59:59.999999+00:00",
+      "equity_eur": 10450.952840632754,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.098967382917625,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-17T23:59:59.999999+00:00",
+      "equity_eur": 10458.657041566546,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09963111405464527,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-18T23:59:59.999999+00:00",
+      "equity_eur": 10466.374659532212,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10029502140708947,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-19T23:59:59.999999+00:00",
+      "equity_eur": 10474.105694529753,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10095910203409669,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-22T23:59:59.999999+00:00",
+      "equity_eur": 10444.47291863745,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09840836753030961,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-23T23:59:59.999999+00:00",
+      "equity_eur": 10450.081137080719,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.0988922224167153,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-24T23:59:59.999999+00:00",
+      "equity_eur": 10457.812777357893,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09955842684545797,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-25T23:59:59.999999+00:00",
+      "equity_eur": 10465.557834666939,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10022480045857105,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-26T23:59:59.999999+00:00",
+      "equity_eur": 10473.31630900786,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.10089134031970703,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-29T23:59:59.999999+00:00",
+      "equity_eur": 10481.088200380655,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.1015580434999284,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-09-30T23:59:59.999999+00:00",
+      "equity_eur": 10451.271116839982,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09899482237840915,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-01T23:59:59.999999+00:00",
+      "equity_eur": 10459.032314939253,
+      "cash_eur": 9416.649388999811,
+      "exposure": 0.09966341957377321,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-02T23:59:59.999999+00:00",
+      "equity_eur": 10451.892934113186,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.287090347472067,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-03T23:59:59.999999+00:00",
+      "equity_eur": 10471.138679311953,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.288400661272934,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-06T23:59:59.999999+00:00",
+      "equity_eur": 10490.416776873617,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2897083577895337,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-07T23:59:59.999999+00:00",
+      "equity_eur": 10509.72722679818,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2910134393480509,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-08T23:59:59.999999+00:00",
+      "equity_eur": 10529.07002908564,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2923159083058291,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-09T23:59:59.999999+00:00",
+      "equity_eur": 10548.445183735997,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.293615767051013,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-10T23:59:59.999999+00:00",
+      "equity_eur": 10567.852690749252,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2949130180021935,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-13T23:59:59.999999+00:00",
+      "equity_eur": 10507.369770552326,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29085436958728933,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-14T23:59:59.999999+00:00",
+      "equity_eur": 10526.487350621155,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29214227769170314,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-15T23:59:59.999999+00:00",
+      "equity_eur": 10545.63728305288,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2934276838923566,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-16T23:59:59.999999+00:00",
+      "equity_eur": 10433.491727794228,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2858330121575629,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-17T23:59:59.999999+00:00",
+      "equity_eur": 10452.574111336387,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.287136806632493,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-20T23:59:59.999999+00:00",
+      "equity_eur": 10471.688847241445,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2884380477098809,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-21T23:59:59.999999+00:00",
+      "equity_eur": 10490.835935509398,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2897367373083428,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-22T23:59:59.999999+00:00",
+      "equity_eur": 10495.128311920846,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29002722611268006,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-23T23:59:59.999999+00:00",
+      "equity_eur": 10514.325173054796,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29132348131925556,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-24T23:59:59.999999+00:00",
+      "equity_eur": 10533.554386551645,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2926171844300795,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-27T23:59:59.999999+00:00",
+      "equity_eur": 10552.815952411389,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29390833749781003,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-28T23:59:59.999999+00:00",
+      "equity_eur": 10572.10987063403,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.29519694260698015,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-29T23:59:59.999999+00:00",
+      "equity_eur": 10591.43614121957,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2964830018736439,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-30T23:59:59.999999+00:00",
+      "equity_eur": 10610.794764168008,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2977665174450256,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-10-31T23:59:59.999999+00:00",
+      "equity_eur": 10482.411522419105,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.2891659191225678,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-03T23:59:59.999999+00:00",
+      "equity_eur": 10501.687664618177,
+      "cash_eur": 7451.255359917789,
+      "exposure": 0.290470675011386,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-04T23:59:59.999999+00:00",
+      "equity_eur": 10509.504597953173,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40074809424277114,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-05T23:59:59.999999+00:00",
+      "equity_eur": 10507.371274886778,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.400626427473825,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-06T23:59:59.999999+00:00",
+      "equity_eur": 10539.692271700787,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40246446513456724,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-07T23:59:59.999999+00:00",
+      "equity_eur": 10572.069103292732,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40429441036038066,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-10T23:59:59.999999+00:00",
+      "equity_eur": 10604.501769662611,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4061163083677652,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-11T23:59:59.999999+00:00",
+      "equity_eur": 10504.969989233585,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40048941926132314,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-12T23:59:59.999999+00:00",
+      "equity_eur": 10428.236787666421,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.3960780919036748,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-13T23:59:59.999999+00:00",
+      "equity_eur": 10460.098744816525,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.3979176666942388,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-14T23:59:59.999999+00:00",
+      "equity_eur": 10492.016536744564,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.3997492629913567,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-17T23:59:59.999999+00:00",
+      "equity_eur": 10523.990163450539,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40157292423552565,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-18T23:59:59.999999+00:00",
+      "equity_eur": 10521.997266408645,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40145958039795526,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-19T23:59:59.999999+00:00",
+      "equity_eur": 10554.048369345337,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4032772602047066,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-20T23:59:59.999999+00:00",
+      "equity_eur": 10468.75351212827,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.3984154224672863,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-21T23:59:59.999999+00:00",
+      "equity_eur": 10500.79852956072,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.40025126268647154,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-24T23:59:59.999999+00:00",
+      "equity_eur": 10498.740249944696,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4001336818556899,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-25T23:59:59.999999+00:00",
+      "equity_eur": 10530.862743607862,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4019634656514226,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-26T23:59:59.999999+00:00",
+      "equity_eur": 10563.041072048965,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4037852720697436,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-27T23:59:59.999999+00:00",
+      "equity_eur": 10595.275235268004,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4055991449920558,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-11-28T23:59:59.999999+00:00",
+      "equity_eur": 10483.30474034892,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.39925044488612427,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-01T23:59:59.999999+00:00",
+      "equity_eur": 10507.354887235238,
+      "cash_eur": 6297.840658887798,
+      "exposure": 0.4006254926690759,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-02T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-03T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-04T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-05T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-08T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-09T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-10T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-11T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-12T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-15T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-16T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-17T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-18T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-19T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-22T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-23T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-24T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-26T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-29T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-30T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    },
+    {
+      "timestamp": "2025-12-31T23:59:59.999999+00:00",
+      "equity_eur": 10534.420486731935,
+      "cash_eur": 10534.420486731935,
+      "exposure": 0.0,
+      "external_flow_eur": 0.0,
+      "stale": false
+    }
+  ]
+}

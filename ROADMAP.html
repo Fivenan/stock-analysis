@@ -1,0 +1,46 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>ROADMAP · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>ROADMAP</h1><pre># Roadmap
+
+2026-10-21 implementation update: native dependencies, foundation, financial engine, twelve-page local app and static companion builder are implemented. Step 10 independent local whole-app acceptance passed; secrets review and remote publication are separate release gates, with current remote commits and Pages deployment history establishing publication state. Each phase closes only on recorded evidence. Phase numbering follows the master request; the internal paper component may ship early as part of the vertical slice.
+
+| Phase | Deliverables/dependencies | Acceptance | Current status / remaining / limits |
+|---|---|---|---|
+| 1 Research and architecture | Official-source catalog, access/broker/tax evidence, source register, architecture; Step 2 and Step 4 review | Claims dated and uncertainty visible; design accepted; downloads separately approved | Step 4 final GO; research scope reviewed, native dependency installation independently verified; actual provider entitlements remain unknown |
+| 2 Data foundation | Step 5 after Phase1 gates; package, registry, raw bars/actions/FX, calendars, sample/CSV adapters, Parquet, SQLite, provenance | Offline no-key load; validation/cache persistence and mocked resilience tests | Foundation accepted; external adapters and global historical datasets are not MVP claims |
+| 3 Backtest MVP | Step 7 after data contract; buy-hold, trend, momentum; EUR ledger/costs/actions/metrics/exports | Golden financial and no-lookahead tests pass; benchmark matches conventions | Financial review GO; only cash equity/ETF-like sample units, no derivative model |
+| 4 Interactive platform | Step 9 after core tests; twelve functional pages, saved experiments, guide | Fresh Windows setup, launch, select asset, run/rerun/compare/export; actual UI smoke | Step 10 local GO; actual AppTest workflows and loopback health/root HTTP 200; synthetic series labeled; unsupported features explained |
+| 5 Extended research | Verified regional adapters, real calendars/vintages, global macro/commodities, remaining strategy research, walk-forward and stress methods | Licensed datasets and OOS methodology tests; no survivorship/vintage claims without evidence | Future; real market coverage is research documentation until implemented |
+| 6 Paper trading | Internal durable broker/journal shipped with MVP; optional supported external paper integration later | Idempotency, risk checks, restart persistence and no live route tests | Implemented and financially reviewed internal only; no external account or Trade Republic private interface |
+| 7 Hardening/docs | Full QA, failure recovery, source/guide reconciliation, setup and limitations | Recorded tests/build/launch and acceptance checklist, reproducible dependency snapshot | Step 10 local GO: 125 tests, full Ruff, mypy 44 source files, installed wheel/offline smoke; secrets/publication gate pending; no measured coverage claim |
+
+## Master requirement traceability
+
+“MVP” below describes the bounded implemented slice; evidence is in VERIFICATION.md. Later work remains separate, even where research documents already exist.
+
+| Master sections | MVP commitment | Later work / acceptance before claiming completion |
+|---|---|---|
+| 1–2 mission/user constraints | Local English EUR offline paper app; configurable capital/limits; no credentials | Personal risk settings remain user supplied; no suitability inference |
+| 3 global assets/access | Country/asset filters on labeled sample registry; sourced access research | All listed regions, exchanges, bonds/FX/derivatives/minerals require explicit official access matrix; sample coverage is not actual availability |
+| 4 education | Beginner/intermediate/advanced guide, EUR examples, exercises/glossary in Learning Center | Thoroughness review of all requested mechanics/macro/quant chapters; no placeholder headings counted complete |
+| 5 provider research | Dated provider matrix with verified/partial/unverified rows | Every named candidate must have evidence or candid unknowns; actual free-tier tests separate from documentation evidence |
+| 6 engineering | Common protocol, registry, raw normalization, Parquet/SQLite, TTL/quota/retry interfaces and tests | Licensed live adapters, incremental revisions, scheduled updates, permitted concurrency/batching/ETags tested per provider |
+| 7 broker | Internal simulator and official-capability research | No live route; optional supported paper APIs require separate review and tested lawful access |
+| 8 strategies | Buy-hold, trend, positive cross-sectional momentum with periodic rebalancing | Research templates for remaining requested strategies; time-series momentum, mean reversion, sector rotation, volatility target, inverse vol/risk parity, commodity, carry, macro, factor/event frameworks need real data and OOS evidence |
+| 9 backtests | Daily single/multi-asset EUR, fees/spread/slippage/FX, actions, cash, calendars, metrics and benchmark exports | Robust universe histories/delistings, rolling/expanding splits, walk-forward, sensitivity and Monte Carlo require separate tests; no historical-result claim for samples |
+| 10 pages | Twelve pages with contract controls and explicit missing capability labels | Real macro/fundamentals/provider connectivity cannot be implied by UI presence |
+| 11 tax | Sourced German/EU guide and configurable simple realized-gain estimator | Estimated values separate from actual broker tax records; full fund/withholding/loss-pot/Vorabpauschale reconciliation deferred |
+| 12 risk | Long-only/cash caps, order validation, concentration/FX/drawdown, synthetic shocks | Liquidity/gap/correlation/regime/model drift and operational risks documented; calibrated risk/derivative models future |
+| 13 source discipline | Dated source register, confidence categories and dataset provenance | Each material current claim needs primary evidence or explicit uncertainty |
+| 14 repository quality | Typed installable package, config, exceptions, tests, logging/provenance and CSV/JSON exports | Hash-locked transitive snapshot after approved resolution; cross-platform support only after checks |
+| 15 phases/status | This roadmap and status with evidence | Update after every accepted implementation stage |
+| 16 learning plan | 90-day weekly objectives/exercises/reviews; configurable policy/risk templates | Time passing never authorizes live trading |
+| 17 acceptance | All fifteen user journeys tested or marked failed/unsupported with evidence | File existence is insufficient; record install/launch and UI outcomes |
+| 18–19 final delivery | Working narrow vertical slice plus candid research/docs | Complete all outstanding requested capabilities before describing the full master request as complete |
+
+## Release acceptance record to fill
+
+Step 10 evidence and all fifteen bounded MVP journeys are recorded in VERIFICATION.md. The independently installed 52-wheel hash lock is prior setup evidence; acceptance rebuilt and installed the current project wheel without network or additional dependencies. An unsupported capability stays deferred rather than inheriting the MVP gate.
+
+APPROVED hosting scope: full local Streamlit application plus a static companion and GitHub integration/push, following the user’s explicit “do it”. Private repository exists; static hosting cannot execute Python or submit orders. Local implementation and dependency installation are complete. Source publication to main and static-only publication to gh-pages require the separate secrets/publication gate. Current remote commits and Pages deployment history establish the publication outcome; local acceptance makes no deployment claim. Private-repository Pages plan eligibility remains unverified. See USER_GUIDE.md for deployment and future updates.
+
+Step 4 conditional-GO amendments are part of acceptance: exact UTC cross-venue cash chronology and frozen quantities; missing-open cancellation; typed atomic paper transactions/version/time/action persistence; strict action/payment FX timing; split-aware ledger-owned RealizedMatch; daily UTC return grid and corrected Sortino; cache envelope/injected policy with three total attempts; concurrency/crash rollback and Windows timezone tests. Step 5 owns shared records/storage/cache protocols; Step 7 owns accounting and quant reducers.
+</pre></body></html>

@@ -1,0 +1,986 @@
+<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Searchable learning library · Global Market Research Lab</title><link rel='stylesheet' href='assets/style.css'><body><nav><a href='index.html'>Research home</a><a href='learning.html'>Learning library</a><a href='reports.html'>Synthetic reports</a><a href='DATA_PROVIDER_MATRIX.html'>Providers</a><a href='MARKET_ACCESS.html'>Market access</a><a href='SOURCES.html'>Sources</a></nav><aside>SIMULATION ONLY · SYNTHETIC SAMPLE · Static companion. The full research app runs locally; this site cannot place orders or run Python.</aside><h1>Searchable learning library</h1><label>Search all guide text <input type='search' aria-label='Search guides'></label><article><h2><a href='TRADING_GUIDE.html'>TRADING GUIDE</a></h2><pre># Trading guide: understanding, testing and paper practice
+
+This course uses EUR accounts and invented numbers. It teaches questions and reproducible experiments, not an expected return or a recommendation. Use <a href='MARKET_ACCESS.html'>market access</a>, <a href='DATA_PROVIDER_MATRIX.html'>providers</a>, <a href='BROKER_INTEGRATION.html'>broker research</a>, <a href='GERMANY_TAX_AND_REGULATION.html'>tax/regulation</a> and the dated <a href='SOURCES.html'>source register</a> for externally sourced claims. Documentation covers more markets and instruments than the executable sample supports. Current fees, eligibility, taxation and entitlements must be checked against the linked official source before any real decision.
+
+## Beginner: ownership, venues and prices
+
+A share is a residual ownership claim; a bond is a contractual debt claim with maturity, default and rate risk. A fund pools assets; an ETF trades on a venue and may differ from its net asset value. Index exposure is a rule-based basket, not necessarily a product available to you. Currency is both a quotation unit and a risk factor. Derivatives reference an underlying and can embed leverage, expiry, margin and nonlinear losses. The local app does not model them.
+
+A stock exchange matches orders under venue rules. The highest bid is what a buyer currently offers; the lowest ask is what a seller requests. A EUR100 bid and EUR100.20 ask imply a EUR0.20 spread, about 20 basis points of midpoint EUR100.10. A round trip crossing both sides loses roughly EUR0.20 per share before fees if nothing moves. Displayed depth is quantity at successive prices; it can disappear. Volume is completed trades, not a promise you can transact that volume at one price. Thin overseas hours can have wider spreads than overlapping home-market hours. A broker&#x27;s reference-market chart is not a fill guarantee.
+
+A market order prioritizes execution, not price. A limit order constrains price but may never fill. A stop triggers an order after a threshold and can gap beyond it. A stop-limit can trigger yet remain unfilled. The app simulates daily next-open market orders only; its spread/slippage assumptions are not a real order book. Session calendars, time zones and daylight-saving changes govern which information is actually available. Settlement happens after execution under the instrument/venue rules; a backtest that immediately reuses proceeds makes a simplifying cash assumption. Confirm actual broker settlement and trading restrictions separately.
+
+Price changes reflect both cash-flow expectations and required returns. A company can grow profits while its share falls if expectations were higher or discount rates rise. Earnings surprises, guidance, capital structure, competition, liquidity and regulation interact. A thesis such as “semiconductor demand will grow” lacks entry, exit, valuation, instrument, timing and falsification rules. A strategy must specify all of these before testing and can still fail despite a correct economic story.
+
+## Beginner: returns, corporate actions and EUR translation
+
+Simple return is `r = (ending value + distributions − starting value) / starting value`. Log return is `ln(1+r)`; log returns add over time while simple returns compound. +10% then −10% gives `1.1 × 0.9 − 1 = −1%`, not zero. Log returns are undefined at −100% and must not conceal bankruptcy.
+
+A EUR account holding USD assets has both local price and exchange-rate exposure. Define `f` as EUR per one USD, never the inverse. EUR return before costs is `(P1/P0) × (f1/f0) − 1`. USD100 rises to USD110 while f falls from 0.90 to 0.81: EUR90 becomes EUR89.10, so return is −1%, despite +10% local price return. A security trading in EUR may still own foreign businesses; quotation currency and underlying economic exposure differ.
+
+Dividend example: one share marked EUR100 becomes EUR99 at ex date with EUR1 entitlement. Equity remains EUR100 if the dividend receivable is recognized. Payment changes receivable to cash, not another EUR1 gain. A sale between ex and payment does not erase the recorded entitlement. Tax/withholding and conversion fees can alter real outcomes; this engine models zero dividend FX fee and no tax withholding. Adjusted total-return prices plus separately credited dividends double-count returns.
+
+Split example: one share at EUR100 becomes two at EUR50 in a 2-for-1 split. Quantity doubles, per-share basis halves, total basis and equity remain EUR100. Raw close returns show a mechanical −50%; action-safe research returns do not. The app exposes raw prices and a separate action-safe index. Delisting is different: unavailable quotes do not establish zero loss or a recoverable terminal value. Unknown proceeds must stop a trustworthy valuation.
+
+Cash accounting example: EUR1,000 buys 10 shares at USD100 with f=0.90. Consideration is EUR900 and cash becomes EUR100 before costs. A EUR1 fixed fee plus EUR0.45 FX fee makes cash EUR98.55. If the next mark remains USD100 but f becomes 1.00, assets are EUR1,000 and total equity EUR1,098.55. FX gain is not a local stock gain. Buys consume consideration and costs; sells receive proceeds less their own costs. FIFO realized P&amp;L allocates acquisition and disposal costs to matched lots. Open lots have unrealized gains, not completed winning trades.
+
+## Intermediate: analyzing a business and an economy
+
+Read income statement, balance sheet and cash-flow statement together. Revenue growth with worsening receivables can differ from cash generation. Operating income excludes financing; net income includes it. Free cash flow is often approximated as operating cash flow minus capital expenditure, but definitions and accounting adjustments must be documented. Net debt, interest coverage, dilution, pension obligations and off-balance commitments affect ownership value. A low P/E can reflect cyclical peak earnings or structural decline rather than cheapness.
+
+A discounted cash-flow estimate is `V = Σ CF_t/(1+k)^t + terminal value/(1+k)^T`. EUR10 each year for two years at 10% has present value `10/1.1 + 10/1.1² = EUR17.36`. Terminal assumptions often dominate a long-horizon estimate; show a grid of growth/discount-rate cases instead of a precise target. Enterprise value and equity value differ by financing claims. Compare multiples only across compatible accounting, leverage, business models and cycles. Fundamental data must carry publication dates; fiscal period end is not the day investors knew the number.
+
+Technical analysis summarizes price/volume behavior. A trailing SMA is the mean of the last L completed closes. Trend rules hypothesize persistence; momentum ranks past returns; mean reversion hypothesizes reversal after deviation. Indicators are transforms of existing observations, not independent evidence. Adding five correlated indicators rarely supplies five independent reasons. A moving average crossing after the close cannot execute at that same close in this engine. Split normalization must use only actions effective and available by the decision time.
+
+Macroeconomic relationships are conditional. Central-bank tightening can raise discount rates, slow lending and support a currency, yet an already-anticipated hike can produce the opposite immediate price response. Nominal rates approximately combine real rates and expected inflation; bond prices generally fall as required yields rise, with duration approximating local sensitivity `ΔP/P ≈ −D × Δyield`. A duration-6 instrument facing a one percentage point yield increase has approximately −6% price sensitivity before convexity. This is educational, not an implemented bond model.
+
+Business cycles affect sectors through demand, inventories, financing and pricing power. Rotation and factor exposures (value, size, quality, momentum) can remain out of favor for years. Cross-market correlation is estimated, unstable and often rises during stress. Commodity price analysis needs supply, demand, inventories, capacity, substitution and transport constraints. Physical metal, futures, an ETC/ETN, a mining share and a mining ETF have different storage, roll, issuer, operational and equity risks. Nickel exposure through an Indonesian exporter adds country, currency and company risk; it does not replicate nickel spot returns. China home listings, Hong Kong listings and depositary receipts have different access and legal structures. Read the access matrix rather than assuming a data symbol is tradable.
+
+Geopolitical risk can interrupt custody, settlement, ownership rights or capital conversion. A broad diversified label does not remove common suppliers, energy prices or policy exposure. An earnings forecast and a macro forecast should be expressed as ranges with observable rejection conditions: e.g. lower volumes, inventory build, financing deterioration or a policy change. Avoid substituting a compelling narrative for measured data.
+
+## Intermediate: statistics and portfolio construction
+
+For daily returns `r_i`, arithmetic mean is `Σr_i/n`; sample variance is `Σ(r_i−mean)²/(n−1)`. Annualized sample volatility uses `std × sqrt(252)` here, a disclosed convention rather than a universal count of trading days. Geometric annual return uses elapsed calendar time: `(E_end/E_start)^(365.25/days)−1`. Arithmetic mean ×252 is different and can overstate compound growth. Standard deviation treats gains/losses symmetrically and is incomplete for tail risk.
+
+Covariance measures joint deviations; correlation divides covariance by the product of standard deviations. Portfolio variance is `wᵀΣw`. Two 50% positions each with 20% volatility and zero correlation have volatility `sqrt(.25×.04 + .25×.04) = 14.14%`; if correlation is one, it is 20%. These inputs are estimates, not guarantees. Covariance matrices estimated from a short, changing history can make optimized weights unstable. Constraints and simple baselines often expose more useful research questions than unconstrained optimization.
+
+Position sizing must account for equity, concentration, liquidity and plausible losses. If a hypothetical EUR10,000 policy allows EUR100 loss on a EUR5 per-share stress, naive size is 20 shares before costs. A stop does not guarantee the EUR5 maximum, and a gap can exceed it. Apply a separate notional cap and liquidity cap, then test the combined worst case. The app enforces long-only position and order/volume limits; it does not execute stop-based risk sizing. Choose your own policy values rather than copying this example.
+
+Drawdown is `equity/running peak − 1`. EUR100→80 is −20%; recovery requires +25%, not +20%. Duration measures time underwater and may remain unrecovered at the endpoint. Sharpe here is mean daily excess / sample daily excess std ×sqrt(252). Sortino uses the root mean squared negative excess returns across all observations. Calmar is CAGR / absolute maximum drawdown. Flat equity can make denominators undefined: “None” with an explanation is more truthful than an infinite score. Winning-trade percentage excludes open FIFO lots and does not imply profit if losing trades are much larger. Two-sided turnover here is absolute traded EUR / (2 × mean equity). Inspect the methodology before comparing metrics from another platform.
+
+## Advanced: designing a falsifiable experiment
+
+Write a hypothesis before choosing parameters: “positive trailing local total-return momentum among the specified universe may persist enough after EUR costs to beat a same-cost equal-weight benchmark.” Freeze universe eligibility, lookback, ranking tie-break, top N, observation timing, monthly schedule, execution lag, weights, fees and reject conditions. Record an experiment ID and source hashes. A synthetic run verifies plumbing; it cannot test that economic hypothesis.
+
+Survivorship bias occurs when today&#x27;s surviving instruments replace the historically available universe. Look-ahead bias occurs when a future value or publication affects an earlier decision. Revised macro data needs vintages: today&#x27;s revised GDP is not what a historical trader knew. Selection bias arises from choosing markets or start dates after seeing results. Delisted assets, missing sessions, FX direction errors, dividend double counting and split-induced signals can dominate the supposed edge. Do not fill missing execution prices with future values. Old marks can be flagged valuations within limits, not executable prices.
+
+Train/validation/test periods must be chronological, with leakage-aware separation where overlapping labels are used. Use training to define a candidate, validation to choose among planned alternatives and an untouched test once for evaluation. Repeatedly consulting the test set converts it into training. Walk-forward refits only on past data then evaluates later segments; expanding windows and rolling windows encode different assumptions about regime persistence. These are planned research features, not implemented app buttons. A written manual research protocol is not evidence that automated OOS validation occurred.
+
+Multiple testing: if 100 independent ineffective rules each have a 5% false-positive chance, the chance of at least one apparent success is `1−0.95^100 ≈ 99.4%`. Tests are often correlated, but the selection problem remains. Register the number of tried rules, include failures and consider appropriate corrections before a claim. A p-value measures data incompatibility with a specified null under assumptions, not the probability a strategy is profitable. Economic magnitude, costs, dependence, confidence intervals and replication matter.
+
+Regression `return = α + β×market + error` can distinguish broad market exposure from residual returns only under its sample/model assumptions. Autocorrelation invalidates naive independent-observation standard errors. Nonstationarity means distributions or relationships change over time. Apparent regimes defined after the outcome are another form of leakage. Fat tails, skew and volatility clustering make a normal-return model an incomplete stress model. Resample-based or Monte Carlo analysis must declare its dependence assumptions; shuffling daily returns can destroy important path structure. This app does not implement such methods or claim calibrated probabilities.
+
+Machine learning adds model capacity and opportunities for leakage. Fit scalers/imputers on training only; align features by their real publication time; purge overlapping labels where needed; compare against simple baselines after the same costs. Feature importance is not causal proof. Reject a model that needs future revisions, cannot survive modest cost changes, relies on a single year/listing, or cannot be reproduced from immutable inputs. A sensitivity surface with a broad stable region is more informative than one best point, but remains in-sample if evaluated on reused data.
+
+## Operational practice and configurable policy
+
+An investment policy statement should be filled in by the user: purpose ___; horizon ___; cash needs ___; capital genuinely available for risk ___; maximum tolerable loss in EUR and % ___; permitted instruments/venues ___; single-position and country/currency caps ___; liquidity reserve ___; review schedule ___; prohibited behavior ___; escalation/recovery process ___. Unknown fields remain unknown. No tool can infer your tolerance from an illustrative backtest.
+
+A research risk plan records data-source license, timestamp, raw/adjusted basis, FX convention, calendar assumption, capital/costs, order limits, stale-data threshold, experiment registry and stop-research conditions. A paper order checklist asks whether the hypothesis, entry/exit plan, quantity and next-open timestamp match the plan; after filling, reconcile cash/holdings/fees and note differences. Keep journals append-only. Distinguish an intentional new order from a replay. Back up private runtime data with the app stopped. Never publish account records with static educational material.
+
+## Exercises and worked solutions
+
+1. EUR translation: a JPY share rises 8%, while EUR per JPY falls 5%. Solution: `1.08×.95−1 = 2.6%` before costs, not 3% exactly.
+2. Split/dividend: two shares at EUR60 split 3-for-1, then pay EUR0.50 per post-split share. Raw price after ex is EUR19.50. Solution: six shares worth EUR117 plus EUR3 entitlement = EUR120. Cash payment transfers EUR3 from receivable to cash. Total basis remains EUR120 before any other changes.
+3. Costs: buy five units at EUR40, fixed fee EUR1, commission 10 bps. Solution: consideration EUR200, commission EUR0.20, total cash debit EUR201.20 before spread/slippage. Do not subtract those fees again from end equity.
+4. Compounding: +20%, −20%, +5% from EUR1,000. Solution: `1000×1.2×.8×1.05 = EUR1008`; +0.8% total. Average simple return is 1.667% per period and is not the compound result.
+5. Concentration: EUR3,000 in one listing, EUR2,000 in another and EUR5,000 cash. Solution: total equity EUR10,000, position weights 30%/20%, invested exposure 50%. Country weights may sum to 50% when cash is separately shown. Cash belongs in the denominator.
+6. Drawdown: EUR100→120→90→110. Solution: maximum drawdown `90/120−1 = −25%`, still unrecovered at EUR110. A 33.33% gain from EUR90 is needed to regain EUR120.
+7. Leakage: use an earnings report released March 10 to trade March 1 because its period ended December 31. Solution: invalid; align availability to March 10 (or later actual public availability), then use the next allowable execution event.
+8. Order replay: submit PAPER-X, restart and submit the same payload. Solution: one durable fill, returned again. Change quantity under PAPER-X: reject canonical conflict. New intention requires a new ID and nondecreasing simulation time.
+9. Hypothesis audit: a momentum rule wins only with zero fees in one selected country/year. Solution: reject a robustness/profitability claim; document selection, rerun planned costs and untouched periods with lawful real data. The synthetic app cannot repair the evidentiary gap.
+10. Policy exercise: fill every IPS blank and invent two stress scenarios, including one correlated price/FX loss. Solution rubric: values must be user supplied, internally consistent and within cash/liquidity needs; passing is a documented review, not adopting any numeric template here.
+
+## Glossary
+
+Alpha: residual return relative to a specified model. Ask/bid: lowest sell/highest buy quote. Basis point: 0.01 percentage point. Benchmark: declared comparison portfolio. CAGR: compounded annual growth by elapsed time. Corporate action: event changing ownership/cash entitlement. Covariance: joint deviations from means. Drawdown: decline from prior equity peak. Ex date: entitlement boundary. Exposure: invested value relative to equity. FIFO: first acquired lot matched first. FX: currency conversion. Liquidity: ability to trade size at acceptable cost. MIC: venue identifier. Momentum: persistence hypothesis based on past return. NAV: fund net asset value. Overfitting: fitting sample noise that fails later. Point in time: only information available by the decision. Provenance: source, retrieval and immutable identity. Receivable: owned payment claim not yet cash. Rebalance: restore target weights. Regime: hypothesized state of market dynamics. Slippage: execution difference beyond declared reference. Spread: ask minus bid. Survivorship: omission of failed/delisted instruments. TWR: chain-linked return excluding external-flow effects. UCITS/PRIIPs/KID: regulatory/product concepts requiring instrument-specific official checks. Volatility: dispersion of returns under a stated convention.
+</pre></article><article><h2><a href='USER_GUIDE.html'>USER GUIDE</a></h2><pre># User guide
+
+## Start and orientation
+
+Follow the native PowerShell setup in the repository README. The entry point is `app/main.py`, port 8501 bound to loopback. All screens display SIMULATION ONLY and SYNTHETIC SAMPLE. The source is deterministic arithmetic generator v1, CC0; provenance retrieval timestamp is 2026-01-01 UTC and observations cover 2024–2025. This is not data freshness for present trading. The simplified weekday calendar excludes January 1 and December 25; it does not reproduce exchange holidays.
+
+## A first experiment
+
+1. Open Global Dashboard. Change the watchlist and read country, currency and source fields. None of the DEMO IDs is a real ticker or an availability assertion.
+2. Market Explorer filters the registered country, sector, currency, class and venue. Empty filters mean all currently remaining rows.
+3. Asset Research selects a listing and a date interval. Raw prices are execution inputs. The separate local gross return index uses the engine&#x27;s point-in-time split/dividend helper, so the US split is not reported as a 50% investment loss. FX and costs are excluded from that educational index; EUR account returns are in backtests.
+4. Strategy Builder or Backtesting Lab selects one of three active strategies. Set universe, dates, lookback, top N, initial EUR capital, costs and limits. Buy-hold ignores lookback/top N. Trend needs the lookback number of observations; momentum needs one additional observation. Earlier data provides warm-up; only the configured run dates are traded.
+5. Run backtest and benchmark. The benchmark uses the same universe, dates, capital, costs and execution rules. Read warnings before metrics. No fills can be a valid consequence of limits, not a software crash. Low nominal local prices in several synthetic currencies lead to volume-cap rejections; these are deliberately visible.
+6. Download JSON for configuration, provenance, metrics, warnings, equity and fills. CSV exports separate equity and fills. Save experiment writes a durable manifest. Select repository IDs under Compare saved experiments; each shows parameters, metrics and equity. The repository ID differs from the engine experiment hash.
+
+Initial capital/cost/limit defaults are illustrative. Do not interpret EUR10,000 or a 30% position cap as advice. The engine permits long-only unleveraged cash equity/ETF-like units; no shorting, derivatives, leverage or stops are implemented. Aggregate weights cannot exceed one. Remaining weight is EUR cash with zero interest.
+
+## Portfolio and risk
+
+Portfolio Simulator takes listing weights as decimal fractions, e.g. 0.10 means 10%, and once/monthly rebalancing. It uses the same engine and defaults as backtesting, including costs and rejection rules. Weights must sum to at most one. Contributions and TWR are deferred: do not treat this as a savings-plan projection.
+
+Risk Dashboard values the durable paper account at its simulation cursor and includes cash, positions and dividend receivables. Currency buckets include all three. Country/sector buckets include securities and attributable receivables, with cash separate; total equity is the denominator. Price shocks affect positions; foreign FX shocks affect foreign positions and receivables. These are instantaneous arithmetic scenarios, not probabilities, VaR or forecasts. Latest in-session backtest metrics supply experiment drawdown. No risk budget is personalized until the user defines one.
+
+The tax control is an isolated estimate `max(0, gain − remaining allowance) × supplied effective rate`. Enter your own scenario inputs; there is no legal default. It neither withholds cash nor imports broker tax records. Fund exemptions, loss baskets, foreign withholding, church-tax rules and advance lump sums are excluded. Consult the sourced tax guide for scope and current official documents.
+
+## Durable internal paper practice
+
+Paper Trading asks you to initialize a new private account explicitly with configurable initial capital (illustrative default EUR10,000), then retains that capital on restart. Risk and Journal pages ask you to initialize first rather than silently creating an account. It displays the saved capital and cursor. To study a separate account, stop the app and launch with a separate `GMRL_RUNTIME`; never erase a prior account to hide losses. It cannot connect to a broker.
+
+Select a historical decision date (UTC end of day), listing, buy/sell and positive quantity. A manual order is attempted at the next scheduled historical opening, with current configured default costs/limits. One unit DEMO-DE on January 2, 2024 is a convenient small sample. Press Submit simulated order. Repeating the same button with the same PAPER ID and unchanged payload returns the same fill: reruns do not buy twice. For a genuinely new order, press New order ID first. Reusing an ID with a changed quantity, dataset or settings rejects. New operations cannot precede the saved simulation cursor; identical replay still succeeds. An end-of-sample decision has no next opening and rejects.
+
+Advance actions processes known dividend/split events and payments to the selected historical cutoff without inventing a trade. It may reject backward or unavailable cutoffs. Orders are whole manual quantities or reject; insufficient cash including fees, excess concentration, excessive volume, stale FX, sell quantity and split-between-decision/open are actionable errors. Account snapshot, canonical orders, fills and action records remain visible.
+
+Trade Journal appends hypothesis, entry/exit plan, lesson and optional PAPER link. Revisions are new entries referencing the previous entry ID in the text. Prior rows stay intact. Export journal JSON privately; it is never included in the static build. After restarting the app, revisit Paper Trading and Trade Journal to confirm the same durable state.
+
+## Data and learning
+
+API Management reports the actual offline sample adapter, persisted usage/debits and cache-record count. Unknown quota means unknown. The offline test fetches two sample sessions without network or credentials. Catalog providers are research entries, not enabled live feeds. No external connectivity probe is exposed in the application. A separate optional bounded World Bank GDP metadata helper exists in the package; it is not an active market-data adapter and normal offline use never calls it. Global Macro Dashboard shows only clearly synthetic FX; no invented current inflation, yield curve or commodity statistics are displayed.
+
+Learning Center searches guide content, then displays the selected Markdown safely. Static companion Learning library searches all allowlisted guide text in the browser. Static reports are fixed computed fixtures; the website cannot submit orders, edit journal data or execute new simulations. The complete citation URLs remain in escaped guide text and the source register.
+
+## Troubleshooting and recovery
+
+No observations: choose dates in 2024–2025 and a nonempty universe. Reversed bounds: correct start/end. No fills: inspect warm-up, concentration/volume limits, costs and order-cancellation warnings rather than weakening checks for attractive returns. A paper time error: select a later decision and a new ID or replay the exact old payload. Account-capital conflicts: retain the original capital; use a separate private runtime for a separate scenario. Close other app processes before backing up `.runtime` with native file copy. Restore the complete directory together, not individual SQLite files during writes. Keep backups and exports private. There is no network dependency in ordinary sample use.
+
+## Deployment and future updates
+
+The source target is <a href='https://github.com/Fivenan/stock-analysis'>Fivenan/stock-analysis</a>. The repository is private. Its `main` branch contains the Python application, documentation and preserved original `wiki/`. The separate `gh-pages` branch must contain only the reviewed generated contents of `build/site/`, with `index.html` and `.nojekyll` at the branch root, not inside a nested `build/site` directory. Do not publish the checkout, runtime accounts, journals, imports, exports, credentials or private configuration.
+
+GitHub Pages serves the static companion only. Keep Streamlit running locally using the Windows setup in the README; Pages cannot execute Python, run new simulations, submit orders or save journal entries. The builder includes only allowlisted guides, assets and computed synthetic reports. Review its generated files and SHA-256 `manifest.json` before publication; the manifest records artifact integrity, not approval or deployment success.
+
+<a href='https://github.com/Fivenan/stock-analysis/settings/pages'>Pages settings</a>: select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**, after that branch exists. Pages for a private repository requires an eligible GitHub plan; eligibility is unverified. Retain the repository&#x27;s private visibility. If the plan does not permit Pages, keep the static output local until an eligible hosting arrangement is explicitly chosen.
+
+The intended address is <a href='https://Fivenan.github.io/stock-analysis/'>https://Fivenan.github.io/stock-analysis/</a>. This is a target, not a verified live deployment. The remote branch commits and GitHub Pages deployment history are the authority for current publication state; local acceptance or a successful build does not establish that the site is live.
+
+For a future update:
+
+1. Review the source changes and rerun appropriate local tests using the existing Windows environment.
+2. Run the builder twice and compare the manifests and output bytes. Inspect every generated file, relative link and manifest entry, then complete the release audit for public-safe content.
+
+```powershell
+# [modifying] Rebuild the allowlisted static companion
+.\.venv\Scripts\python.exe scripts/build_static.py
+# [modifying] Run static acceptance tests; tests also regenerate build/site
+.\.venv\Scripts\python.exe -m pytest tests/integration/test_static.py tests/integration/test_acceptance.py -k static
+```
+
+3. Commit and publish the reviewed source to `main`; publish only the audited static directory contents to `gh-pages` using ordinary non-force Git updates. Use the existing secure GitHub login; never paste a token into a command, guide or commit. Resolve remote divergence by reviewing and integrating it before publishing.
+4. Confirm the remote commits, Pages settings and successful deployment history, then check the target URL and its assets under `/stock-analysis/`. Record the observed result before claiming publication.
+
+The 52-wheel hash lock and verified setup are Windows CPython 3.12 only. Cross-platform installation and operation remain unverified.
+</pre></article><article><h2><a href='LEARNING_PLAN_90_DAYS.html'>LEARNING PLAN 90 DAYS</a></h2><pre># 90-day learning and paper research plan
+
+Days 1–30 build understanding; days 31–60 practice reproducible backtests; days 61–90 practice internal paper operations only. Ninety days passing never authorizes live trading. Adapt time spent and policy inputs to your situation. All exercises use synthetic data unless a later separately reviewed lawful dataset is supplied.
+
+| Week / days | Measurable objective | Exercise and review evidence |
+|---|---|---|
+| 1 / 1–7 | Explain shares, funds, bonds, currencies and derivatives in your own words | Read beginner guide; write five instrument cards with ownership claim, currency, loss mechanism and access question; solve exercises 1–2 |
+| 2 / 8–14 | Reconcile three EUR trade examples to the cent | Calculate spread, commission and FX costs; explain order types and next-open timing; solve exercise 3 without looking, then check solution |
+| 3 / 15–21 | Distinguish local return, EUR return and cash flows | Reproduce split/dividend examples; inspect DEMO-US raw prices versus action-safe index; show why the split is not a 50% wealth loss |
+| 4 / 22–28 | Write a user-supplied policy and market-access checklist | Complete IPS blanks; compare direct listing, ETF, ADR and commodity equity; find dated official evidence in source register; leave unknown eligibility explicit |
+| 5 / 29–35 | Finish foundation review by day 30; define one frozen hypothesis on day 31 | Score beginner exercises; preregister universe, strategy, benchmark, dates, costs, lag and rejection criteria; do not optimize |
+| 6 / 36–42 | Reproduce one saved experiment from parameters | Run buy-hold and same-cost benchmark, save and export JSON/equity/fills; reconcile initial equity and two fills; record repository ID and provenance hash |
+| 7 / 43–49 | Explain all three implemented strategy rules and warm-up | Run trend and momentum with fixed lookback; compare warnings and rejected orders; change one parameter as a labeled in-sample sensitivity exercise, retain failures |
+| 8 / 50–56 | Detect five forms of invalid backtest evidence | Audit leakage, survival, publication dates, split/dividend handling and FX; manually outline chronological holdout/walk-forward protocol; acknowledge these app features are deferred |
+| 9 / 57–63 | Close backtest review by day 60; start paper-only operations on day 61 | Complete experiment card; reject unsupported profitability conclusions; place one small DEMO-DE paper buy; press identical submit twice and prove only one fill |
+| 10 / 64–70 | Demonstrate durable accounting and journal revisions | Restart, compare holdings/cash/fill ID; add hypothesis and lesson, append revision referencing prior ID; use a new PAPER ID for a later sell; export private journal |
+| 11 / 71–77 | Document three risk scenarios including foreign FX | Compare price −20%, FX −10% and combined shocks with cash/receivables; reconcile exposure denominator; review risk plan without assuming VaR or forecast probabilities |
+| 12 / 78–84 | Complete failure and recovery rehearsal | Attempt excessive quantity/conflicting replay/backward time; verify actionable rejection and unchanged account; stop app and copy runtime privately; document restore procedure |
+| 13 / 85–90 | Produce a reproducible final research dossier | Include policy, hypothesis, frozen configuration, failed experiments, cost/FX/action audit, exports, journal and limitations; self-review against the rubric below; continue paper only |
+
+## Weekly review template
+
+Week/date ___; objective ___; evidence file/experiment ID ___; expected result ___; actual result ___; discrepancy ___; data/cost assumptions ___; mistakes and corrections ___; unanswered question ___; next week&#x27;s bounded experiment ___. Score each objective 0 (not attempted), 1 (can repeat with help), 2 (can explain and reproduce unaided). Revisit any zero before increasing complexity. Keep a log of all tried parameters so failed rules do not disappear.
+
+## Experiment card
+
+Hypothesis and economic mechanism ___; precise falsification condition ___; universe and historical eligibility ___; raw/action basis ___; available-at timestamps ___; currency convention ___; train/validation/test intention ___; parameters frozen before inspection ___; benchmark ___; capital/cost/limits ___; rejection count/reasons ___; result/provenance IDs ___; statistical versus economic uncertainty ___; what this evidence cannot establish ___. With sample data the final field must include: no real-market strategy validation.
+
+## Policy and risk review template
+
+Purpose/horizon ___; available risk capital and cash needs ___; tolerable EUR/% loss ___; allowed instruments/venues ___; position/country/currency limits ___; minimum liquidity ___; maximum order/participation ___; stale-data response ___; operational backup ___; conditions to stop research ___; review person/date ___; outstanding suitability/legal/tax/access questions ___. Values remain blank until you supply them; default app settings are illustrations.
+
+## End-of-plan acceptance rubric
+
+Can you reproduce one experiment from exports, reconcile EUR cash and FIFO costs, distinguish local/FX returns, explain split/dividend neutrality, identify data leakage, retain failed trials, replay one order safely, recover private state and state every deferred capability? If any answer is no, repeat the relevant week. Even all yes means improved research practice only. Real datasets, source licenses, instrument access, operational/legal/tax questions and independent strategy validation remain separate gates; no schedule or app result grants live-trading approval.
+</pre></article><article><h2><a href='DATA_PROVIDER_MATRIX.html'>DATA PROVIDER MATRIX</a></h2><pre># Financial and macro data provider matrix
+
+Verified on **2026-10-18**. Evidence codes and retrieval limits are in <a href='SOURCES.html'>SOURCES.md</a>. **Product documentation is not a tested free-tier entitlement.** Only ECB and World Bank underwent the small anonymous response checks recorded there. No paid service, registration or key was used. Recommendations below are engineering judgments, not guarantees.
+
+## Reading the catalog
+
+V = VERIFIED narrow documented fact; P = PARTIALLY VERIFIED; U = UNVERIFIED. Every row&#x27;s status applies on the access date above. `Unknown` means no current validated value; it does not mean unlimited/free. Historical depth, delay, intervals and rights must be validated for each endpoint, dataset and plan, rather than inherited from a provider marketing page.
+
+Common field defaults for **every row**, unless explicitly overridden: actual free-tier authentication test = not performed; adjusted prices/corporate actions = unknown (not applicable to macro/report-only rows); reset time and per-endpoint quotas = unknown; German-resident signup/access restriction = unverified; redistribution = not approved. Research suitability is conditional on rights, point-in-time availability and schema validation. Backtesting requires actual historical observations, corporate actions and survivorship controls. Paper fills require suitably fresh prices, not a macro series. A fallback may supply a different economic measure and must never silently replace an instrument price.
+
+## Market-price candidates
+
+| Provider / type / official docs | Market and data product | Free limits, auth, intervals/depth and adjustment evidence | Status / use / main drawback / fallback |
+|---|---|---|---|
+| <a href='https://www.alphavantage.co/documentation/'>Alpha Vantage</a> — third-party licensed vendor; <a href='https://www.alphavantage.co/support/'>current support</a> | Equities, FX and other documented financial endpoints; advertised universe does not establish free global access | General free service **25 requests/day**; key required; reset boundary unknown. Real-time and 15-minute delayed US stocks described as premium. Adjustment support documented, but endpoint-specific free historical depth and corporate-action entitlement untested | V limit; P operational suitability. Small selected research universe after key approval. Do not assume daily-adjusted endpoint free. Fallback: licensed CSV import/offline fixtures. |
+| <a href='https://twelvedata.com/docs'>Twelve Data</a> — third-party vendor; <a href='https://twelvedata.com/pricing'>pricing</a> | Basic lists US equities/ETFs, FX and crypto; global exchanges and fundamentals may require higher plans/add-ons | Basic **8 weighted API credits/minute, 800/day**; key required; minute reset documented, daily boundary not verified. Time-series cost can scale per symbol; one batch HTTP call is not one credit. Full free history/adjustments not tested | V published plan; P actual entitlement. Candidate small US/FX studies. Global catalog is not free global coverage. Fallback: approved CSV; ECB only for reference FX. |
+| <a href='https://finnhub.io/docs/api'>Finnhub</a> — third-party vendor; <a href='https://finnhub.io/pricing'>pricing</a> | Financial/market-data candidate; endpoint universe and free regions need confirmation | Official pricing page did not yield readable terms. Numeric limits, depth, delayed/live status and adjustment fields unknown; auth requirements not runtime tested | P docs; U free numerical limits. Do not activate until a current plan is checked. Fallback: approved price CSV. |
+| <a href='https://site.financialmodelingprep.com/developer/docs'>Financial Modeling Prep</a> — third-party vendor | Official catalog covers market data, statements, FX and commodity endpoints | Free endpoint subset, key entitlements, current quota/reset, histories and corporate actions unknown here. Catalog alone establishes no free entitlement | P. Candidate fundamentals research after entitlement review. Revised fundamentals can cause leakage. Fallback: SEC filings for US issuer facts, not substitute prices. |
+| <a href='https://www.tiingo.com/documentation/general/overview'>Tiingo</a> — third-party vendor | Financial-data API candidate | Docs retrieved; current free instrument count, per-hour/day quota, key terms, adjustment policy and usable history not verified | P. Research only after plan/rights test. Fallback: licensed CSV. |
+| <a href='https://stooq.com/'>Stooq</a> — third-party data site | Downloadable market-data candidate; coverage not verified | No usable official machine-access/rights evidence retrieved. No assumed endpoint, free quota, adjusted-price policy or history depth | U. No automated scraping connector approved. Fallback: local authorized import. |
+| <a href='https://ranaroussi.github.io/yfinance/'>Yahoo Finance / yfinance</a> — unofficial community wrapper | Convenient Yahoo-derived research interface; no first-party supported financial API commitment established | Maintainer documents lack of affiliation; wrapper code license is not market-data license. No reliable current free quota/SLA/history assurance; adjustments and auto-adjust defaults require explicit version/endpoint checks | V unofficial classification; U operational entitlement. Optional personal research only after terms review, never required for demo. Fallback: approved CSV. |
+| <a href='https://docs.data.nasdaq.com/'>Nasdaq Data Link</a> — third-party dataset platform | Dataset-specific financial, economic and alternative data | Documentation fetch failed. No current claim of free equities, depth, limit or licensing. Some datasets may differ entirely from others | U. Select and license a named dataset before use. Fallback: relevant originating public agency. |
+| <a href='https://docs.openbb.co/platform/'>OpenBB</a> — integration platform/wrapper | Provider orchestration candidate | Official page resolved but current integration enumeration not extractable. No platform-wide grant of provider rights/keys/quotas | P. Evaluate maintained extensions later. Fallback: direct adapter to approved provider. |
+| <a href='https://eodhd.com/financial-apis/'>EODHD</a> — third-party vendor | EOD and financial API catalog | Demo access is not a personal free entitlement; no current numeric free quota, allowed symbols, full depth, adjustment entitlement or license confirmed | P. Test documented demo symbols only after review; do not invent universal demo access. Fallback: approved CSV. |
+
+No vendor above has a verified free global daily-equity dataset in this implementation. This is an intentional evidence boundary; do not generate real-looking global historical results to fill it.
+
+## Public macro, filings, minerals and positioning
+
+| Provider / official documentation | Data / time scale / identity | Auth / availability / rights and limits | Status / suitability / fallback |
+|---|---|---|---|
+| <a href='https://data.ecb.europa.eu/help/api/data'>ECB</a> | Official euro-area statistics, FX reference series; EXR daily example tested; frequencies/history series-specific | Anonymous documented GET returned 200. No unlimited service or SLA inferred. CSV/JSON/XML; `startPeriod`, `updatedAfter`, history options documented. Rights must be checked before redistribution | V docs and narrow runtime. Preferred EUR reference FX/macro adapter. Not executable bid/ask and not daily equity bars. Fallback: Bundesbank compatible series with provenance. |
+| <a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation'>World Bank Indicators</a> | Official global country indicators; often annual, series-specific history | Anonymous v2 GDP query returned 200; no key for that request. Pagination and missing values need validation; no guaranteed numeric unlimited quota inferred | V docs/runtime. Long-horizon macro context; not paper marks or unlagged signals. Fallback: official national statistics. |
+| <a href='https://fred.stlouisfed.org/docs/api/fred/'>FRED / ALFRED</a> | Official Fed aggregation; original sources differ; v1 includes vintage operations, v2 bulk | Key documentation linked; no key tested. Quota unknown. Some series carry third-party rights; ALFRED useful for revision-aware studies but vintage coverage differs by series | V documentation; P entitlement. Macro backtests with release timestamps/vintages. Fallback: source agency release archive. |
+| <a href='https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction'>Eurostat</a> | Official EU statistics; SDMX 2.1/3.0 and JSON-stat; dataset-specific frequencies | API officially free/public. Latest database version is not a vintage archive; no plan-wide numeric cap established | V docs; no runtime test. EU macro context; snapshot revisions locally. Fallback: national statistical institutes. |
+| <a href='https://statistiken.bundesbank.de/statistiken-en/help-991452?article=bundesbank-sdmx-web-service-api-991448'>Deutsche Bundesbank</a> | Official German/financial statistics and FX; series-specific frequency/history | REST current base `https://api.statistiken.bundesbank.de/rest`; GET/batching documented. No runtime test or service cap/rights confirmation | V docs; P operational. EUR macro/FX alternative; definitions may differ from ECB. Fallback: ECB matched measure. |
+| <a href='https://www.imf.org/en/Data'>IMF</a> | Official international macro datasets and forecasts | Official notice retires legacy portal November 5, 2025. Current `data.imf.org` migration/API entitlement requires validation; do not default to old SDMX endpoints | P. Macro research with forecast/revision labels. Fallback: World Bank comparable metric, explicitly not identical. |
+| <a href='https://www.oecd.org/en/data/insights/data-explainers/2024/09/api.html'>OECD SDMX</a> | Official comparative macro/statistics | API docs located; versioned flows, throttles, reset, endpoints and terms need dataset-specific check | P. Macro research; not tradable prices. Fallback: Eurostat/national agency. |
+| <a href='https://www.bls.gov/developers/'>BLS</a> | Official US CPI, employment and other statistics | Developer service located; unregistered/registered caps not asserted without detailed current validation | P. Release-aware macro context; revised values not historical knowledge. Fallback: archived official releases/FRED with licensing checks. |
+| <a href='https://www.eia.gov/opendata/documentation.php'>EIA</a> | Official energy supply, stocks, prices and related series, frequency varies | v2, free key registration documented; no key acquired. Pagination, row caps, exact rate limits/depth unresolved | V API/key docs; P runtime. Energy fundamentals; not all prices tradeable settlement marks. Fallback: authorized bulk official files. |
+| <a href='https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm'>CFTC COT</a> | Official delayed periodic positioning reports, classifications differ | Public reports located; no API quota or real-time entitlement asserted. Report date and release date must be separate | V reports; P adapter. Positioning research only; not futures prices. Fallback: official historical report files. |
+| <a href='https://www.sec.gov/search-filings/edgar-application-programming-interfaces'>SEC EDGAR</a> | Official company submissions and XBRL facts, not price bars | Public APIs documented; fair access/user identification and endpoint limits need implementation review. No blanket free-price claim | V docs; P runtime. US fundamentals with filing availability time. Fallback: official filings download/manual import. |
+| <a href='https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries/'>USGS minerals</a> | Official 2026 annual report, five-year statistics for over 90 materials | Public report/data release, not a standardized daily trading API. Numeric service limits not established | V publication; P data adapter. Minerals supply context; estimates/revisions need labels. Fallback: named commodity agency releases. |
+
+## Asian candidates: broad discovery, restricted claims
+
+| Region / provider / official or maintainer URL | Classification / product | Verification and unresolved access | Appropriate use / fallback |
+|---|---|---|---|
+| Indonesia — <a href='https://www.idx.co.id/en/market-data/'>IDX</a> | Official exchange | U: fetch failed; no approved free OHLC API, licensed history, quota or redistribution verified | Verify exchange licensing before machine use; authorized CSV. |
+| Indonesia — <a href='https://www.bi.go.id/en/statistik/Default.aspx'>Bank Indonesia</a> | Official central bank statistics | P: portal retrieved; automated endpoint/auth/depth/rights unknown | FX/macro context, not IDX equity prices; World Bank. |
+| Indonesia — <a href='https://webapi.bps.go.id/developer/'>Statistics Indonesia/BPS</a> | Official statistics developer portal | P: portal retrieved; current key/approval, regional-language metadata, quota and historical depth untested | National macro/context; World Bank. |
+| China — <a href='https://english.sse.com.cn/markets/indices/overview/'>Shanghai exchange</a> | Official exchange index portal | P: website verified, not free bulk price API entitlement | Indices metadata; licensed import. |
+| China — <a href='https://www.szse.cn/English/'>Shenzhen exchange</a> | Official exchange | U: fetch failed; free automated history/rights unknown | Manual licensed research; approved import. |
+| China — [PBOC](http://www.pbc.gov.cn/en/) | Official central bank candidate | U: not fetched/tested in this research; API/depth/auth/rights unknown | Monetary/FX release research after source verification; World Bank/IMF. |
+| China — <a href='https://www.stats.gov.cn/english/'>National Bureau of Statistics</a> | Official statistical candidate | U: not fetched/tested; no established automated-use entitlement | Official macro releases after verification; World Bank. |
+| China — <a href='https://tushare.pro/document/1'>Tushare</a> | Third-party data platform | P: docs retrieved; token/points and each endpoint&#x27;s current free history/quota/license not tested | Conditional research, never infer all A-shares free; licensed CSV. |
+| China — <a href='https://akshare.akfamily.xyz/'>AKShare</a> | Community wrapper | P: maintainer docs retrieved; each upstream site&#x27;s lawfulness/terms/stability requires review | No anti-bot workarounds; wrapper license does not clear data rights; official releases. |
+| Hong Kong — <a href='https://www.hkex.com.hk/Mutual-Market/Connect-Hub/Stock-Connect?sc_lang=en'>HKEX</a> | Official exchange/access program | V selected Stock Connect product docs; U free systematic price API/depth | Eligibility metadata only within verified scope; licensed data vendor/import. |
+| Taiwan — <a href='https://openapi.twse.com.tw/'>TWSE OpenAPI</a> | Official exchange Swagger API | V directory including dividend-related data; P each endpoint history, caching rights, delay and quotas; no runtime test | Candidate lawful local research; don&#x27;t assume historical OHLC from directory alone; approved files. |
+| South Korea — <a href='https://openapi.krx.co.kr/'>KRX</a> | Official exchange API portal | P: resolves but extractable plan details absent; registration/approval/free history unknown | Verify user entitlements, including foreign user onboarding; licensed CSV. |
+| South Korea — <a href='https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DE001&amp;apiId=AE00001'>DART/FSS</a> | Official corporate filings | V English disclosure API requires `crtfc_key`; no key test. Unspecified company limits search to three months; total history/quota/rights unresolved | Filings, not KOSPI/KOSDAQ prices; corporate releases. |
+| South Korea — <a href='https://ecos.bok.or.kr/api/'>Bank of Korea ECOS</a> | Official central bank API portal | P: page resolves, details not extracted; key, quotas and depth untested | Macro after approval; World Bank/OECD. |
+| Japan — <a href='https://jpx-jquants.com/en/spec/data-spec'>JPX/J-Quants</a> and <a href='https://jpx-jquants.com/en/spec/quickstart'>quickstart</a> | Official exchange-group service | V Free daily equity bars: two-year history delayed 12 weeks, registration/subscription/API key; Free CSV unavailable except calendar. No signup or German residency test, quota/rights/adjustment completeness not verified | Historical education within window, not current marks. TOPIX/futures/indices availability differs by paid tier; authorized CSV. |
+| Japan — <a href='https://www.stat-search.boj.or.jp/index_en.html'>Bank of Japan</a> | Official central bank data portal | P: portal verified; API mechanism/depth/limits not tested | Macro release research; World Bank/OECD. |
+| Japan — <a href='https://disclosure2.edinet-fsa.go.jp/guide/static/disclosure/WZEK0110.html'>EDINET/FSA</a> | Official disclosure candidate | U: fetch failed; v2/auth/depth/current license not validated | Filings only after current docs verified; issuer releases. |
+
+## Enablement checklist
+
+Before adding a real connector, record exact plan and account jurisdiction; successful permitted sample response; supported instrument IDs/MICs/currency; earliest/latest observations and intervals; raw/adjusted methodology; dividends/splits/delistings; timestamps/revisions; credit weight and reset; failure payloads; caching/derived-data/redistribution permissions; Germany access limitations; documentation/access date and allowed research/backtest/paper uses. Unknown required fields block that use, rather than becoming fabricated defaults.
+</pre></article><article><h2><a href='API_OPTIMIZATION.html'>API OPTIMIZATION</a></h2><pre># API routing, budgets and data engineering
+
+Access/research date **2026-10-18**. This document separates **verified external facts** from **recommended design**, **illustrative budgets** and **features whose implementation must be checked elsewhere**. It does not claim that every mechanism below is implemented.
+
+## Supported starting point
+
+**VERIFIED:** <a href='https://data.ecb.europa.eu/help/api/data'>ECB official API data documentation</a> and <a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'>World Bank official query documentation</a>, accessed 2026-10-18, support public data retrieval. Tiny keyless ECB daily USD/EUR reference FX CSV and World Bank German GDP JSON requests returned HTTP200; exact URLs and observed result sizes are in <a href='SOURCES.html'>SOURCES.md</a>. Only response/syntax availability was checked, not every financial value, full historical range or redistribution rights.
+
+Prefer ECB reference FX for a working EUR-accounting example, World Bank for macro context and clearly labeled local synthetic fixtures for reproducible strategy/accounting tests. Neither public macro API supplies a verified global equities price universe. Do not combine annual GDP observations with fabricated daily price bars and call that historical market data.
+
+## Common adapter and identity contracts — recommended design
+
+Adapters should expose capability metadata separately from operations: instruments/series supported, data kind, intervals, earliest/latest history if known, adjustment mode, delay, key/entitlement requirements, quota units and rights tags. Operations may include `fetch_bars`, `fetch_fx`, `fetch_macro`, `fetch_actions` and `healthcheck`; unsupported operations must fail clearly. An annual macro response must not satisfy the daily-bar interface merely because both contain numbers and dates.
+
+Use central instrument identity plus listing/provider mappings: internal ID, ISIN where applicable, MIC, local ticker, legal asset type, quote currency, unit/multiplier, provider symbol and evidence/validity dates. Never derive a TR listing from a Yahoo-style suffix. Mark illustrative mappings unverified and block real-price joins until checked. Separate ordinary shares, ADRs, ETFs, ETCs/ETNs, futures contracts, currencies and macro series.
+
+Every returned record needs source/provider/endpoint, retrieval timestamp (UTC), observation/session date and timezone, units/currency, adjustment mode, data status (actual/delayed/synthetic/missing/estimated), release/availability time where known and validation outcome. For macro data distinguish observation period, publication date, retrieval date and vintage. Missing availability time blocks claims of point-in-time backtest validity.
+
+## Cache, incremental ingestion and quality — recommended design
+
+1. Canonical request key: provider + endpoint + normalized instrument/series + interval + requested range + adjustment mode + relevant version. Never cache credentials in keys/logs.
+2. Store immutable raw response hashes/metadata if rights allow; normalized columnar Parquet for bars and SQLite/DuckDB metadata/query layer as environment permits. Cache format choice is not proof of historical accuracy. Do not claim Parquet if only CSV exists.
+3. Increment from last validated observation with a small overlap for corrections; retain revision history or snapshots. Do not assume newest observations are immutable. Backfill corporate actions and delistings separately.
+4. Configure TTL by data product: illustrative EOD cache 24h after expected publication, FX reference cache until next publication, annual macro days rather than seconds, reference mappings weekly with explicit expiry. These are design defaults, not provider guarantees.
+5. Validate schema, finite/positive required prices, ordering, duplicate dates, OHLC relations, units/multipliers, expected sessions, missing values, extreme jumps and corporate-action consistency. Never forward-fill a non-trading day into an executable fill without explicit model policy.
+6. Pick one total-return policy: raw prices plus explicit distributions/actions, or a documented adjusted series with consistent accounting. Do not add cash dividends on top of an already dividend-adjusted total-return series. Verify provider adjustment semantics rather than assuming `adj_close` always means the same thing.
+7. Record quality flags and cross-check overlaps between legally usable sources. Do not silently splice providers with different venue, close time or adjustment policy. Flag discontinuities and retain provenance.
+
+## Quotas and retries — recommended design
+
+Maintain separate counters for HTTP calls, provider credits/weights, symbols/subscriptions, byte budgets and any per-minute/day quotas. Reservation is atomic before dispatch; reconcile charge semantics from actual provider documentation. Persist counters across app refresh/restart when required. Unknown quota/credit/reset must not become zero-cost/unlimited.
+
+Use a token bucket or equivalent for each applicable window and an independent daily allowance. Honor Retry-After and documented reset timezone; otherwise configure a conservative boundary and expose uncertainty. Exponential backoff with jitter and maximum attempts for transient network/429/5xx errors; no retry loop on invalid keys, forbidden licenses, bad symbols or exhausted daily allowance. Count retry attempts in the request log; don&#x27;t assume failed calls cost nothing. Add connection/read timeouts, circuit breaker and user-visible stale-cache fallback. No key rotation/account multiplication to evade quotas.
+
+Batch only where the endpoint and license permit. One request can contain many symbols and still consume per-symbol weighted credits. Conditional requests and cached metadata can reduce transfer; a 304 does not automatically imply no quota charge. Disable connectors when current terms or returned entitlement errors contradict stored assumptions.
+
+## Worked budgets — illustrative, not advertised entitlements
+
+Verified published facts: <a href='https://www.alphavantage.co/support/'>Alpha Vantage support</a> says general free service **25 requests/day**; <a href='https://twelvedata.com/pricing'>Twelve Data pricing</a> shows Basic **8 API credits/minute and 800/day**, with time-series examples costing one credit per symbol and other endpoints costing more. Accessed 2026-10-18. No authenticated entitlement test occurred. Endpoint availability, daily reset boundary and exact retry charging remain unresolved.
+
+Assume N already-approved symbols, one incremental time-series update per symbol/day, cost one credit each, no pagination/retries, and 10% rounded-up reserve. These are arithmetic assumptions, not a market-coverage guarantee. Discovery, actions, fundamentals and FX are extra.
+
+| Symbols N | Unbatched HTTP calls/day | Weighted credits/day | Credits including ceil(10% reserve) | At 8/min: minimum charged minute slots, excluding reserve | Planning implication |
+|---|---:|---:|---:|---:|---|
+| 10 | 10 | 10 | 11 | 2 | Could fit a small eligible tier; Alpha Vantage&#x27;s 25/day leaves little space for expanded workloads. |
+| 50 | 50 | 50 | 55 | 7 | Exceeds 25 requests/day if one request per symbol; don&#x27;t imply a global free feed. |
+| 100 | 100 | 100 | 110 | 13 | Potential weighted budget fits 800/day if endpoints/symbols entitled, not proven here. |
+| 500 | 500 | 500 | 550 | 63 | Leaves 250 credits under 800 after this reserve; neither free global coverage nor execution freshness follows. |
+
+The minute-slot count is `ceil(N/8)`; it is not an elapsed-time guarantee because bucket reset phase, latency and retries differ. If an explicitly allowed batch size B=10 is used, HTTP calls could be `ceil(N/10)` = 1/5/10/50 while credits remain 10/50/100/500. B=10 here is a teaching assumption, **not a verified Twelve Data batch limit**. A 100-credit-per-symbol endpoint would instead require 1,000/5,000/10,000/50,000 credits; cheap time-series arithmetic cannot be reused for fundamentals.
+
+ECB multi-currency series keys are documented by <a href='https://data.ecb.europa.eu/help/api/data-examples'>official examples</a>, accessed 2026-10-18. Use one bounded multi-series request where appropriate, but no verified daily quota or unlimited entitlement is asserted. World Bank can use indicator/country/date queries with pagination; do not budget “one request forever” for arbitrarily large queries.
+
+## Routing policy
+
+| Data need | First choice within verified scope | Fallback / stopping condition |
+|---|---|---|
+| EUR reference FX | ECB documented series with explicit quote direction | Matched Bundesbank measure after validation; stale cached value labeled; reject missing FX for an actual return calculation. |
+| Country macro context | World Bank v2 documented indicator | National agency/Eurostat/IMF after mapping and terms review; do not substitute unlike definitions. |
+| Global equity daily bars | User-authorized licensed import; later explicitly entitled provider adapter | Offline synthetic fixtures for software tests, with permanent synthetic label. No invented live history. |
+| Current paper execution marks | Validated fresh eligible data, if separately configured | Reject simulated fill with stale/missing price; offline demo uses its own simulation clock. |
+| Corporate actions | Same approved source and adjustment policy as bars | Stop affected accounting/backtest if material actions unknown. |
+| Point-in-time macro study | Verified publication/vintage archive | Label exploratory current-vintage analysis; do not assert historical tradability. |
+
+No fallback may increase permissions, remove licensing restrictions, change real execution routes, relabel synthetic data or hide missing history.
+
+## Verification acceptance criteria
+
+Unit/mocked contract tests should check quota units, rate-window exhaustion, retries, cache hits, stale failures, schema rejection, FX direction, corporate-action policy and secret redaction. Small optional network smoke tests must be separate from deterministic/offline tests. Real historical output needs validated actual source data and source dates; deterministic fixture success only establishes software behavior.
+
+Actual checks performed during this research: official document retrieval; two keyless HTTP response checks recorded in SOURCES.md; local existence/content verification of this staged dossier. No broker connectivity, registration, authenticated free tier, historical backtest, sustained throughput, quota exhaustion, licensing clearance, runtime adapter integration or tax-engine test was performed by this research worker.
+</pre></article><article><h2><a href='BROKER_INTEGRATION.html'>BROKER INTEGRATION</a></h2><pre># Broker compatibility and simulation boundary
+
+Research/access date **2026-10-18**. The initial product requires no broker account and has **internal paper execution only**. Data adapters, instrument identity, accounting and execution must be separate components. A future API key must never activate live routing automatically.
+
+## Trade Republic evidence
+
+| Question | Finding | Status / primary evidence, accessed 2026-10-18 |
+|---|---|---|
+| Public supported trading/developer API? | No first-party public API specification, supported SDK, API contract or paper endpoint was located in official support searches. Absence of located documentation is not proof no API exists. Banking/PSD2 access, if available, would not by itself establish securities execution support. | **UNVERIFIED** capability; <a href='https://support.traderepublic.com/de-de/705'>official support</a> is product evidence, not API authorization. Requires explicit broker-supported documentation before any connector. |
+| Unofficial community interfaces? | They must not be treated as supported APIs. No private-interface login, reverse-engineered authentication, browser automation, anti-bot workaround or credential collection is approved. | **Design decision**; no unofficial code was downloaded, installed or run. |
+| Venue | German support states stocks, ETFs and bonds use LS Exchange; stocks/ETFs may fall back to Tradegate on LS Exchange failure. Derivatives use stated issuers OTC where available. | **VERIFIED**, <a href='https://support.traderepublic.com/de-de/705'>German venue page</a>. This is not direct NYSE, Xetra or Asian home-market routing. |
+| Fees | Support describes EUR1 external settlement cost for an individual securities trade, product costs and possible currency conversion costs for foreign dividends. Exact instrument/order disclosure and current schedule prevail. | **VERIFIED** general description, <a href='https://support.traderepublic.com/en-de/809-What-is-the-ex_post-cost-information'>ex-post costs</a>. Do not apply one fee universally to savings plans, corporate actions or every product. |
+| Tax records | Official German annual-tax-certificate page located, but no substantive details extracted. Exact delivery date, downloadable formats and complete field schema not verified. | **PARTIALLY VERIFIED**, <a href='https://support.traderepublic.com/de-de/1078-Was-ist-die-Jahressteuerbescheinigung'>certificate page</a>. No assumption of CSV portfolio/API export. |
+| Tax withholding | Domestic withholding framework exists; this research does not verify every TR operational withholding/reclaim process or account circumstance. | **PARTIALLY VERIFIED**, <a href='https://www.gesetze-im-internet.de/estg/__43.html'>EStG section 43</a>; reconcile actual official statements. |
+| Individual global security availability | No account/instrument search or current catalog inspection performed. | **UNVERIFIED for every instrument**, including ADRs, UCITS funds and commodity products. No fabricated TR mappings. |
+
+Paper transaction costs may use an **illustrative configurable** EUR1 contribution plus separate spread, slippage and FX assumptions. Label that preset as a simplified assumption; it does not reproduce all current broker costs. Reference-market daily closes cannot establish LS Exchange bid/ask or a real fill. No claim of simulated broker fidelity should be made.
+
+## Officially documented paper alternatives
+
+| Option | What is established | Unresolved German-resident/account/cost conditions | MVP decision |
+|---|---|---|---|
+| Internal paper broker | Local simulated cash/positions/orders; deterministic fixture prices; no network execution | Fill model, calendars, costs and latency are assumptions requiring tests. No real-time entitlement is needed for offline demo | Required default; non-live IDs, visible simulation state, no remote order adapter. |
+| Alpaca | Official <a href='https://docs.alpaca.markets/us/docs/paper-trading'>paper documentation</a> describes separate paper environment and limitations | **VERIFIED docs**, accessed 2026-10-18; no signup/runtime test. German residency eligibility for a particular paper-only/live account, available feeds/instruments and current costs must be confirmed. Simulated fills omit real execution effects; no assumption of worldwide live brokerage eligibility | Future optional paper connector only after current terms review; no new account required for MVP. |
+| Interactive Brokers | Official <a href='https://www.interactivebrokers.com/campus/trading-lessons/request-paper-trading-account/?retakeFinal=1'>paper-account instructions</a> distinguish paper accounts and trial/API access; <a href='https://www.interactivebrokers.com/campus/ibkr-api-page/webapi-doc/'>supported Web API docs</a> exist | **VERIFIED docs / PARTIALLY VERIFIED account requirements**, accessed 2026-10-18. Official pages differ by interface/account context about approval/funding. Trial UI access does not prove API permission. Check TWS vs Web API, entity/residency, approved account, funding, permissions, market-data subscriptions and fees separately | Future optional paper integration; not a keyless substitute and not required for demo. |
+
+No live eligibility, fees, supported country onboarding or authenticated paper execution was tested for Alpaca or IBKR. Neither alternative is a recommendation to open/fund an account. No credentials were requested.
+
+## Import and reconciliation design
+
+An optional manual import can accept user-owned, sanitized statement data after schema mapping. Retain original document hash, import date, transaction ID, booking/trade/value date, ISIN, quantity, cash currency, gross amount, fees, FX conversion, withholding and corrections. Unknown fields remain unknown. Do not assume a broker provides this exact machine-readable schema.
+
+Compare broker statements to an independent cash-and-position ledger; classify transfers, dividends, tax debits/refunds, splits and sales distinctly. Match booking corrections and avoid duplicate imports. Simulated taxes stay separate from actual withholding. Account holdings must not be sent to market-data search endpoints; only the public symbol required for the approved request is sent.
+
+## Future integration gate
+
+A new, explicitly implemented paper adapter would need documented support, endpoint allowlist, separate paper account configuration, response contract tests, account-type verification, stale-data/limits checks and paper-only order IDs. Live execution would require a separate implementation and explicit authorization/review; no configuration switch or credential entry should bypass this boundary.
+</pre></article><article><h2><a href='GERMANY_TAX_AND_REGULATION.html'>GERMANY TAX AND REGULATION</a></h2><pre># German tax and retail regulation research
+
+Evidence accessed **2026-10-18**. Scope: educational research for a private individual potentially taxable in Germany. No residence, church affiliation, marital status, other income, allowance usage or personal circumstances are assumed. This is not a tax return or a substitute for a qualified German tax adviser. The software should provide a clearly labeled **simplified estimate**, distinct from actual broker records.
+
+## Current law and evidence
+
+| Topic | Verified finding and practical boundary | Status / official evidence, accessed 2026-10-18 |
+|---|---|---|
+| Standard capital-income rate | Section 32d generally specifies 25%; statutory exceptions, assessment elections and foreign tax credits can change the outcome. Church tax interacts with the calculation; simply adding a church percentage to 25% is wrong. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/estg/__32d.html'>EStG 32d</a>. |
+| Solidarity surcharge | Relevant surcharge rate is 5.5% of its applicable tax base, not 5.5% of investment proceeds. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/solzg_1995/__4.html'>SolzG 4</a>. |
+| Allowance | Sparer-Pauschbetrag EUR1,000, or EUR2,000 for jointly assessed spouses under the statutory conditions. This is a total annual allowance, not one allowance per broker. Section 20 covers dividends and relevant securities disposals. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/estg/__20.html'>EStG 20</a>. |
+| Loss offsets that remain | Capital losses do not generally offset salary/other income categories. Share-disposal losses retain their restriction to share-disposal gains in the retrieved current statute. Carryforwards and certificates matter. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/estg/__20.html'>EStG 20(6)</a>. Do not net every asset&#x27;s P&amp;L into one unrestricted pot. |
+| Repealed special restrictions | JStG dated December 2, 2024 removed the special derivatives loss circle and monetary limit for claim-default losses. Old claims of a universal EUR20,000 derivatives-loss cap are obsolete for this current-law research. | **VERIFIED**, <a href='https://www.bundesfinanzministerium.de/Content/DE/Standardartikel/Themen/Steuern/das-aendert-sich-2025.html'>BMF 2025 changes</a> and <a href='https://www.bundesfinanzhof.de/de/entscheidung/entscheidungen-online/detail/STRE202520073/'>BFH decision</a>. Historical/open-year treatment and bank transition corrections require case review; repeal does not remove all loss rules. |
+| Funds/ETFs | Tax classification depends on the fund and investor, not its ticker or distribution policy. Private qualifying equity-fund income has 30% partial exemption; mixed-fund rate is half that. Real-estate categories differ. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/invstg_2018/__20.html'>InvStG 20</a>. A mining equity fund and commodity debt product need not share classification. |
+| Vorabpauschale | Section 18 provides an annual deemed-income mechanism tied to 70% of the annual basis interest and start-of-year value, constrained by fund value growth/distributions and statutory timing rules. | **VERIFIED mechanism**, <a href='https://www.gesetze-im-internet.de/invstg_2018/BJNR173010016.html'>InvStG consolidated section 18</a>. For 2026 the <a href='https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Investmentsteuer/2026-01-13-basiszins-berechnung-vorabpauschale.pdf?__blob=publicationFile&amp;v=1'>BMF letter of January 13, 2026</a> verifies **3.20% basis interest** and deemed receipt **January 4, 2027**. Other years need their own dated source. |
+| Avoid double taxation at disposal | Prior Vorabpauschalen are taken into account under the disposal-gain rules. | **VERIFIED**, <a href='https://www.gesetze-im-internet.de/invstg_2018/__19.html'>InvStG 19</a>. Requires a persistent tax ledger rather than subtracting an arbitrary annual estimate twice. |
+| Foreign withholding | Section 32d(5) provides conditions/limits on creditable foreign tax, including treaty reduction/reclaim implications. Gross foreign withholding is not automatically all creditable. | **VERIFIED framework**, <a href='https://www.gesetze-im-internet.de/estg/__32d.html'>EStG 32d</a>. **UNVERIFIED:** specific treaty rate, beneficial-owner eligibility and reclaim procedure for any country/instrument. |
+| German versus foreign broker | Section 43 establishes withholding circumstances. A foreign account does not by itself prove German tax was withheld or that annual reporting is complete. | **VERIFIED statutory framework**, <a href='https://www.gesetze-im-internet.de/estg/__43.html'>EStG 43</a>; broker-specific application **PARTIALLY VERIFIED**. |
+| FX and physical assets | Securities proceeds measured in EUR, standalone foreign-currency holdings and physical assets must not be assigned one tax category automatically. Private-disposal rules in section 23 differ from capital-income rules. | **VERIFIED distinction of statutory regimes**, <a href='https://www.gesetze-im-internet.de/estg/__23.html'>EStG 23</a>; exact account/product classification **UNVERIFIED** pending facts. |
+| Retail packaged products | Relevant PRIIPs sold to retail investors require the prescribed KID framework. Ordinary share ownership is not equivalent to purchasing an ETF or structured commodity debt instrument. | **VERIFIED framework**, <a href='https://eur-lex.europa.eu/eli/reg/2014/1286/oj/eng'>EU Regulation 1286/2014</a>; product applicability/current consolidated rules require checking. |
+
+The retrieved legislation is the current online text as accessed; it is not evidence that every statement applied to every historical tax year. Do not backfill today&#x27;s rules into historical tax simulations without versioning them. BMF&#x27;s 2025 explanatory page describes the change; the BFH source independently identifies the December 2, 2024 statute. Precise commencement and treatment of a particular closed/open assessment, bank loss pot or correction remain case-specific checks.
+
+**VERIFIED supplementary details**, accessed 2026-10-18: <a href='https://www.gesetze-im-internet.de/estg/__44a.html'>EStG 44a</a> provides the Freistellungsauftrag mechanism for applicable withholding exemptions; the statutory allowance is not automatically multiplied across institutions. <a href='https://www.bzst.de/DE/Unternehmen/Kapitalertraege/KirchensteuerAbgeltungsteuer/kirchensteuerabgeltungsteuer_node.html'>BZSt church-tax guidance</a> identifies church-tax rate values of 8 or 9; the user&#x27;s liability/rate remains unknown. <a href='https://amtliche-handbuecher.bundesfinanzministerium.de/esth/2025/B-Anhaenge/Anhang-19/II/anhang-19-II.html'>BMF official 2025 income-tax handbook</a> distinguishes gains/losses on interest-bearing foreign-currency claims/accounts under section 20 from foreign-currency private disposals potentially under section 23, and avoids double counting. Do not assert every standalone FX gain is exempt after one year or every FX balance is capital income. These are classification questions requiring exact facts.
+
+Accumulating and distributing funds can both have taxable investment income; a distributing fund&#x27;s distributions affect the annual deemed-income calculation, and accumulation is not a blanket tax exemption. Keep distribution tax, deemed annual income and disposal adjustments in separate ledger events. This follows the verified InvStG sections above; no full fund-tax ledger is claimed implemented.
+
+## Illustrative EUR estimates
+
+**Arithmetic assumptions, not personal advice:** taxable capital-income base EUR2,000 after permitted offsets and allowance; no church tax, no foreign credit, no special exception. Tax = 2,000 × 25% = EUR500; solidarity surcharge = 500 × 5.5% = EUR27.50; total EUR527.50. This is 26.375% of this taxable base, not of all sales proceeds. Legal rate evidence is linked above; inputs are invented teaching values.
+
+**Fund example:** a verified qualifying private equity fund has EUR1,000 of relevant income. At a 30% partial exemption, EUR700 remains before applicable allowance/offsets. If a remaining EUR1,000 allowance covers that EUR700 and no other income consumes it, this example produces no estimated tax. Do not infer eligibility from an ETF label; source evidence is InvStG 20 above.
+
+**Vorabpauschale teaching example:** choose an explicitly hypothetical basis interest of 2%, start value EUR10,000, end value EUR10,500 and distributions EUR50, held all year. Illustrative base amount = 10,000 × 0.70 × 0.02 = EUR140; positive growth plus distributions EUR550 exceeds it; subtracting EUR50 distributions leaves EUR90 before any qualifying partial exemption and allowance. This is not a calculation using a verified current annual basis rate. Purchase-month proration, negative years, holdings changes and statutory booking timing require complete rules/data; the MVP should not claim those are implemented.
+
+**FX teaching example:** USD share bought for USD100 when EUR1 = USD1.10 and sold for USD110 when EUR1 = USD1.21 has unchanged EUR value before costs. This illustrates why an EUR securities gain cannot be inferred from a USD gain. It does not decide tax treatment of a separate USD cash balance or interest-bearing foreign-currency claim.
+
+## Estimator contract and exclusions
+
+Recommended minimum estimator inputs: tax year/rule version; realized gains supplied in EUR; relevant distributions; explicitly selected verified fund partial-exemption fraction; remaining annual allowance; permitted same-category offsets supplied by user; capital-tax rate; surcharge rate; optional church-tax setting only if correctly modeled. Tax output is `estimated`, carries assumptions and excluded features, and is never written as actual broker withholding.
+
+Conservative narrow implementation: estimate positive supplied taxable capital income after a configurable exemption/remaining allowance with default 25% and 5.5% surcharge and no church tax. Do not auto-classify securities, currency cash, physical metals, derivatives or funds from their names. If church-tax interaction is not implemented, show “excluded,” not a mathematically incorrect surcharge. An arbitrary church rate is a scenario parameter, not verification of the user&#x27;s state or liability. Annual Vorabpauschale basis rate must be an externally verified dated input or the calculation stays unavailable.
+
+Explicit exclusions unless separately built and tested: FIFO/tax-lot accounting, multiple bank loss pots/certificates, joint assessment, Günstigerprüfung, church tax, foreign withholding credit caps/reclaims, individual treaties, fund qualification changes, actual Vorabpauschale accrual/booking, return-of-capital/corporate actions, old holdings/transition rules, business assets and standalone FX/private-disposal classification. Broad annual net P&amp;L cannot stand in for these.
+
+## Withholding, statements and records
+
+Trade Republic&#x27;s <a href='https://support.traderepublic.com/de-de/1078-Was-ist-die-Jahressteuerbescheinigung'>German certificate page</a>, accessed 2026-10-18, was located but substantive details could not be extracted: **PARTIALLY VERIFIED**. Exact delivery timing, current export format, foreign dividend withholding/reclaims, loss certificates, correction processes and complete automatic withholding workflow remain **UNVERIFIED**. Do not import foreign-country help text as a German account guarantee.
+
+**Recommended record policy:** retain transactions, confirmations, broker annual certificates, gross/net dividends, withholding by country, purchase/disposal EUR conversions and source rates, corporate actions, fund classifications, annual basis-rate evidence, Vorabpauschalen already taxed, tax corrections and transfer history. Reconcile opening cash + deposits − withdrawals + booked flows to closing cash, and reconcile quantities independently. This is an engineering checklist; no universal legal retention term is asserted.
+
+## Dated research checklist / open issues
+
+- 2026-10-18: VERIFIED statutory standard rate, surcharge, allowance, continuing share-loss restriction, partial exemptions and annual deemed-income mechanism via sources above.
+- 2026-10-18: VERIFIED special derivatives/default loss repeal via BMF and BFH; exact individual retrospective correction process unresolved.
+- 2026-10-18: VERIFIED 2026 basis interest **3.20%** and deemed receipt January 4, 2027, from BMF January 13 letter; all other calculation years require their own verified dated rate.
+- 2026-10-18: UNVERIFIED country-specific DTA rates, foreign forms/reclaims, church-tax applicability/state rate and special product classifications; require exact facts and official sources.
+- 2026-10-18: UNVERIFIED individual PRIIPs/KID, prospectus, sanctions and broker permissions; keep product research separate from execution eligibility.
+
+Evidence is sufficient for a narrow educational estimator and a research checklist, not comprehensive German tax accounting.
+</pre></article><article><h2><a href='MARKET_ACCESS.html'>MARKET ACCESS</a></h2><pre># Global market and asset access
+
+Accessed **2026-10-18**. This is an access-research matrix, not a tradable list. **Trade Republic availability is UNVERIFIED for every individual instrument in this document.** A data feed listing an exchange establishes neither custody nor order eligibility. Home-market/direct access also depends on broker, account permissions, sanctions, local rules and the particular security.
+
+## Identity and permission model
+
+Store security identity separately from listing identity: internal instrument ID, ISIN where applicable, legal name/type/domicile, share class, listing ticker, operating/segment MIC, exchange, trading currency, economic currency exposures, primary/home listing, European listing or ADR/GDR relationship, provider mapping and mapping evidence/date. An ADR/GDR has its own identity, depositary terms, conversion ratio and fees; do not join it to ordinary shares as if interchangeable.
+
+**VERIFIED:** ISO 10383 defines MIC identification; the <a href='https://www.iso20022.org/market-identifier-codes'>official ISO register</a> is the authority (accessed 2026-10-18). Its October 12 publication has an October 26 implementation date; do not apply future changes immediately. Individual MIC examples below are **illustrative / UNVERIFIED against the actual register rows**. No fabricated ISIN/ticker is offered as verified. Production mapping must retain the exact checked source and validity interval.
+
+Required checks for every instrument: issuer prospectus and KID where applicable; exact ISIN/class; trading and settlement currency; current execution venue; broker order preview/eligibility; custody/depositary arrangements and corporate actions; bid/ask/liquidity during overlapping home sessions; tax classification; sanctions/foreign ownership and purchase limits. Until complete, mark `access_status=unverified` and keep research-only.
+
+## Country-by-country matrix
+
+All rows accessed 2026-10-18. `P` means a source/route exists but personal broker/instrument eligibility is PARTIALLY VERIFIED or UNVERIFIED. Currency and MIC columns are research examples, not verified catalog mappings. Named index targets are requested research universes, not directly purchasable securities.
+
+| Country / research targets | Home listing / currency / illustrative MIC | German retail route to investigate; direct vs other listing | Constraints and evidence/status |
+|---|---|---|---|
+| United States: NYSE, Nasdaq, S&amp;P 500, Nasdaq-100, Russell, sectors, Treasuries | USD; XNYS/XNAS | Ordinary share through permitted US/home or European listing; UCITS index/sector exposure; eligible individual bonds | P: US-domiciled ETFs often require a retail KID route that is unavailable; a specific ETF needs review, not an automatic ban on US stocks. <a href='https://eur-lex.europa.eu/eli/reg/2014/1286/oj/eng'>PRIIPs</a>, <a href='https://www.nyse.com/trade/hours-calendars'>NYSE calendar</a>. US withholding/treaty documentation and ADR fees differ. |
+| Germany: DAX, MDAX, German stocks, UCITS, government bonds | EUR; XETR illustrative | Home listing or supported European execution; verify fund share class/KID | V general TR venue: <a href='https://support.traderepublic.com/de-de/705'>LS Exchange, fallback Tradegate for stocks/ETFs</a>. U instrument eligibility. A Xetra research close is not TR execution. <a href='https://www.cashmarket.deutsche-boerse.com/cash-en/'>Deutsche Börse</a> portal retrieved, exact session calendar needs validation. |
+| France | EUR; XPAR illustrative | Home ordinary shares or eligible European listing; UCITS regional/sector funds | P: <a href='https://www.euronext.com/en/trading/trading-hours-holidays'>Euronext hours/calendar</a> located; actual listing/custody/transaction-tax treatment unverified. |
+| Netherlands | EUR; XAMS illustrative | Home ordinary shares or European listing; UCITS funds | P: <a href='https://www.euronext.com/en/trading/trading-hours-holidays'>Euronext</a>; verify dividend tax, venue and liquidity per instrument. |
+| United Kingdom | GBP/GBX; XLON illustrative | UK ordinary shares or European listing; UCITS exposure; ADRs only if actually offered | P: <a href='https://www.londonstockexchange.com/trade/trading-access/business-days'>LSE business-days page</a> resolved with no extractable details. U exact eligibility/calendar. GBX is pence, not GBP: factor 100 matters; stamp-duty treatment needs instrument-level checking. |
+| Switzerland | CHF; XSWX illustrative | Swiss ordinary shares/European listing; UCITS equity exposure | P: <a href='https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/trading-provisions/trading-hours.html'>SIX trading hours</a> located; listing access/withholding reclaim unverified. |
+| Nordic: Sweden, Denmark, Finland, Norway, Iceland | SEK, DKK, EUR, NOK, ISK; XSTO/XCSE/XHEL/XOSL/XICE illustrative | Home ordinary/European listing or diversified UCITS Nordic/global funds | U calendar evidence: the located <a href='https://www.nasdaq.com/market-activity/stock-market-holiday-schedule'>Nasdaq US-only schedule</a> is not evidence for Nordic calendars. Official Nordic calendar evidence is missing; individual venues and Oslo/Iceland permissions remain unverified. Regional label must not collapse currencies/holidays. |
+| Indonesia: IDX, Composite, resource exporters | IDR; XIDX illustrative | Direct IDX via an eligible intermediary if permitted; actually issued ADR/GDR/European listing; UCITS country/EM exposure | U direct German retail route/foreign ownership limits/settlement identity. <a href='https://www.idx.co.id/en/market-data/'>IDX market-data source</a> failed retrieval. Need broker, custodian and issuer confirmation; no assumed TR nickel-stock listing. |
+| Mainland China: Shanghai, Shenzhen, A-shares/indices | CNY; XSHG/XSHE illustrative | Selected Stock Connect securities through eligible intermediary; qualifying fund exposure; listed offshore company/ADR differs from A-share | V selected access mechanism: <a href='https://www.hkex.com.hk/Mutual-Market/Connect-Hub/Stock-Connect?sc_lang=en'>HKEX Stock Connect</a>. P personal route. Eligible list, ownership limits, northbound rules/calendars, capital controls and professional-only boards need instrument checks; no universal A-share access. |
+| Hong Kong: HKEX, H-shares, Chinese companies | HKD; XHKG illustrative | HK ordinary/H-share via supported broker; distinct ADR/European listing; UCITS region funds | P: <a href='https://www.hkex.com.hk/Mutual-Market/Connect-Hub/Stock-Connect?sc_lang=en'>HKEX</a>. Verify board lots, stamp duty, custody and share class; H-share is not identical to A-share. Corporate structure/VIE exposure requires issuer review. |
+| Taiwan: TWSE, TAIEX, semiconductors/electronics | TWD; XTAI illustrative | Home shares via eligible custodian; actually issued ADR; UCITS Taiwan/EM exposure | P official <a href='https://openapi.twse.com.tw/'>TWSE API</a> exists, but U investor onboarding/access and any specific mapping. ADR premium, fees, voting/ratio and geopolitical concentration require checks. |
+| South Korea: KOSPI, KOSDAQ, semiconductors, batteries, industrials | KRW; XKRX illustrative | Home shares via eligible broker/custodian; actual GDR/European listing; UCITS country/EM funds | P <a href='https://openapi.krx.co.kr/'>KRX API portal</a> located; U current foreign-investor onboarding, individual product access and custody. No assumption old registration requirements still apply. |
+| Japan: TSE, Nikkei 225, TOPIX, exporters, industrials, financials | JPY; XTKS illustrative | Home shares via eligible broker; European listing/ADR where issued; UCITS Japan/global exposure | V <a href='https://www.jpx.co.jp/english/equities/trading/domestic/01.html'>JPX trading hours</a> and <a href='https://jpx-jquants.com/en/spec/data-spec'>J-Quants data</a> docs; U individual execution access. Check board lots, withholding, liquidity, FX and custody. |
+
+No country route above implies that a particular share, fund or ADR is available at Trade Republic. No current sanctions list or personal account was checked. Those are explicit blockers for any future live route.
+
+## Asset-by-asset exposure matrix
+
+The following is a research taxonomy and **INFERRED route comparison**. Exact securities/ISINs, broker availability and liquidity are **UNVERIFIED**. Official product-family evidence: <a href='https://www.lme.com/en/metals'>LME metals</a>, <a href='https://www.cmegroup.com/markets/metals.html'>CME metals</a>, <a href='https://www.ice.com/products/Futures-Options/Energy'>ICE energy</a>, accessed 2026-10-18. These catalogs establish exchange products, not that all below have a liquid retail futures contract. <a href='https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries/'>USGS 2026</a> supports supply research for nonfuel minerals, not executable commodity marks.
+
+| Material | Physical exposure | Futures/index/ETC/ETN route to investigate | Equity/sector/indirect route and important mismatch |
+|---|---|---|---|
+| Copper | Industrial storage/quality costs | Listed metal futures, broad industrial-metal indices or eligible debt products; verify contract/KID | Miners, smelters, electrification firms; company costs and other metals break spot tracking. |
+| Nickel | Grade and storage matter | Exchange contract exposure only after specification/liquidity checks; no assumed eligible ETC | Miners/refiners, Indonesian exporters, stainless steel/battery chain; ore type and processing economics differ. |
+| Lithium | Industrial chemical grades; unsuitable default physical simulation | Specialist futures/index products only if documented and accessible; no assumption liquid generic spot | Producers/processors and battery-material funds; lithium chemicals differ by grade/region and equity dilution risk. |
+| Cobalt | Industrial custody/quality | Specialist contract availability/liquidity/KID unverified | Producers/refiners, diversified miners and battery chain; geographic and substitution risks. |
+| Rare earths | Basket of distinct elements and processing stages | No assumed single liquid retail futures/ETC proxy | Miners/separators/magnet manufacturers, eligible diversified sector fund; basket/composition/export risks. |
+| Tin | Industrial custody | Exchange metals derivatives to investigate | Miners/smelters/electronics chain; supply concentration and equity operational risk. |
+| Aluminum | Storage, grade, power-intensive delivery | Listed metal contracts/index or eligible debt product | Smelters/bauxite miners/power exposure; energy costs may dominate metal gains. |
+| Iron ore | Bulk logistics/grade differences | Contract specifications/benchmarks/rolls must be verified | Ore miners/steelmakers; steelmakers can be harmed by expensive ore. |
+| Uranium | Specialized custody and regulation | Do not presume a liquid German retail futures or physical route | Uranium miners, eligible investment vehicles or UCITS sector exposure where actually documented; vehicle premium and contracting cycles matter. |
+| Gold | Bars/coins custody/insurance, ownership/claim distinction | Precious-metal futures; physically backed ETC if eligible and prospectus verified | Miners and mining-sector funds add operating/leverage risks; ETC tax depends on legal structure. |
+| Silver | Physical storage/VAT treatment needs current advice | Precious-metal futures or eligible ETC | Miners/industrial demand; much higher industrial sensitivity than a simple gold analogy. |
+| Oil | Delivery/storage impractical default | Crude contracts/index-linked eligible ETC/ETN; maturity, benchmark and roll matter | Energy producers/refiners/services; refiners&#x27; margins need not track crude direction. |
+| Natural gas | Location and storage constraints | Hub-specific contracts/index debt products; no generic world gas price | Gas producers, LNG, utilities/pipelines; hedges/regulation can reverse relationships. |
+| Coal | Bulk logistics/grade/region | Region-specific contracts and licensed indices, liquidity/access unverified | Miners/exporters/rail/utilities; environmental policy and quality differences. |
+| Other materials: zinc, lead, platinum, palladium, fertilizers, agricultural inputs | Product-dependent | Verify each contract/index/product independently | Diversified miners/producers/industrial users; do not extrapolate metal access to all raw materials. |
+
+Physical ownership, futures, index debt products, mining shares, mining-sector funds and industrial supply-chain exposures require distinct instrument classes. A single-commodity ETC/ETN is generally debt/security exposure to its legal structure; do not label it UCITS merely because it trades beside UCITS ETFs. Specific legal classifications remain **UNVERIFIED** until prospectus review. UCITS diversification and derivatives rules require separate legal review before claiming a one-commodity fund can be offered as UCITS.
+
+## FX, bonds, rates, inflation and derivatives
+
+**Design inference:** FX reference rates support accounting/context; they are not executable bid/ask quotes. Government bond yield series are not total-return bond prices: bond backtests need price, accrued interest, coupons, maturity and default/corporate-action handling. Central-bank policy rates and inflation need publication timestamps; never use an observation period as its availability date. Bond funds, individual bonds, FX cash, futures, options and issuer certificates belong to different tax/risk/product models.
+
+**VERIFIED framework:** <a href='https://eur-lex.europa.eu/eli/reg/2014/1286/oj/eng'>PRIIPs</a>, accessed 2026-10-18, requires prescribed information for relevant packaged products sold to retail investors. **INFERRED application:** US ETFs lacking a compliant KID may be unavailable to German retail buyers; exchange coverage or ticker availability does not remove that gate. It is not a blanket restriction on ordinary shares. Product appropriateness, permissions and country marketing must also be checked; no derivatives/live execution is approved for this MVP.
+
+## Sessions, currencies and custody
+
+**Engineering policy, not a claim of verified calendars:** use IANA time zones: America/New_York; Europe/Berlin, Paris, Amsterdam, London, Zurich, Stockholm, Copenhagen, Helsinki, Oslo, Reykjavik; Asia/Jakarta, Shanghai, Hong_Kong, Taipei, Seoul, Tokyo. Load the chosen venue&#x27;s actual holidays, half-days, auctions/lunch breaks and emergency notices. A weekday-only calendar is insufficient for real-market simulation. US/European daylight-saving transitions differ; never hardcode a permanent Berlin-to-US offset. Check future timezone database changes.
+
+Official calendar sources retrieved on 2026-10-18 include <a href='https://www.nyse.com/trade/hours-calendars'>NYSE</a>, <a href='https://www.nasdaq.com/market-activity/stock-market-holiday-schedule'>Nasdaq US-only schedule</a>, <a href='https://www.euronext.com/en/trading/trading-hours-holidays'>Euronext</a>, <a href='https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/trading-provisions/trading-hours.html'>SIX</a>, and <a href='https://www.jpx.co.jp/english/equities/trading/domestic/01.html'>JPX</a>: **VERIFIED source existence**, not full calendar implementation. Official Nordic calendar evidence is missing; the cited Nasdaq US-only page does not verify Nordic sessions or holidays. The old Xetra URL redirected to the general portal, so exact current Xetra hours remain **UNVERIFIED here**. Asian and other missing calendars block claims of realistic venue execution until independently verified.
+
+**Illustrative accounting identity:** if one EUR buys q units of local currency, local price P has EUR value P/q. Thus EUR return = `(P1/P0)*(q0/q1)-1`. A 10% local gain with q rising from 1.10 to 1.21 gives 0% EUR return before costs. An EUR quote does not remove underlying overseas revenue/assets currency risk. Custody location, depositary fees, spreads and corporate-action handling must be checked separately from quote currency.
+</pre></article><article><h2><a href='SOURCES.html'>SOURCES</a></h2><pre># Research source register
+
+Research/access date: **2026-10-18**, Europe/Berlin. Scope: personal, EUR-based, paper-only research. Source owners are the named institutions/providers; publication dates are unknown unless stated. Access date does not establish a source&#x27;s publication date or contractual applicability.
+
+**VERIFIED** means the stated, narrow proposition was supported by a retrieved primary source or the specifically recorded endpoint check. **PARTIALLY VERIFIED** means documentation was located but tier entitlement, detailed terms, or runtime availability remain unresolved. **UNVERIFIED** means it must not be relied upon operationally. Documentation verification never implies a tested free account. No authenticated accounts, keys, brokers, paid products or private interfaces were used.
+
+## Method and credibility
+
+Generic queries included official provider documentation/pricing; Trade Republic exchanges, costs, API and taxes; German statutes and BMF loss-offset changes; HKEX Stock Connect; official Asian statistical APIs. No private records were used in queries. Primary legislation and government agencies carry high authority for their respective rules; providers are authoritative for their products but their marketing is not independent quality evidence. Exchange listings establish products, not a German resident&#x27;s broker permission. Two-source corroboration was obtained for the important derivatives loss-rule change (BMF and BFH), and ECB data syntax (help and actual response). Provider quotas generally have one authoritative source and no independent entitlement test. Community posts and third-party summaries found by search were rejected as evidence for legal/broker/API claims.
+
+## Register
+
+All entries below accessed **2026-10-18**. Status concerns the proposition in the last column, not blanket approval of the site.
+
+| ID | Owner / primary source | Status | Proposition and remaining limit |
+|---|---|---|---|
+| S01 | <a href='https://data.ecb.europa.eu/help/api/data'>ECB API data</a> | VERIFIED | SDMX query syntax, formats, update/history parameters; series-specific revision coverage needs checks. |
+| S02 | <a href='https://data.ecb.europa.eu/help/api/data-examples'>ECB data examples</a> | VERIFIED | Official EXR examples and multi-currency keys. |
+| S03 | <a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation'>World Bank Indicators documentation</a> | VERIFIED | Public Indicators v2 service; datasets vary. |
+| S04 | <a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'>World Bank call structures</a> | VERIFIED | Country/indicator/date/format queries. |
+| S05 | <a href='https://www.alphavantage.co/support/'>Alpha Vantage support</a> | VERIFIED | General free limit 25 requests/day; free endpoint entitlements untested. |
+| S06 | <a href='https://twelvedata.com/pricing'>Twelve Data pricing</a> | VERIFIED | Basic 8 credits/minute, 800/day; endpoint weights and restricted markets matter. |
+| S07 | <a href='https://finnhub.io/pricing'>Finnhub pricing</a> | PARTIALLY VERIFIED | Official page resolved but no extractable plan details; quota unknown. |
+| S08 | <a href='https://site.financialmodelingprep.com/developer/docs'>FMP developer docs</a> | PARTIALLY VERIFIED | Official endpoint catalog; exact free access untested. |
+| S09 | <a href='https://www.tiingo.com/documentation/general/overview'>Tiingo overview</a> | PARTIALLY VERIFIED | Documentation located; current free entitlement unresolved. |
+| S10 | <a href='https://docs.data.nasdaq.com/'>Nasdaq Data Link docs</a> | UNVERIFIED | Fetch failed; dataset-specific access/licensing must be checked. |
+| S11 | <a href='https://docs.openbb.co/platform/'>OpenBB platform docs</a> | PARTIALLY VERIFIED | Official page resolved without extractable integration details. |
+| S12 | <a href='https://eodhd.com/financial-apis/'>EODHD API catalog</a> | PARTIALLY VERIFIED | Official catalog located; demo/free history and licensing not tested. |
+| S13 | <a href='https://ranaroussi.github.io/yfinance/'>yfinance maintainer documentation</a> | VERIFIED | Unofficial wrapper, unaffiliated with Yahoo; data rights separate from code. |
+| S14 | <a href='https://stooq.com/'>Stooq</a> | UNVERIFIED | Site yielded no usable API/rights documentation in this research. |
+| S15 | <a href='https://fred.stlouisfed.org/docs/api/fred/'>FRED/ALFRED API</a> | VERIFIED | v1 series/vintage and v2 bulk documentation; keys/terms require review. |
+| S16 | <a href='https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction'>Eurostat API introduction</a> | VERIFIED | Free public APIs; database latest-version limitation. |
+| S17 | <a href='https://statistiken.bundesbank.de/statistiken-en/help-991452?article=bundesbank-sdmx-web-service-api-991448'>Bundesbank current SDMX help</a> | VERIFIED | REST service, formats and series retrieval. |
+| S18 | <a href='https://www.bundesbank.de/en/statistics/time-series-databases/help-for-sdmx-web-service/web-service-interface-data'>Bundesbank data interface</a> | VERIFIED | Current base path and series keys. |
+| S19 | <a href='https://www.imf.org/en/Data'>IMF Data</a> | PARTIALLY VERIFIED | Official notice of legacy portal retirement November 5, 2025; new API migration untested. |
+| S20 | <a href='https://www.oecd.org/en/data/insights/data-explainers/2024/09/api.html'>OECD API explainer</a> | PARTIALLY VERIFIED | Official API documentation; flow and quota details untested. |
+| S21 | <a href='https://www.bls.gov/developers/'>BLS developers</a> | PARTIALLY VERIFIED | Public statistics service; registration-dependent caps require detailed check. |
+| S22 | <a href='https://www.eia.gov/opendata/documentation.php'>EIA API technical documentation</a> | VERIFIED | v2 API and free registration key; no key obtained. |
+| S23 | <a href='https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm'>CFTC COT</a> | VERIFIED | Official positioning reports; not prices or immediate positions. |
+| S24 | <a href='https://www.sec.gov/search-filings/edgar-application-programming-interfaces'>SEC EDGAR APIs</a> | VERIFIED | Official submissions/XBRL access; fair-access requirements apply. |
+| S25 | <a href='https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries/'>USGS Mineral Commodity Summaries</a> | VERIFIED | 2026 annual nonfuel minerals report; no daily tradable prices. |
+| S26 | <a href='https://www.idx.co.id/en/market-data/'>IDX market data</a> | UNVERIFIED | Fetch failed; public website is not an approved free price API. |
+| S27 | <a href='https://www.bi.go.id/en/statistik/Default.aspx'>Bank Indonesia statistics</a> | PARTIALLY VERIFIED | Official statistical portal located; machine interface untested. |
+| S28 | <a href='https://webapi.bps.go.id/developer/'>Statistics Indonesia API</a> | PARTIALLY VERIFIED | Official developer portal located; key/terms/quotas not fully checked. |
+| S29 | <a href='https://english.sse.com.cn/markets/indices/overview/'>Shanghai exchange indices</a> | PARTIALLY VERIFIED | Official indices portal, no proven bulk free historical API. |
+| S30 | <a href='https://www.szse.cn/English/'>Shenzhen exchange</a> | UNVERIFIED | Fetch failed; machine use/licensing not verified. |
+| S31 | <a href='https://tushare.pro/document/1'>Tushare documentation</a> | PARTIALLY VERIFIED | Third-party documentation located; points and endpoint entitlements untested. |
+| S32 | <a href='https://akshare.akfamily.xyz/'>AKShare maintainer documentation</a> | PARTIALLY VERIFIED | Community wrapper docs located; upstream rights/reliability unresolved. |
+| S33 | <a href='https://openapi.twse.com.tw/'>TWSE OpenAPI</a> | VERIFIED | Official Swagger/API directory; endpoint history/licensing untested. |
+| S34 | <a href='https://openapi.krx.co.kr/'>KRX OpenAPI</a> | PARTIALLY VERIFIED | Official portal resolved; registration approval and quota unknown. |
+| S35 | <a href='https://opendart.fss.or.kr/guide/detail.do?apiGrpCd=DE001&amp;apiId=AE00001'>DART API guide</a> | VERIFIED | Official English disclosure endpoint and mandatory key. |
+| S36 | <a href='https://ecos.bok.or.kr/api/'>Bank of Korea ECOS</a> | PARTIALLY VERIFIED | Official API portal resolved; no usable page details extracted. |
+| S37 | <a href='https://jpx-jquants.com/en/spec/data-spec'>J-Quants data specification</a> | VERIFIED | Free two-year daily-bar history delayed 12 weeks; indices/futures tiers differ. |
+| S38 | <a href='https://jpx-jquants.com/en/spec/quickstart'>J-Quants quickstart</a> | VERIFIED | Registration/subscription and v2 API-key request. |
+| S39 | <a href='https://www.stat-search.boj.or.jp/index_en.html'>Bank of Japan data search</a> | PARTIALLY VERIFIED | Official macro portal; automated access untested. |
+| S40 | <a href='https://disclosure2.edinet-fsa.go.jp/guide/static/disclosure/WZEK0110.html'>EDINET guide</a> | UNVERIFIED | Fetch failed; current v2 key/terms require confirmation. |
+| S41 | <a href='https://support.traderepublic.com/de-de/705'>Trade Republic German execution venue</a> | VERIFIED | LS Exchange for stocks/ETFs/bonds; Tradegate fallback for stocks/ETFs. |
+| S42 | <a href='https://support.traderepublic.com/en-de/809-What-is-the-ex_post-cost-information'>Trade Republic ex-post costs</a> | VERIFIED | EUR1 settlement contribution per individual trade plus product/other costs; exact order disclosure prevails. |
+| S43 | <a href='https://support.traderepublic.com/de-de/1078-Was-ist-die-Jahressteuerbescheinigung'>Trade Republic German annual certificate</a> | PARTIALLY VERIFIED | German official page located but details not extractable. |
+| S44 | <a href='https://docs.alpaca.markets/us/docs/paper-trading'>Alpaca paper trading</a> | VERIFIED | Separate paper environment and simulation limitations; individual eligibility not tested. |
+| S45 | <a href='https://www.interactivebrokers.com/campus/trading-lessons/request-paper-trading-account/?retakeFinal=1'>IBKR requesting paper account</a> | VERIFIED | Official paper account instructions and API/trial distinction. |
+| S46 | <a href='https://www.interactivebrokers.com/campus/ibkr-api-page/webapi-doc/'>IBKR Web API</a> | PARTIALLY VERIFIED | Supported API documentation; route-specific account conditions must be confirmed. |
+| S47 | <a href='https://eur-lex.europa.eu/eli/reg/2014/1286/oj/eng'>PRIIPs Regulation 1286/2014</a> | VERIFIED | Retail packaged-product KID framework; use current consolidated text before decisions. |
+| S48 | <a href='https://www.hkex.com.hk/Mutual-Market/Connect-Hub/Stock-Connect?sc_lang=en'>HKEX Stock Connect</a> | VERIFIED | Selected mainland stocks/ETFs accessible through eligible intermediaries; not all A-shares. |
+| S49 | <a href='https://www.gesetze-im-internet.de/estg/__20.html'>EStG section 20</a> | VERIFIED | Capital income, allowance and remaining share-loss restriction. |
+| S50 | <a href='https://www.gesetze-im-internet.de/estg/__32d.html'>EStG section 32d</a> | VERIFIED | 25% standard rate, church-tax interaction and foreign tax credits. |
+| S51 | <a href='https://www.gesetze-im-internet.de/solzg_1995/__4.html'>SolzG section 4</a> | VERIFIED | 5.5% surcharge rate, applied to relevant tax base. |
+| S52 | <a href='https://www.bundesfinanzministerium.de/Content/DE/Standardartikel/Themen/Steuern/das-aendert-sich-2025.html'>BMF 2025 changes</a> | VERIFIED | Removal of special derivatives/default loss restrictions. |
+| S53 | <a href='https://www.bundesfinanzhof.de/de/entscheidung/entscheidungen-online/detail/STRE202520073/'>BFH decision 2025</a> | VERIFIED | Confirms repeal through JStG dated December 2, 2024. |
+| S54 | <a href='https://www.gesetze-im-internet.de/invstg_2018/BJNR173010016.html'>InvStG consolidated law</a> | VERIFIED | Section 18 annual deemed-income mechanism; year-specific basis interest separately sourced below. |
+| S55 | <a href='https://www.gesetze-im-internet.de/invstg_2018/__20.html'>InvStG section 20</a> | VERIFIED | Partial exemptions, including 30% equity-fund private investor rate. |
+| S56 | <a href='https://www.gesetze-im-internet.de/invstg_2018/__19.html'>InvStG section 19</a> | VERIFIED | Prior Vorabpauschalen reduce disposal gain under rules. |
+| S57 | <a href='https://www.gesetze-im-internet.de/estg/__23.html'>EStG section 23</a> | VERIFIED | Private disposals distinct from section 20. |
+| S58 | <a href='https://www.gesetze-im-internet.de/estg/__43.html'>EStG section 43</a> | VERIFIED | Withholding framework; not proof of every broker&#x27;s workflow. |
+| S59 | <a href='https://www.cmegroup.com/markets/metals.html'>CME metals</a> | VERIFIED | Exchange product catalog; individual liquidity/access untested. |
+| S60 | <a href='https://www.lme.com/en/metals'>LME metals</a> | VERIFIED | Exchange product catalog; not retail brokerage permission. |
+| S61 | <a href='https://www.ice.com/products/Futures-Options/Energy'>ICE energy futures/options</a> | VERIFIED | Energy derivatives catalog; contract-specific checks required. |
+| S62 | <a href='https://www.iso20022.org/market-identifier-codes'>ISO MIC register</a> | VERIFIED | Register purpose and publication/effective-date distinction; individual example rows not validated. |
+| S63 | <a href='https://www.nyse.com/trade/hours-calendars'>NYSE calendar</a> | VERIFIED | Official 2026 onward calendar/session documentation retrieved; not implemented by this worker. |
+| S64 | <a href='https://www.nasdaq.com/market-activity/stock-market-holiday-schedule'>Nasdaq US-only holiday schedule</a> | VERIFIED | Official US-only schedule source retrieved; not Nordic calendar evidence. Official Nordic calendar evidence is missing; complete venue calendar not validated. |
+| S65 | <a href='https://www.cashmarket.deutsche-boerse.com/cash-en/'>Deutsche Boerse cash market portal</a> | PARTIALLY VERIFIED | Old Xetra hours URL redirected here; exact current sessions unresolved. |
+| S66 | <a href='https://www.euronext.com/en/trading/trading-hours-holidays'>Euronext hours/holidays</a> | VERIFIED | Official calendar source retrieved; venue/product calendars still need implementation checks. |
+| S67 | <a href='https://www.londonstockexchange.com/trade/trading-access/business-days'>LSE business days</a> | PARTIALLY VERIFIED | Page resolved without extractable session details. |
+| S68 | <a href='https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/trading-provisions/trading-hours.html'>SIX trading hours</a> | VERIFIED | Official source retrieved; per-product implementation untested. |
+| S69 | <a href='https://www.jpx.co.jp/english/equities/trading/domestic/01.html'>JPX domestic stock hours</a> | VERIFIED | Official current trading-hours source retrieved; no executable calendar test. |
+| S70 | <a href='https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Investmentsteuer/2026-01-13-basiszins-berechnung-vorabpauschale.pdf?__blob=publicationFile&amp;v=1'>BMF 2026 basis-interest letter, January 13, 2026</a> | VERIFIED | 2026 basis interest 3.20%; deemed receipt January 4, 2027. |
+| S71 | <a href='https://www.gesetze-im-internet.de/estg/__44a.html'>EStG section 44a</a> | VERIFIED | Freistellungsauftrag statutory mechanism. |
+| S72 | <a href='https://www.bzst.de/DE/Unternehmen/Kapitalertraege/KirchensteuerAbgeltungsteuer/kirchensteuerabgeltungsteuer_node.html'>BZSt church-tax guidance</a> | VERIFIED | Church-rate values 8/9; no personal liability or state rate assumed. |
+| S73 | <a href='https://amtliche-handbuecher.bundesfinanzministerium.de/esth/2025/B-Anhaenge/Anhang-19/II/anhang-19-II.html'>BMF official 2025 handbook: capital income</a> | VERIFIED | Interest-bearing FX claims/accounts section 20; potential private FX disposals section 23; no double counting. |
+
+## Step 1 reported runtime checks
+
+**Step 1 reported runtime checks; historical responses not preserved for independent reproduction.** The entries below retain the original reported date and outcomes; they were not rerun during the October 20 cleanup.
+
+Native PowerShell `Invoke-WebRequest -UseBasicParsing -TimeoutSec 30`, HTTPS validation enabled, no credentials, **2026-10-18**:
+
+| Exact public request | Actual result | Scope |
+|---|---|---|
+| `https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2024-01-02&amp;endPeriod=2024-01-05&amp;format=csvdata` | HTTP 200; 1,158 content characters; CSV header begins KEY,FREQ,CURRENCY,CURRENCY_DENOM | Availability/syntax check; no exhaustive row/financial validation. |
+| `https://api.worldbank.org/v2/country/DEU/indicator/NY.GDP.MKTP.CD?date=2023&amp;format=json` | HTTP 200; 297 content characters; JSON metadata total=1 and lastupdated=2026-10-08 | Availability/syntax check; annual GDP, not market prices. |
+
+No other financial endpoint runtime test was performed. Official webpage retrieval is not an API test. No historical performance, broker availability, or real execution was tested. Synthetic fixtures elsewhere in the project are not historical observations.
+
+## Independent source review — 2026-10-20
+
+The manager reported that Step 2 independent source review passed for offline-paper scope. The review retained the documented Alpha Vantage 25 requests/day, Twelve Data 8 weighted credits/minute and 800/day, J-Quants Free 12-week delay, continuing loss-rule distinctions following repeal of special derivatives/default restrictions, and BMF 2026 basis interest of 3.20% with deemed receipt January 4, 2027. This note records the reported independent review, not new endpoint tests by this worker. Original October 18 access dates remain unchanged; no entitlements, licensing permissions or broker capabilities are broadened. Cleanup explicitly separates the US-only Nasdaq calendar source from missing Nordic calendar evidence and identifies the unpreserved historical runtime responses.
+
+## Unresolved evidence
+
+No first-party public supported Trade Republic trading/developer API documentation was located in the official support searches. **UNVERIFIED**, not proof that no API exists. Current German certificate delivery timing, export format and complete withholding details need confirmation in applicable official account documents. All paywalled/free-account endpoint access, global free price-history completeness, German residency eligibility and redistribution rights need provider-specific checks before enabling connectors.
+</pre></article><article><h2><a href='STRATEGIES.html'>STRATEGIES</a></h2><pre># Strategy library
+
+Three strategies are executable. All remaining entries are research specifications, not enabled
+controls or demonstrated profitable systems. Configurations are illustrative; no personal capital,
+risk tolerance, horizon or security recommendation is inferred.
+
+## Executable strategies
+
+| Name / factory key | Hypothesis | Rules | Data and schedule | Main rejection conditions |
+|---|---|---|---|---|
+| Equal-weight buy-and-hold / `buy_hold` | Broad ownership supplies a simple reference for active rules | Allocate equally among listings with completed data once; retain positions and residual cash | Registered raw closes, explicit calendars, FX, actions; first available decision, next scheduled opens | Missing valuation/FX, limits breached, unresolved action/delisting |
+| Moving-average trend / `trend` | Persistent price trends might distinguish risk-on periods from cash periods | Latest split-normalized local close strictly above trailing SMA; equal weight active listings, otherwise cash | Complete lookback (default 60 completed sessions); first available monthly cutoff | Incomplete warm-up stays cash; calendar outage rejects; unknown/late action rejects |
+| Cross-sectional momentum / `momentum` | Relatively strong positive local total-return trends might persist | Trailing local gross total return strictly positive; select top N (default 3), stable instrument ID tie-break; equal weights | Lookback+1 completed observations (default 61); monthly cutoff; action-safe return index | Incomplete warm-up stays cash; unknown dividend/split chronology or calendar outage rejects |
+
+All use the same EUR ledger, costs, freshness, concentration, order-size and prior-volume limits.
+Risk caps can reduce allocations below their nominal equal weights. No shorting, leverage, stop-loss,
+intraday stop, or automated tax withholding is modeled. Residual EUR cash earns zero. Selling a position
+does not erase a dividend entitlement already earned. A new monthly signal cannot change a previous fill.
+
+### Point-in-time signals
+
+Trend divides earlier raw closes by the product of splits that have become effective and known by
+the decision, putting its trailing SMA and latest close in the same share units. A neutral two-for-one
+split therefore cannot create a trend signal. Dividend price gaps remain price effects in this
+price-trend rule.
+
+Momentum uses a local gross-return index. Between two completed closes, begin with one prior unit,
+apply known split ratios and cash entitlements in event order, then divide the ending value plus
+dividend cash by the prior close. The index assumes gross dividend reinvestment at the next completed
+close for **ranking only**. Actual portfolio accounting instead retains receivables until exact
+payment, uses EUR FX and subtracts actual modeled costs. Ranking performance is not account performance.
+Same-time post-split dividends use the declared split-adjusted entitlement.
+
+Only actions already effective and available may normalize a signal. An unknown late action is not
+silently used to repair earlier decisions. A missing expected session is not dropped to make a
+lookback appear complete. The engine owns scheduling; strategy instances carry no run history, so
+the same configuration can be rerun or compared reproducibly.
+
+### Parameters, turnover and failure regimes
+
+For experiments, lookbacks such as 20, 60, 120 and 252 completed observations and top N from 1 to the
+selected universe size define a **research grid**, not recommended settings. The implementation accepts
+integer lookbacks of at least 2 and top N of at least 1. No grid was optimized for the supplied sample.
+Smaller lookbacks can increase churn; larger lookbacks can lag regime changes. Monthly signals can miss
+abrupt reversals between decisions.
+
+Buy-and-hold can experience sustained losses and concentration drift and has no protective exit.
+Trend can repeatedly buy high and sell low in sideways markets. Momentum can reverse sharply, cluster
+by sector/country, or select low-liquidity listings. Local-currency rankings can diverge from EUR
+results when FX moves. Equal nominal weights are not equal risk allocations.
+
+Transaction charges, spread/slippage, next-open gaps and participation caps can reverse gross
+advantages. Sizes reserve current cash only, so rotation proceeds may remain cash until the next
+monthly decision. Maximum position weight caps the **post-trade** bought position, not future drift
+from price movement. Declining to buy because of an execution cap is an observable outcome, not a
+reason to change limits until the chart improves.
+
+Evaluate every configuration against `buy_hold` under the same dates, costs, limits, capital,
+available universe and lag. Reject a research claim when it depends on future data, action mistakes,
+stale marks, an artificial calendar, ignored fees, or a hand-picked favorable period.
+
+## Research specifications — not executable
+
+| Approach | Rationale / hypothesis | Required data and proposed rule | Sizing, risk, turnover and failures | Evidence needed before activation |
+|---|---|---|---|---|
+| Periodic rebalancing | Restore a declared allocation after relative moves | Explicit allocation, monthly or annual rebalance; the allocation wrapper supports once/monthly only | Same caps/costs; sells can leave cash pending the next decision; contributions deferred | Compare frequency and costs without optimizing the evaluation period |
+| Time-series momentum | Own assets with positive own trailing return | Action-safe return per asset; predefined horizon and monthly rule | Equal/risk-based allocation subject to caps; whipsaw and correlated reversals | Separate from cross-sectional ranking; walk-forward test and consistent benchmark |
+| Mean reversion | Transitory deviations may reverse | Stable definition of deviation, entries/exits and corporate-action handling | Tight liquidity/spread controls; potentially high turnover; trends can overwhelm thesis | Realistic gap/stop handling, out-of-sample evidence and cost stress |
+| Sector relative strength | Sector leadership might persist | Point-in-time sector membership and comparable total-return series | Sector concentration constraints; classification changes and narrow leadership | Historical membership, survivorship controls and broad benchmark |
+| Volatility targeting | Reduce exposure when measured volatility rises | Past realized volatility only; explicit leverage-free target and lag | Cap at cash-funded exposure; high turnover in stress, volatility lag | Stable estimator, gap stress and turnover sensitivity |
+| Risk parity / inverse volatility | Avoid nominal equal weights dominating risk | Aligned calendars, covariance or trailing vol, stable positive inputs | No leverage; unstable covariance and concentration in low-vol assets | Singular-input treatment, rebalance stability and genuine multi-asset data |
+| Commodity-related trend | Commodity cycles may persist | Distinguish futures total returns, roll yield, ETCs and mining equities | Contract/product-specific currency and concentration limits; roll and equity basis risk | Eligible instruments, licensed series, roll/carry and action semantics |
+| Currency trend/carry | Trends or interest differentials may persist | FX spot plus point-in-time rates and executable financing assumptions | Foreign cash and leverage not supported by current EUR-cash ledger | Correct carry/roll accounting, accessible products and separate engine scope |
+| Multi-asset macro | Economic regimes may affect asset groups | Vintage-safe macro releases, publication lags, predetermined regime rules | Diversification can disappear in stress; low sample size and many choices | ALFRED-like vintages, chronological evaluation and multiple-testing controls |
+| Factor equity screening | Valuation/profitability/etc. may relate to returns | Point-in-time filings, membership, delistings, accounting dates | Sector/country/size neutralization decisions; crowded-factor and revision risk | Publication-aware data and explicit investable universe |
+| Event-driven framework | Defined public events may alter future returns | Timestamped event source, eligibility, entry/exit and lag | Event overlap, spreads and selection effects; stops not modeled | Auditable event timestamps, matched baseline and leakage tests |
+
+An allocation simulation is implemented as a wrapper around the same engine; that does not make
+external contribution schedules, risk-parity optimization or currency carry implemented.
+
+## Regional hypotheses
+
+Possible research comparisons include US growth versus European value; Japanese exporters and yen;
+semiconductor chains across US/Taiwan/Korea; Indonesian commodity exporters; Chinese consumer demand;
+European industrials and energy prices; and copper versus industrial activity. These are questions,
+not signals. They require verified access, point-in-time constituents, currency attribution and source
+licensing. The nine generic demo listings cannot answer those questions.
+
+## Actual tests and limitations
+
+The 2026-10-20 financial tests verified neutral split signals, dividend-inclusive momentum, physically
+filtered histories, next-open execution and invariance of an earlier fill to later HLCV mutations.
+`tests/financial_demo.py` produced all three downloadable synthetic reports with costs, actions and
+rejections intact. `docs/BACKTEST_METHODOLOGY.md` defines the exact statistical and execution rules.
+
+No real-data profitability test, holdout, walk-forward, parameter robustness claim or Monte Carlo
+result is supplied. Before interpreting a real-data strategy, fix the hypothesis and parameters,
+reserve chronological holdouts, record every attempted configuration, stress costs and missing data,
+and review independent failures. Passing software tests is not evidence of future investment returns.
+</pre></article><article><h2><a href='BACKTEST_METHODOLOGY.html'>BACKTEST METHODOLOGY</a></h2><pre># Backtest methodology and financial API
+
+Implementation and native-Windows verification: 2026-10-20. This is an educational research engine using explicit historical or **SYNTHETIC SAMPLE** datasets. It does not connect to a broker, infer current prices, optimize for target returns, or establish investment suitability. The demonstration calendar and arithmetic prices are intentionally artificial.
+
+## Event and information model
+
+Each listing owns explicit sessions, raw bars, currency and availability. The engine forms a UTC union of scheduled openings, action dates, payment dates and one end-of-day cutoff on each supported session date. It retains a separate initial-capital row immediately before the requested UTC start. It never invents weekend bars or forward-fills OHLC/volume. Dates outside the configured range cannot produce trades. A requested session crossing the UTC run boundaries is rejected explicitly.
+
+Equal-time processing is entitlement, split, payment, opening fills, then completed-bar information and decisions/valuation. An action and its identifier are applied once per simulation. Late-known actions reject validation. A simultaneous split/dividend requires declared pre-split or post-split entitlement. Unsupported fractional split units and cash-in-lieu reject rather than round away property.
+
+Strategies receive `known_at(data, decision)` physically filtered records: only completed available bars, effective available actions and FX observed and published by that time. The three provided strategies are stateless. The engine schedules buy-and-hold once and the other two on the first available daily cutoff in each month. Insufficient warm-up leaves cash until a later scheduled decision. Custom strategies without a `rebalance` property run daily.
+
+The decision freezes quantity at known marks, FX and costs. The next scheduled open must be **strictly later** than the decision. The execution layer reads that open only; it does not read future high, low, close or volume for sizing. Prior completed volume is adjusted for intervening splits into current units. Missing expected opening data cancels the order rather than deferring it. A gap that breaks cash or risk limits cancels the frozen order rather than resizing it. A split between decision and execution cancels the pending order explicitly; quantity is not silently reinterpreted.
+
+All venues execute in actual UTC order. Sells precede buys only within the same timestamp. Automatic sizing conservatively reserves only current cash and does not spend pending sale proceeds, including same-time projected sales. Consequently a monthly rebalance can hold cash until the next decision. This underinvestment is intentional and reported as a modeling limitation. The reducer can spend a completed sale&#x27;s cash on a subsequent validated buy; a later venue&#x27;s sale can never retroactively fund an earlier opening.
+
+## Accounting, actions and valuation
+
+EUR is the only cash balance. Quantities and the cash/FIFO ledger use `Decimal`; allowed precision is six decimal places, or explicit whole-share mode. Float conversion occurs for statistical reporting, after ledger reduction. No shorting or leverage is allowed. FIFO basis includes acquisition costs. Disposal matches allocate both basis and sale charges proportionally and preserve original acquisition timestamps. Metrics consume emitted `RealizedMatch` records, never reconstruct lots from price-adjusted fills.
+
+For raw open \(P\), spread \(s\) and slippage \(l\), effective buy price is \(P(1+s/20000+l/10000)\); a sale uses the opposite signs. Commission is fixed EUR plus EUR consideration times commission basis points/10000. FX charge applies only to non-EUR consideration. A quote is **EUR per one unit of local currency**: multiply local consideration by the quote. No inverse-rate guessing occurs. Each cost enters cash once; report spread/slippage attribution does not subtract it again.
+
+The newest FX observation known at the relevant timestamp must satisfy its configured elapsed-hour age. EUR uses an identity quote of one. Positive rates alone do not prove a source has supplied the correct direction; the imported FX source must honor the data contract.
+
+Dividends create a total local-currency receivable at ex time, retained after selling shares. Equity includes the receivable until payment, so the raw ex-date price fall is not incorrectly counted as a loss without its entitlement. Payment uses FX known **at the exact payment time**, even when processing later. Dividend conversion fees are zero in this MVP. A split changes units and per-unit basis, preserving total basis.
+
+Equity is EUR cash plus holdings at known raw marks and current known FX plus dividend receivables. Age-limited stale closes are valuation-only and flagged; split/dividend adjustments bridge an action that occurs before the next raw close is available. They are never executable prices. Exceeded age limits and unresolved delisting proceeds halt valuation. A missing expected bar produces a warning; the presence of a fresh cache does not turn an old observation into a current price.
+
+The default illustrative settings are EUR 10,000 capital; EUR 1 fixed fee; 1 bp commission, 10 bp spread, 2 bp slippage and 5 bp foreign FX fee; 30% position cap, EUR 10,000 order cap, 1% prior-volume participation, 50 bp spread cap, and 96-hour price/FX ages. These are configurable educational inputs, not a broker tariff or personal recommendation. A one-asset run with the default 30% cap deliberately retains substantial cash.
+
+## Statistical definitions
+
+The equity frame columns are `timestamp` (aware UTC), `equity_eur`, `cash_eur`, `exposure`, `external_flow_eur`, `stale`. The initial row precedes transaction costs. Each supported union date contributes one daily row, not one row per venue or fill. Cash earns zero. Contributions are deferred: metrics explicitly reject nonzero external flows rather than label deposits as investment gains.
+
+| Measure | Convention |
+|---|---|
+| Total return | Final equity / initial equity - 1 |
+| CAGR and annualized return | Actual elapsed calendar time / 365.25; not arithmetic mean ×252 |
+| Volatility | Sample daily standard deviation, `ddof=1`, ×√252 |
+| Sharpe | Mean daily excess / sample excess standard deviation ×√252 |
+| Risk-free daily rate | `(1 + annual_rate) ** (1/252) - 1` |
+| Sortino | Mean excess / `sqrt(mean(min(excess,0)^2))` ×√252; all observations in downside mean |
+| Maximum drawdown | Minimum of equity / cumulative peak - 1 |
+| Duration | Maximum calendar time from peak through recovery or endpoint; unrecovered flag separate |
+| Calmar | CAGR / absolute maximum drawdown |
+| Exposure | Mean daily invested EUR / total EUR equity, excluding initial row |
+| Turnover | Absolute traded EUR consideration / (2 × mean equity), including initial equity |
+| Fill count | All executed fills |
+| Win rate / profit factor | Completed FIFO matches only; gains / absolute losses for profit factor |
+| Holding time | Arithmetic mean calendar holding days per completed FIFO match |
+| Monthly / yearly returns | Compounded daily simple returns within the period |
+| Worst periods | Minimum monthly/yearly compounded returns; period keys also exported |
+
+Undefined metrics return `None` and a warning explaining insufficient observations or a zero denominator. No losing FIFO matches means undefined profit factor. An all-flat path has zero drawdown and undefined Sharpe/Sortino/Calmar. The 252 convention remains an approximation for a multi-venue union calendar. Extremely short-horizon CAGR can be unstable; it is never a forecast. Sample statistical reports use Pandas/NumPy, not a custom matrix/numerical engine.
+
+The benchmark wrapper runs equal-weight initial buy-and-hold under exactly the same calendar, capital, limits, costs and next-open lag. Compare the two actual results. Benchmark-relative return can be computed as the difference in their `total_return` values; it is not claimed to be factor-adjusted alpha.
+
+## Durable internal paper account
+
+One repository root holds one EUR account. Construction persists initial capital; a different capital on restart rejects. `submit` begins an immediate SQLite transaction, checks canonical identity **before** present state/time validation, and returns the original fill for an identical replay. Identity includes order payload, dataset content hash, costs and limits. A changed payload under the same `PAPER-` ID rejects. New orders cannot move simulation time backward.
+
+Actions, orders, fills, lots, cash, receivables and cursor commit atomically. Concurrent duplicate submissions produce one fill. A failure rolls back the entire transaction. Source action identities must remain consistent across datasets. `advance` processes historical action/payment events without requiring an artificial trade. A restart retains entitlements and the event cursor. No API key can add live execution.
+
+`validate` is a no-write preview using a **complete selected historical dataset**, because it must locate the next scheduled open. At the lower level `validate_execution` explicitly receives an as-of `known: MarketData` context for currency and whole-portfolio concentration checks. The UI must not describe previewed historical execution as a live quote.
+
+Journal entries append immutable revisions with a new entry ID; replaying an unchanged entry is idempotent. This preserves a reviewable history rather than silently overwriting lessons. Repository APIs expose transaction records; UI code does not need SQL.
+
+## Public API and UI example
+
+```python
+from datetime import date
+from decimal import Decimal
+from pathlib import Path
+from uuid import uuid4
+
+from gmrl.analytics.export import result_manifest, result_json, equity_csv, fills_csv
+from gmrl.backtesting.defaults import default_config
+from gmrl.backtesting.engine import compare_with_benchmark
+from gmrl.domain import CanonicalOrder, OrderRequest
+from gmrl.execution.paper import InternalPaperBroker
+from gmrl.providers.sample import load_demo
+from gmrl.storage.repository import Repository
+from gmrl.strategies.factory import make_strategy
+
+data = load_demo()
+config = default_config(date(2024, 1, 1), date(2025, 12, 31))
+strategy = make_strategy(&quot;momentum&quot;, {&quot;lookback&quot;: 60, &quot;top_n&quot;: 3})
+result, benchmark = compare_with_benchmark(data, strategy, config)
+repository = Repository(Path(&quot;data/local&quot;))
+dataset_id = repository.save_dataset(data)
+saved_id = repository.save_experiment(
+    result_manifest(result, data, config, {&quot;strategy&quot;: &quot;momentum&quot;, &quot;lookback&quot;: 60, &quot;top_n&quot;: 3})
+)
+json_download = result_json(result, data, config)
+equity_download = equity_csv(result)
+fills_download = fills_csv(result)
+# Retain this ID in UI session state until the user explicitly creates a NEW order.
+client_id = &quot;PAPER-&quot; + uuid4().hex
+decision = result.equity.iloc[1][&quot;timestamp&quot;].to_pydatetime()
+request = OrderRequest(client_id, &quot;DEMO-DE&quot;, &quot;buy&quot;, Decimal(&quot;1&quot;), decision)
+canonical = CanonicalOrder(request, dataset_id, config.costs, config.limits)
+broker = InternalPaperBroker(repository, config.initial_cash_eur)
+preview = broker.validate(canonical, data)
+if preview.accepted:
+    simulated_fill = broker.submit(canonical, data)
+history = broker.history()  # snapshot, orders, fills, actions, journal
+```
+
+`run_backtest(data, strategy, config) -&gt; BacktestResult` is the single-run API.
+`gmrl.execution.planning.plan_orders(targets, state, known, config)` freezes automatic quantities;
+the same module exports `validate_execution(order, state, opening, costs, limits, *, known)`.
+`simulate_allocation(data, allocations: dict[str, Decimal], config, *, rebalance=&quot;monthly&quot;)`
+uses that same engine. `risk_snapshot(state, data, at, limits, *, price_shock, foreign_fx_shock)`
+returns concentration and group exposures plus deterministic instantaneous scenario P&amp;L. It is not validated VaR or a probabilistic prediction.
+Currency groups include EUR cash, positions and all dividend receivables, including entitlements
+retained after selling shares. Country/sector groups include positions and listing-attributable
+receivables; unavailable listing attribution is labeled `UNATTRIBUTED`. Cash is shown separately
+as `cash_eur` for these two dimensions. Every group weight uses **total account equity** as its
+denominator, exposed as `group_weight_denominator_eur`; country/sector weights therefore sum to
+the noncash share of equity. Receivables remain subject to FX shock only, without a duplicate
+share-price shock or duplicate value in scenario P&amp;L.
+`estimate_tax(realized_gain_eur, allowance_remaining_eur, effective_rate)` requires explicit inputs;
+it is an isolated scenario estimate, never withholding or a full German tax calculation.
+
+`result_manifest` is directly accepted by `Repository.save_experiment`; the returned repository ID is
+the correct key for `load_experiment`. This storage hash and the engine experiment hash serve different
+purposes and need not equal each other. JSON downloads turn Decimal amounts into lossless strings.
+
+## Actual verification and reproducibility
+
+Native Python 3.12 and the approved pinned environment executed the financial tests. The stdlib subset
+tests accounting, actions, costs, FX, risk limits, restart, replay, concurrency, crash rollback and
+journal persistence. Pandas tests exercise next-open execution, future-value isolation, date bounds,
+holiday marks, missing/stale data, neutral split/dividend equity, initial costs and metric definitions.
+No mock package substitutes were used.
+The final scoped run passed **37 tests**; Ruff passed for the financial source/tests and mypy passed
+for all **23 financial source files** with shared imports followed silently. The initial dependency-free
+stdlib run passed 17 cases; five further stdlib cases were subsequently included in the approved-runtime
+37-test run.
+
+```powershell
+# [read-only] Run financial regression tests
+.venv/Scripts/python.exe -m pytest tests/unit/test_financial_stdlib.py tests/unit/test_financial_engine.py -q
+# [modifying] Recompute report output files under tests/fixtures/financial_reports
+.venv/Scripts/python.exe tests/financial_demo.py
+```
+
+The generated `tests/fixtures/financial_reports` JSON/CSV files contain genuine computed **synthetic**
+results for all three strategies over 2024–2025, nine sample listings, the documented 60-session
+lookback/top-three defaults and default costs/limits. Each contains 520 rows. The demonstration
+produced 6/104/35 fills and 0/74/19 completed FIFO matches for buy-and-hold/trend/momentum respectively.
+Rejected-order counts were 3/39/38 respectively, exported as `rejected_order_count`.
+The low nominal local prices in some artificial currencies cause participation-cap rejections;
+those warnings and uninvested cash remain visible. The example includes the source fixture&#x27;s split
+and dividend. These outputs do not measure historical market performance or validate profitability.
+
+## Boundaries and further validation
+
+The deterministic golden cases establish selected invariants, not general financial correctness.
+Independent review and full application acceptance tests are separate gates. Real exchange calendars,
+delisting consideration, genuine corporate-action feeds and licensed historical data are not supplied
+by the demo. Survivorship bias, revised datasets, bad source quotes, parameter selection and cost
+misspecification remain research risks. Report attribution excludes taxes, interest and borrow costs.
+
+Rolling/expanding windows, chronological holdouts, walk-forward evaluation, Monte Carlo, multiple-testing
+adjustments, advanced risk models, stop orders, fund taxation and contribution/TWR scenarios remain
+explicitly deferred. No numerical example here establishes suitability or grounds for real trading.
+</pre></article><article><h2><a href='ROADMAP.html'>ROADMAP</a></h2><pre># Roadmap
+
+2026-10-21 implementation update: native dependencies, foundation, financial engine, twelve-page local app and static companion builder are implemented. Step 10 independent local whole-app acceptance passed; secrets review and remote publication are separate release gates, with current remote commits and Pages deployment history establishing publication state. Each phase closes only on recorded evidence. Phase numbering follows the master request; the internal paper component may ship early as part of the vertical slice.
+
+| Phase | Deliverables/dependencies | Acceptance | Current status / remaining / limits |
+|---|---|---|---|
+| 1 Research and architecture | Official-source catalog, access/broker/tax evidence, source register, architecture; Step 2 and Step 4 review | Claims dated and uncertainty visible; design accepted; downloads separately approved | Step 4 final GO; research scope reviewed, native dependency installation independently verified; actual provider entitlements remain unknown |
+| 2 Data foundation | Step 5 after Phase1 gates; package, registry, raw bars/actions/FX, calendars, sample/CSV adapters, Parquet, SQLite, provenance | Offline no-key load; validation/cache persistence and mocked resilience tests | Foundation accepted; external adapters and global historical datasets are not MVP claims |
+| 3 Backtest MVP | Step 7 after data contract; buy-hold, trend, momentum; EUR ledger/costs/actions/metrics/exports | Golden financial and no-lookahead tests pass; benchmark matches conventions | Financial review GO; only cash equity/ETF-like sample units, no derivative model |
+| 4 Interactive platform | Step 9 after core tests; twelve functional pages, saved experiments, guide | Fresh Windows setup, launch, select asset, run/rerun/compare/export; actual UI smoke | Step 10 local GO; actual AppTest workflows and loopback health/root HTTP 200; synthetic series labeled; unsupported features explained |
+| 5 Extended research | Verified regional adapters, real calendars/vintages, global macro/commodities, remaining strategy research, walk-forward and stress methods | Licensed datasets and OOS methodology tests; no survivorship/vintage claims without evidence | Future; real market coverage is research documentation until implemented |
+| 6 Paper trading | Internal durable broker/journal shipped with MVP; optional supported external paper integration later | Idempotency, risk checks, restart persistence and no live route tests | Implemented and financially reviewed internal only; no external account or Trade Republic private interface |
+| 7 Hardening/docs | Full QA, failure recovery, source/guide reconciliation, setup and limitations | Recorded tests/build/launch and acceptance checklist, reproducible dependency snapshot | Step 10 local GO: 125 tests, full Ruff, mypy 44 source files, installed wheel/offline smoke; secrets/publication gate pending; no measured coverage claim |
+
+## Master requirement traceability
+
+“MVP” below describes the bounded implemented slice; evidence is in VERIFICATION.md. Later work remains separate, even where research documents already exist.
+
+| Master sections | MVP commitment | Later work / acceptance before claiming completion |
+|---|---|---|
+| 1–2 mission/user constraints | Local English EUR offline paper app; configurable capital/limits; no credentials | Personal risk settings remain user supplied; no suitability inference |
+| 3 global assets/access | Country/asset filters on labeled sample registry; sourced access research | All listed regions, exchanges, bonds/FX/derivatives/minerals require explicit official access matrix; sample coverage is not actual availability |
+| 4 education | Beginner/intermediate/advanced guide, EUR examples, exercises/glossary in Learning Center | Thoroughness review of all requested mechanics/macro/quant chapters; no placeholder headings counted complete |
+| 5 provider research | Dated provider matrix with verified/partial/unverified rows | Every named candidate must have evidence or candid unknowns; actual free-tier tests separate from documentation evidence |
+| 6 engineering | Common protocol, registry, raw normalization, Parquet/SQLite, TTL/quota/retry interfaces and tests | Licensed live adapters, incremental revisions, scheduled updates, permitted concurrency/batching/ETags tested per provider |
+| 7 broker | Internal simulator and official-capability research | No live route; optional supported paper APIs require separate review and tested lawful access |
+| 8 strategies | Buy-hold, trend, positive cross-sectional momentum with periodic rebalancing | Research templates for remaining requested strategies; time-series momentum, mean reversion, sector rotation, volatility target, inverse vol/risk parity, commodity, carry, macro, factor/event frameworks need real data and OOS evidence |
+| 9 backtests | Daily single/multi-asset EUR, fees/spread/slippage/FX, actions, cash, calendars, metrics and benchmark exports | Robust universe histories/delistings, rolling/expanding splits, walk-forward, sensitivity and Monte Carlo require separate tests; no historical-result claim for samples |
+| 10 pages | Twelve pages with contract controls and explicit missing capability labels | Real macro/fundamentals/provider connectivity cannot be implied by UI presence |
+| 11 tax | Sourced German/EU guide and configurable simple realized-gain estimator | Estimated values separate from actual broker tax records; full fund/withholding/loss-pot/Vorabpauschale reconciliation deferred |
+| 12 risk | Long-only/cash caps, order validation, concentration/FX/drawdown, synthetic shocks | Liquidity/gap/correlation/regime/model drift and operational risks documented; calibrated risk/derivative models future |
+| 13 source discipline | Dated source register, confidence categories and dataset provenance | Each material current claim needs primary evidence or explicit uncertainty |
+| 14 repository quality | Typed installable package, config, exceptions, tests, logging/provenance and CSV/JSON exports | Hash-locked transitive snapshot after approved resolution; cross-platform support only after checks |
+| 15 phases/status | This roadmap and status with evidence | Update after every accepted implementation stage |
+| 16 learning plan | 90-day weekly objectives/exercises/reviews; configurable policy/risk templates | Time passing never authorizes live trading |
+| 17 acceptance | All fifteen user journeys tested or marked failed/unsupported with evidence | File existence is insufficient; record install/launch and UI outcomes |
+| 18–19 final delivery | Working narrow vertical slice plus candid research/docs | Complete all outstanding requested capabilities before describing the full master request as complete |
+
+## Release acceptance record to fill
+
+Step 10 evidence and all fifteen bounded MVP journeys are recorded in VERIFICATION.md. The independently installed 52-wheel hash lock is prior setup evidence; acceptance rebuilt and installed the current project wheel without network or additional dependencies. An unsupported capability stays deferred rather than inheriting the MVP gate.
+
+APPROVED hosting scope: full local Streamlit application plus a static companion and GitHub integration/push, following the user’s explicit “do it”. Private repository exists; static hosting cannot execute Python or submit orders. Local implementation and dependency installation are complete. Source publication to main and static-only publication to gh-pages require the separate secrets/publication gate. Current remote commits and Pages deployment history establish the publication outcome; local acceptance makes no deployment claim. Private-repository Pages plan eligibility remains unverified. See USER_GUIDE.md for deployment and future updates.
+
+Step 4 conditional-GO amendments are part of acceptance: exact UTC cross-venue cash chronology and frozen quantities; missing-open cancellation; typed atomic paper transactions/version/time/action persistence; strict action/payment FX timing; split-aware ledger-owned RealizedMatch; daily UTC return grid and corrected Sortino; cache envelope/injected policy with three total attempts; concurrency/crash rollback and Windows timezone tests. Step 5 owns shared records/storage/cache protocols; Step 7 owns accounting and quant reducers.
+</pre></article><article><h2><a href='VERIFICATION.html'>VERIFICATION</a></h2><pre># Verification record
+
+Target: native Windows CPython 3.12.6. Exact approved environment: Streamlit 1.50.0, Plotly 6.3.1, Pandas 2.3.3, NumPy 2.3.3, PyArrow 21.0.0, Pydantic 2.12.0, pytest 8.4.2, Ruff 0.13.3, mypy 1.18.2 and setuptools 80.9.0. The 52-wheel Windows lock was independently installed with `--require-hashes`; clean isolated wheel installation and offline sample smoke passed. No additional dependencies were installed for the UI/static work.
+
+Foundation acceptance: 36 tests (32 author + 4 independent runtime) passed. Financial acceptance: 77 tests (37 author + 40 independent) passed; scoped core Ruff/mypy passed. Dataset: nine synthetic listings, 4,671 raw bars, split/dividend actions and FX, 2024–2025. These checks establish selected deterministic invariants, not general financial correctness or profitable trading.
+
+Application/static verification is recorded below. Step 10 independent local acceptance passed; publication/secrets review remains required. No remote publication is claimed here. No actual external API or broker request was made by normal app use.
+
+## Step 9 executed local checks
+
+Run from the repository root with `.venv/Scripts/python.exe` (native Windows):
+
+| Command / scope | Actual result |
+|---|---|
+| `-m pytest -q` | 121 passed in 18.35s: existing 113 foundation/financial tests plus 8 UI/static integration tests |
+| `-m ruff check app scripts/build_static.py tests/integration/test_app.py tests/integration/test_static.py` | All checks passed |
+| `-m mypy app/main.py scripts/build_static.py` | Success, 2 source files; third-party missing stubs follow project configuration |
+| `scripts/build_static.py` and repeated build in static tests | `build/site` created; identical manifest bytes on repeated builds; all file hashes and local href/src targets checked under `/stock-analysis/`; custom output escape and lexical linked-site boundary rejected; unsafe Markdown link schemes remain text |
+| Native `subprocess.Popen` Streamlit launch with address `127.0.0.1`, port 8501, headless and usage telemetry disabled | Loopback `/_stcore/health` returned HTTP 200 body `ok`; child terminated in `finally` |
+
+UI checks use the actual `streamlit.testing.v1.AppTest` entry point. They navigate all twelve routes; select DEMO-US asset research; run momentum plus same-cost benchmark; save using returned repository IDs and compare saved results; verify three download controls; reject an empty universe and excessive allocation; freeze allocation report parameters despite subsequent control changes; initialize paper account; submit twice with one fill; append journal; restart; replay a persisted canonical order and reject an excessive new quantity. Risk page renders against persisted simulation time. Downloads call the existing JSON/CSV exporters; financial export correctness is covered by financial tests. No browser visual-pixel inspection or cross-platform runtime acceptance is claimed.
+
+The static builder reads only named public guides and committed synthetic report fixtures, writes relative local CSS/JS without CDNs, escapes Markdown/HTML text with clickable HTTPS/allowlisted guide links, refuses unexpected output files/symlinks and output escapes, and emits a content fingerprint plus individual SHA-256 hashes. It copies no `.runtime`, `.env`, `.office`, imports, exports, actual journals or account records. No automatic push exists. Full deployment and independent acceptance remain separate gates.
+
+Known limits: nine invented listings are not full global coverage; no actual current quotes/macroeconomic series, real exchange calendars, external connectivity adapter, broker account, contributions/TWR, complete German taxes, imported broker reconciliation, automated chronological holdouts, walk-forward or Monte Carlo. Synthetic low-price/volume constraints intentionally reject some orders. All displayed financial numbers remain simulated and are not evidence of strategy performance.
+
+## Step 10 independent local release acceptance
+
+Executed 2026-10-21 on native Windows CPython 3.12.6, using the existing approved environment. Result: **GO for the bounded offline local paper MVP**. Secrets review, source push and static publication are separate pending gates. No public binding, external broker, new dependency or external provider probe was used for this gate. The existing optional bounded World Bank GDP metadata helper is separate from the application&#x27;s offline provider and is not an active market-data adapter.
+
+| Command / actual scope | Result |
+|---|---|
+| `.venv/Scripts/python.exe -m pytest -q` | 125 passed in 24.18s after the junction repair; includes four new independent acceptance cases |
+| `.venv/Scripts/python.exe -m ruff check src app scripts tests` | All checks passed |
+| `.venv/Scripts/python.exe -m mypy src app scripts` | Success, 44 source files; project missing-third-party-stub configuration retained |
+| `.venv/Scripts/python.exe -m pip wheel --no-deps --no-build-isolation --no-index . --wheel-dir .office/acceptance/wheels` | Current package wheel built successfully without dependency/network access |
+| Existing isolated lock environment: `-m pip install --no-index --no-deps --force-reinstall` current wheel; `-m pip check` | Install passed; no broken requirements |
+| Installed interpreter with `-I`, working directory outside checkout, network-forbidden `load_demo()` | Imported installed site-packages package; nine listings and 4,671 bars passed |
+| Native hidden-window subprocess Streamlit on loopback port 8502, headless, telemetry disabled | Health HTTP 200 body `ok` and root HTTP 200; child terminated and waited in `finally` |
+| Repeat independent acceptance plus static tests | 7 passed in 8.82s; subsequent full Ruff and 44-file mypy passed again |
+
+Independent AppTest acceptance blocks socket connections while running an actual configured backtest, checking EUR/provenance/fills/warnings/drawdown exports, freezing report metadata when controls change, rerunning with changed capital and retaining the last valid result after reversed dates. A separate case captures the actual risk function&#x27;s valuation timestamp after a fill, verifies it equals the persisted simulation cursor, changes the shock control without mutating the account and replays the canonical order with exactly one fill. Empty Risk/Journal pages demand initialization without creating an account. Widget bounds enforce positive capital and nonnegative costs/weights; existing tests exercise empty universes and allocation totals above one.
+
+A real native Windows junction exposed an output-boundary defect: `build/site` could alias a sibling directory within `build` and receive writes. The builder owner repaired explicit junction checks for output roots/descendants, provided targets before resolution, and public input roots/items. The new acceptance regression creates a real junction in an isolated temporary project and verifies rejection before any target write. A private account sentinel fixture remains absent from every emitted file; unexpected output files and unsafe/nonallowlisted Markdown links reject or remain escaped text. Existing static tests verify repeat manifest bytes, each SHA-256 file hash, prefix-relative href/src targets and downloads. CSS/JS are local assets with no CDN dependency. No visual pixel review was performed.
+
+| Master acceptance criterion | Executed evidence / bounded result |
+|---|---|
+| 1 Setup | Prior independent fresh 52-wheel `--require-hashes` install retained; current wheel rebuilt, installed and imported outside checkout; pip check clean |
+| 2 Local launch | Real Streamlit child: loopback health and root HTTP 200 |
+| 3 Offline/no keys | Network-forbidden actual AppTest run and installed sample load; no credentials required |
+| 4 Search/select asset | Existing twelve-route test and DEMO-US Asset Research selection; explorer registry filters are sample-only |
+| 5 Data/provenance | Actual report JSON contains provenance; dashboard/asset source and artificial 2024–2025 scope inspected |
+| 6 Configure strategy | Actual momentum selection and default buy-hold run; capital/cost/limit controls inspected; three active strategies |
+| 7 EUR run | Executed EUR 12,000/15,000 runs and exported EUR conventions/initial equity |
+| 8 Same-cost benchmark | Actual comparison wrapper/results; shared configuration and financial benchmark regressions |
+| 9 Transactions/costs/drawdown | Nonempty exported fills/warnings and nonpositive drawdown assertion; financial FIFO/cost/drawdown golden cases |
+| 10 Changed-parameter rerun | Original export remains unchanged before rerun; new capital changes experiment ID and benchmark initial equity |
+| 11 Paper trade | Actual submit/replay/restart, one fill; risk rerender preserves complete durable history |
+| 12 Report/trade export | Actual three download controls plus report JSON/CSV exporter regressions; original run/allocation configuration retained |
+| 13 Provider status/consumption | Actual API Management route and offline adapter test; persisted quota/cache fields; catalog is not active real feeds |
+| 14 Guides | Actual Learning Center route plus allowlisted searchable static guide build; user guide/methodology/architecture read |
+| 15 No live orders | Execution/provider/UI source inspected: only internal historical paper reducer is routed; no credential control or external broker submission adapter |
+
+Fresh all-cash accounts have a pre-sample persisted cursor; the Risk page uses a sample-date fallback for this time-invariant EUR cash display without advancing saved state. Filled-account valuation uses the real persisted cursor, independently asserted. This local gate does not validate real feeds/global coverage, external broker access, contributions/TWR, full tax accounting, walk-forward/Monte Carlo, the remaining eleven strategy research entries, profitability or suitability.
+</pre></article><script src='assets/search.js'></script></body></html>
