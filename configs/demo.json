@@ -1,0 +1,6 @@
+{
+  "offline": true,
+  "runtime": ".runtime",
+  "cache_ttl_seconds": 3600,
+  "initial_cash_eur": "10000"
+}

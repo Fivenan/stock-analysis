@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "gmrl"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = ["streamlit==1.50.0", "plotly==6.3.1", "pandas==2.3.3", "numpy==2.3.3", "pyarrow==21.0.0", "pydantic==2.12.0"]
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "ruff==0.13.3", "mypy==1.18.2"]
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 100
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
