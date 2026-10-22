@@ -1,5 +1,5 @@
 {
-  "content_fingerprint": "07627c048f7c600d1cd0fdf93e4b1ee3476bf0ed451ca80e2e1cdc627f3c2d4b",
+  "content_fingerprint": "3a28239165ef6c0eabcc2c56eeb22fed19c4af6a88ff1d6a559d2ecad8a8adf3",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "API_OPTIMIZATION.html": "2ebfec172dbd59ba2d7f1b74f9e9ce1fbc313ebc14142c1218c7db4cbf5702eb",
@@ -9,11 +9,11 @@
     "GERMANY_TAX_AND_REGULATION.html": "e80433cc9e79311fe05fd5e0bfb9f0701504d52dadfdef3ab95cbf8bf8d7835e",
     "LEARNING_PLAN_90_DAYS.html": "9783ce78085971c3cba092386ba2c2d5317179ccfa33b4fedbdd3f2cef553054",
     "MARKET_ACCESS.html": "2414ad4842e571ffe764df8daeb5400054a42a94a8c0af0641c2ad60b2c95c6e",
-    "ROADMAP.html": "18fb75b66ba0b355c3230ccfb9831efb8f5886db272e6fa80f345cf8030c2612",
+    "ROADMAP.html": "174881edbf43f74070e98a86b15119fdcce0f6b68ce9e8f41bedd2ec78bfbe54",
     "SOURCES.html": "a9ee5eb7563009661eb5402b27752c8ac372de90fe61f9e22e44f2c98bc0fc2c",
     "STRATEGIES.html": "91b0480fa92203040bd066f9ac6fbf43e2c8e338a9f558fa9f50ebacce801314",
     "TRADING_GUIDE.html": "a11c5d3f62b6ceec3807f868dfe4cfff9b7c72dab7be42d0a6435ee1d01e47b2",
-    "USER_GUIDE.html": "42d2b15144b43ff66da19fb863c641d798a0f49181cb6e0006909b7a331d74f1",
+    "USER_GUIDE.html": "ff3e48d34e606d98018ee3a1dc0f80010dd114e0899988ed826ef0977010275c",
     "VERIFICATION.html": "5b90725650931159c5c988f1df6fdd93e0323c2e0c978da48a53218cd15ed771",
     "assets/search.js": "6a536a75bc48ff6aca183dae8191e3877b46c77f6873e2239ae7bcbd210b5ae4",
     "assets/style.css": "668d7adabd5c23bde11429b178dc670c646e365b77cc6a05fe694400b66dbd65",
@@ -28,7 +28,7 @@
     "downloads/trend_equity.csv": "2e0c44fc632276d17691aceb1524c71f70cc56ab2215a68c3141ea0392d931b6",
     "downloads/trend_fills.csv": "b04077cd7015dcaab2af7b9af8d9e32d2505cec3a5ee8a695b57aae9ae92fe9a",
     "index.html": "262edd967e814e2b640475c5f6dc0c2d4d04e152df2b4084546585c7875633c0",
-    "learning.html": "e84466a7f053f2a6b1f041f90efc3380080875fee3f9b1cd86a92e60d0bffdf9",
+    "learning.html": "37d0138dde7048baf59c46c9ba6e8acac59b454a8bad6ac115f1fac89f35f58b",
     "reports.html": "d589303776a28251b5b167f53a107f9090d6b8d1ca2d5ea8c319127a57d4669a"
   },
   "schema": 1,
