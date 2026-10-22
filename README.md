@@ -28,7 +28,7 @@ Open `http://127.0.0.1:8501`. Stop with Ctrl+C. The app works without API keys o
 .\.venv\Scripts\python.exe scripts/build_static.py
 ```
 
-Output: `build/site/index.html`, relative assets, `.nojekyll`, computed synthetic CSV/JSON downloads and a SHA-256 `manifest.json`. Open index locally or publish the reviewed directory to GitHub Pages in a separate publication step. It needs no Python server on Pages and works beneath `/stock-analysis/`. Pages cannot host the Streamlit app. Build never reads `.runtime`, imports, exports, `.env`, `.office` or private journals. It refuses unexpected artifacts in its output directory. This command does not push or change Pages settings. The repository is private; Pages plan eligibility remains unverified. See [deployment and future updates](docs/USER_GUIDE.md#deployment-and-future-updates) for the separate source and static publication procedure.
+Output: `build/site/index.html`, relative assets, `.nojekyll`, computed synthetic CSV/JSON downloads and a SHA-256 `manifest.json`. Open index locally or publish the reviewed directory to GitHub Pages in a separate publication step. It needs no Python server on Pages and works beneath `/stock-analysis/`. Pages cannot host the Streamlit app. Build never reads `.runtime`, imports, exports, `.env`, `.office` or private journals. It refuses unexpected artifacts in its output directory. This command does not push or change Pages settings. Check GitHub for current repository visibility and Pages deployment status; private repositories require an eligible Pages plan. See [deployment and future updates](docs/USER_GUIDE.md#deployment-and-future-updates) for the separate source and static publication procedure.
 
 ## What works and what remains
 

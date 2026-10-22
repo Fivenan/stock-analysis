@@ -45,13 +45,13 @@ No observations: choose dates in 2024–2025 and a nonempty universe. Reversed b
 
 ## Deployment and future updates
 
-The source target is [Fivenan/stock-analysis](https://github.com/Fivenan/stock-analysis). The repository is private. Its `main` branch contains the Python application, documentation and preserved original `wiki/`. The separate `gh-pages` branch must contain only the reviewed generated contents of `build/site/`, with `index.html` and `.nojekyll` at the branch root, not inside a nested `build/site` directory. Do not publish the checkout, runtime accounts, journals, imports, exports, credentials or private configuration.
+The source target is [Fivenan/stock-analysis](https://github.com/Fivenan/stock-analysis). Its `main` branch contains the Python application, documentation and preserved original `wiki/`. The separate `gh-pages` branch must contain only the reviewed generated contents of `build/site/`, with `index.html` and `.nojekyll` at the branch root, not inside a nested `build/site` directory. Do not publish the checkout, runtime accounts, journals, imports, exports, credentials or private configuration.
 
 GitHub Pages serves the static companion only. Keep Streamlit running locally using the Windows setup in the README; Pages cannot execute Python, run new simulations, submit orders or save journal entries. The builder includes only allowlisted guides, assets and computed synthetic reports. Review its generated files and SHA-256 `manifest.json` before publication; the manifest records artifact integrity, not approval or deployment success.
 
-[Pages settings](https://github.com/Fivenan/stock-analysis/settings/pages): select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**, after that branch exists. Pages for a private repository requires an eligible GitHub plan; eligibility is unverified. Retain the repository's private visibility. If the plan does not permit Pages, keep the static output local until an eligible hosting arrangement is explicitly chosen.
+[Pages settings](https://github.com/Fivenan/stock-analysis/settings/pages): select **Deploy from a branch**, branch **gh-pages**, folder **/(root)**, after that branch exists. Pages for a private repository requires an eligible GitHub plan. Check GitHub for current repository visibility and Pages configuration.
 
-The intended address is [https://Fivenan.github.io/stock-analysis/](https://Fivenan.github.io/stock-analysis/). This is a target, not a verified live deployment. The remote branch commits and GitHub Pages deployment history are the authority for current publication state; local acceptance or a successful build does not establish that the site is live.
+The static companion entry point is [https://Fivenan.github.io/stock-analysis/](https://Fivenan.github.io/stock-analysis/). Confirm current availability from Pages deployment status and an HTTP check. The remote branch commits and GitHub Pages deployment history are the authority for current publication state; local acceptance or a successful build does not establish that the site is live.
 
 For a future update:
 
